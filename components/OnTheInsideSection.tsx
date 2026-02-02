@@ -1,0 +1,289 @@
+import React, { useState, useRef, useEffect } from 'react'
+import ExpandableBlock from './ExpandableBlock'
+import Button from './Button'
+import { useScrollAnimation, useStaggeredScrollAnimation } from '@/hooks/useScrollAnimation'
+import { motion, useScroll, useTransform } from 'framer-motion'
+
+interface OnTheInsideSectionProps {
+  className?: string
+  pageReady?: boolean
+  onJoinClick?: () => void
+}
+
+export default function OnTheInsideSection({ className = '', pageReady = true, onJoinClick }: OnTheInsideSectionProps) {
+  const [expandedBlock, setExpandedBlock] = useState<string>('001')
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  
+  // Framer Motion scroll animation
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "start start"]
+  })
+  
+  // Responsive width animation: use vw on mobile, px on desktop
+  const [widthStart, setWidthStart] = useState<string | number>(1480)
+  const [widthEnd, setWidthEnd] = useState<string | number>(typeof window !== 'undefined' ? document.documentElement.clientWidth : 1920)
+  const [isMobile, setIsMobile] = useState<boolean>(false)
+
+  useEffect(() => {
+    const compute = () => {
+      const w = typeof window !== 'undefined' ? window.innerWidth : 1920
+      const mobile = w < 768
+      setIsMobile(mobile)
+      if (mobile) {
+        setWidthStart('90vw')
+        setWidthEnd('100vw')
+      } else {
+        setWidthStart(1480)
+        setWidthEnd(w)
+      }
+    }
+    compute()
+    window.addEventListener('resize', compute)
+    return () => window.removeEventListener('resize', compute)
+  }, [])
+
+  const containerWidth = useTransform(scrollYProgress, [0, 1], [widthStart as any, widthEnd as any])
+  
+  const borderRadius = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [5, 0]
+  )
+  
+  const imgCard = "http://localhost:3845/assets/dc52173e611d9ad77837e8dfdd59a3cb14c1ad4a.png"
+  
+  const blocks = [
+    {
+      id: '001',
+      title: 'The Culture',
+      description: 'Our culture is built on a curated combination of our values and attitudes. We work hard, but have fun. We celebrate wins, but keep each other accountable. We’re cool. We’re energetic. And we’re always engaged.',
+      backgroundImage: "/images/unlmtd.png"
+    },
+    {
+      id: '002',
+      title: 'The Training',
+      description: 'From day one, you\'ll get hands-on training that actually works. No fluff, just real skills that help you close deals and build lasting relationships.',
+      backgroundImage: "/images/presentation.png"
+    },
+    {
+      id: '003',
+      title: 'The Lifestyle',
+      description: 'Work hard, live well. Flexible schedules, remote options, and the freedom to design your career around the life you want to live.',
+      backgroundImage: "/images/WEBSITE PHOTO.png"
+    },
+    {
+      id: '004',
+      title: 'The Growth',
+      description: 'Your potential is unlimited here. Clear advancement paths, mentorship programs, and opportunities to lead from day one.',
+      backgroundImage: "/images/growth.png"
+    }
+  ]
+
+  const handleToggle = (id: string) => {
+    setExpandedBlock(expandedBlock === id ? '' : id)
+  }
+
+  const openVideoModal = () => {
+    setIsVideoModalOpen(true)
+  }
+
+  const closeVideoModal = () => {
+    setIsVideoModalOpen(false)
+    if (videoRef.current) {
+      videoRef.current.pause()
+      videoRef.current.currentTime = 0
+    }
+  }
+
+  // Close modal on escape key
+  React.useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeVideoModal()
+      }
+    }
+    
+    if (isVideoModalOpen) {
+      document.addEventListener('keydown', handleEscape)
+      document.body.style.overflow = 'hidden'
+    }
+    
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+      document.body.style.overflow = 'unset'
+    }
+  }, [isVideoModalOpen])
+
+
+  const filters = ['All', 'Yearly', 'Summer', 'Live', 'Done']
+  const [activeFilter, setActiveFilter] = useState('All')
+
+  // Animation hooks
+  const headerAnimation = useScrollAnimation<HTMLDivElement>({ delay: 200, disabled: !pageReady })
+  const descriptionAnimation = useScrollAnimation<HTMLDivElement>({ delay: 600, disabled: !pageReady })
+  const videoAnimation = useScrollAnimation<HTMLDivElement>({ delay: 800, disabled: !pageReady })
+  const blockAnimations = useStaggeredScrollAnimation<HTMLDivElement>(blocks.length, 400, 200, !pageReady)
+  const buttonAnimation = useScrollAnimation<HTMLDivElement>({ delay: 1200, disabled: !pageReady })
+
+  return (
+    <motion.section ref={sectionRef} className={`flex flex-col items-center pt-[130px] w-[100vw] ${className}`}>
+      <motion.div 
+        className={`bg-[#e6e6e6] py-[160px] px-[30px] mx-auto overflow-visible w-[100%]`}
+        style={{ 
+          borderRadius: borderRadius,
+          width: containerWidth as any
+        }}
+      >
+        <div className="max-w-[1480px] mx-auto">
+          {/* Header */}
+          <div className="flex md:flex-row flex-col items-start justify-between w-[100%] pb-10 md:mb-[160px] mb-[30px] md:h-[500px] h-[auto]">
+            <div className="flex flex-col items-start justify-between h-[100%] max-w-[680px]">
+              <div 
+                ref={headerAnimation.ref}
+                className={`flex items-start gap-2.5 transition-all duration-700 ${
+                  headerAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+                }`}
+              >
+                <span className="text-[16px] font-telegraf text-black">(4)</span>
+                <div className="flex flex-col gap-5 md:items-end items-start">
+                  <h2 className="md:text-[60px] text-[40px] font-telegraf font-extrabold uppercase leading-[63px] text-black md:text-right text-left">
+                  PULLING BACK
+                  <br />
+                  THE CURTAIN
+                  </h2>
+                  <div className="font-telegraf text-[16px] text-right text-black leading-[28px]">
+                    What's working with Aveyo like?
+                  </div>
+                </div>
+              </div>
+              <div 
+                ref={descriptionAnimation.ref}
+                className={`font-telegraf w-[100%] md:pl-[30%] pl-[0] text-black text-[16px] leading-[28px] transition-all duration-700 ${
+                  descriptionAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+                }`}
+              >
+                No limits, just wins. From your first deal to your biggest bonus, we set you up with the tools, training, and support you need to crush goals and climb fast. When you win, the whole team wins—and we celebrate every step of the way.
+              </div>
+            </div>
+            {/* Video thumbnail section */}
+            <div 
+              ref={videoAnimation.ref}
+              className={`md:w-[40%] w-[100%] mb-[40px] h-[100%] transition-all duration-700 ${
+                videoAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+              }`}
+            >
+              <div 
+                className="relative h-[100%] bg-black rounded-[5px] overflow-hidden cursor-pointer group"
+                onClick={openVideoModal}
+              >
+                <img 
+                  src="/images/rep-review-thumbnail.png"
+                  alt="Video thumbnail"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-all duration-300">
+                  <img src="/play.svg" alt="Play" className="w-10 h-10 ml-1" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Expandable Blocks Grid */}
+          <div className="grid grid-cols-1 gap-5 mb-[60px]">
+            {blocks.map((block, index) => (
+              <div
+                key={block.id}
+                ref={blockAnimations[index].ref}
+                className={`transition-all duration-700 ${
+                  blockAnimations[index].isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+                }`}
+              >
+                <ExpandableBlock
+                  id={block.id}
+                  title={block.title}
+                  description={block.description}
+                  backgroundImage={block.backgroundImage}
+                  isExpanded={expandedBlock === block.id}
+                  onToggle={handleToggle}
+                  className={`${expandedBlock === block.id ? 'md:h-[500px] h-[300px]' : 'h-[120px]'} relative before:absolute before:inset-0 before:bg-black before:opacity-30 before:z-10`}
+                >
+                  {/* Filter buttons - only show in expanded state for "The Culture"
+                  {block.id === '001' && expandedBlock === block.id && (
+                    <div className="flex flex-wrap gap-2.5 items-center">
+                      {filters.map((filter) => (
+                        <button
+                          key={filter}
+                          onClick={() => setActiveFilter(filter)}
+                          className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-inter font-semibold transition-colors ${
+                            activeFilter === filter
+                              ? 'bg-white text-black'
+                              : 'border border-white text-white hover:bg-white hover:text-black'
+                          }`}
+                        >
+                          {filter}
+                        </button>
+                      ))}
+                    </div>
+                  )} */}
+                </ExpandableBlock>
+              </div>
+            ))}
+          </div>
+
+          {/* Apply Now Button */}
+          <div 
+            ref={buttonAnimation.ref}
+            className={`flex justify-center transition-all duration-700 ${
+              buttonAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+            }`}
+          >
+            <Button variant="primary" theme="dark" onClick={onJoinClick}>
+              APPLY NOW
+            </Button>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Video Modal */}
+      {isVideoModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90">
+          <div className="relative w-full max-w-4xl mx-4">
+            {/* Close button */}
+            <button
+              onClick={closeVideoModal}
+              className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            {/* Video player */}
+            <div className="relative bg-black rounded-lg overflow-hidden">
+              <video
+                ref={videoRef}
+                className="w-full h-auto"
+                controls
+                autoPlay
+                preload="metadata"
+              >
+                <source src="/videos/rep-review.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+          
+          {/* Click outside to close */}
+          <div 
+            className="absolute inset-0 -z-10"
+            onClick={closeVideoModal}
+          />
+        </div>
+      )}
+    </motion.section>
+  )
+}
