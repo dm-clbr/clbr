@@ -140,7 +140,7 @@ export default function StatsPageCMS() {
           {/* Header Controls */}
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h1 className="text-white text-3xl font-telegraf font-bold">Stats Page CMS</h1>
+              <h1 className="text-white text-3xl font-bold">Stats Page CMS</h1>
               <p className="text-gray-400 mt-2">Edit the stats page hero and metrics</p>
             </div>
             <div className="flex items-center gap-3">

@@ -238,7 +238,7 @@ export default function AdminIncentivesPage() {
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h1 className="text-white text-4xl font-telegraf font-bold">
+              <h1 className="text-white text-4xl font-bold">
                 Incentives Management
               </h1>
               <p className="text-gray-400 mt-2">
@@ -257,7 +257,7 @@ export default function AdminIncentivesPage() {
           {/* Incentives Section Copy (mirrors home incentives header layout) */}
           <div className="mb-12">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-white text-2xl font-telegraf font-bold">Incentives Section Copy</h2>
+              <h2 className="text-white text-2xl font-bold">Incentives Section Copy</h2>
             </div>
 
             {/* Preview cards grid (1:1 with incentives header design) */}
@@ -477,7 +477,7 @@ export default function AdminIncentivesPage() {
                 <div className="flex-1 min-w-0">
                   {/* Title + Category */}
                   <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-white text-[20px] font-telegraf font-bold truncate">{incentive.title}</h3>
+                    <h3 className="text-white text-[20px] font-bold truncate">{incentive.title}</h3>
                     <span className="px-3 py-1 rounded-full text-xs font-semibold text-black bg-[#3a3a3a]/20" style={{ backgroundColor: `${incentive.category_color}33`, color: '#ddd' }}>
                       {incentive.category}
                     </span>

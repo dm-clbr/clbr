@@ -13,7 +13,7 @@ export default function ProjectsPage() {
         <div className="flex justify-center pt-10 md:pt-[100px]">
           
           <div className="w-[100%] px-6 md:max-w-[1480px]">
-            <h1 className="text-6xl font-telegraf font-bold mb-4">
+            <h1 className="text-6xl font-bold mb-4">
               My Projects
             </h1>
             <ProjectsPageContent />

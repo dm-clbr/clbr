@@ -69,19 +69,19 @@ export default function BrandPage() {
                 headerAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
               }`}
             >
-              <span className="text-[16px] font-telegraf">(B)</span>
+              <span className="text-[16px]">(B)</span>
               <div>
-                <h1 className="text-[60px] font-telegraf font-extrabold uppercase leading-[63px] mb-2">
+                <h1 className="text-[60px] font-extrabold uppercase leading-[63px] mb-2">
                   Brand Hub.
                 </h1>
-                <p className="text-[rgba(255,255,255,0.6)] text-[16px] font-telegraf italic">
+                <p className="text-[rgba(255,255,255,0.6)] text-[16px] italic">
                   Internal Branding Reference Page
                 </p>
               </div>
             </div>
             <div 
               ref={descriptionAnimation.ref}
-              className={`text-white text-[16px] font-telegraf max-w-[400px] transition-all duration-700 ${
+              className={`text-white text-[16px] max-w-[400px] transition-all duration-700 ${
                 descriptionAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
               }`}
             >
@@ -101,8 +101,8 @@ export default function BrandPage() {
               }`}
             >
               <div className="flex items-start gap-2.5 text-white mb-12">
-                <span className="text-[16px] font-telegraf">(1)</span>
-                <h2 className="text-[40px] font-telegraf font-extrabold uppercase leading-[42px] flex items-center">
+                <span className="text-[16px]">(1)</span>
+                <h2 className="text-[40px] font-extrabold uppercase leading-[42px] flex items-center">
                   <span className="mr-4">🌟</span>
                   Our Core Values.
                 </h2>
@@ -116,14 +116,14 @@ export default function BrandPage() {
                   >
                     <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-10`}></div>
                     <div className="relative z-10">
-                      <h3 className="text-white text-[20px] font-telegraf font-bold mb-4">
+                      <h3 className="text-white text-[20px] font-bold mb-4">
                         {value.title}
                       </h3>
-                      <p className="text-[rgba(255,255,255,0.8)] text-[14px] font-telegraf leading-relaxed mb-4">
+                      <p className="text-[rgba(255,255,255,0.8)] text-[14px] leading-relaxed mb-4">
                         {value.description}
                       </p>
                     </div>
-                    <p className="text-[rgba(255,255,255,0.5)] text-[12px] font-telegraf italic relative z-10">
+                    <p className="text-[rgba(255,255,255,0.5)] text-[12px] italic relative z-10">
                       Download available: {value.download}
                     </p>
                   </div>
@@ -139,17 +139,17 @@ export default function BrandPage() {
               }`}
             >
               <div className="flex items-start gap-2.5 text-white mb-8">
-                <span className="text-[16px] font-telegraf">(2)</span>
-                <h2 className="text-[40px] font-telegraf font-extrabold uppercase leading-[42px] flex items-center">
+                <span className="text-[16px]">(2)</span>
+                <h2 className="text-[40px] font-extrabold uppercase leading-[42px] flex items-center">
                   <span className="mr-4">🎨</span>
                   Brand Guidelines.
                 </h2>
               </div>
               <div className="bg-gradient-to-b from-[#171717] to-[#0d0d0d] rounded-[3px] p-8">
-                <p className="text-white text-[16px] font-telegraf mb-4">
+                <p className="text-white text-[16px] mb-4">
                   The official Aveyo brand guidelines cover logo usage, color palette, typography, and overall visual direction.
                 </p>
-                <p className="text-[rgba(255,255,255,0.5)] text-[14px] font-telegraf italic">
+                <p className="text-[rgba(255,255,255,0.5)] text-[14px] italic">
                   Download available: Full brand guidelines PDF
                 </p>
               </div>
@@ -163,19 +163,19 @@ export default function BrandPage() {
               }`}
             >
               <div className="flex items-start gap-2.5 text-white mb-8">
-                <span className="text-[16px] font-telegraf">(3)</span>
-                <h2 className="text-[40px] font-telegraf font-extrabold uppercase leading-[42px] flex items-center">
+                <span className="text-[16px]">(3)</span>
+                <h2 className="text-[40px] font-extrabold uppercase leading-[42px] flex items-center">
                   <span className="mr-4">🔖</span>
                   Logo Usage.
                 </h2>
               </div>
               <div className="bg-gradient-to-b from-[#171717] to-[#0d0d0d] rounded-[3px] p-8">
-                <ul className="text-white text-[16px] font-telegraf space-y-3 mb-6">
+                <ul className="text-white text-[16px] space-y-3 mb-6">
                   <li>• Always use the official Aveyo logos provided.</li>
                   <li>• Maintain clear space around the logo.</li>
                   <li>• Never stretch, rotate, or recolor outside approved variations.</li>
                 </ul>
-                <p className="text-[rgba(255,255,255,0.5)] text-[14px] font-telegraf italic">
+                <p className="text-[rgba(255,255,255,0.5)] text-[14px] italic">
                   Download available: Logo pack (light, dark, transparent, vector)
                 </p>
               </div>
@@ -189,31 +189,31 @@ export default function BrandPage() {
               }`}
             >
               <div className="flex items-start gap-2.5 text-white mb-8">
-                <span className="text-[16px] font-telegraf">(4)</span>
-                <h2 className="text-[40px] font-telegraf font-extrabold uppercase leading-[42px] flex items-center">
+                <span className="text-[16px]">(4)</span>
+                <h2 className="text-[40px] font-extrabold uppercase leading-[42px] flex items-center">
                   <span className="mr-4">🎨</span>
                   Color Palette.
                 </h2>
               </div>
               <div className="bg-gradient-to-b from-[#171717] to-[#0d0d0d] rounded-[3px] p-8">
-                <p className="text-white text-[16px] font-telegraf mb-6">
+                <p className="text-white text-[16px] mb-6">
                   Our color palette ensures brand consistency across all channels.
                 </p>
                 <div className="grid md:grid-cols-2 gap-8 mb-6">
                   <div>
-                    <h4 className="text-white text-[18px] font-telegraf font-bold mb-3">Primary Colors</h4>
-                    <p className="text-[rgba(255,255,255,0.7)] text-[14px] font-telegraf">
+                    <h4 className="text-white text-[18px] font-bold mb-3">Primary Colors</h4>
+                    <p className="text-[rgba(255,255,255,0.7)] text-[14px]">
                       (Insert HEX/RGB/CMYK values from brand guidelines)
                     </p>
                   </div>
                   <div>
-                    <h4 className="text-white text-[18px] font-telegraf font-bold mb-3">Secondary Colors</h4>
-                    <p className="text-[rgba(255,255,255,0.7)] text-[14px] font-telegraf">
+                    <h4 className="text-white text-[18px] font-bold mb-3">Secondary Colors</h4>
+                    <p className="text-[rgba(255,255,255,0.7)] text-[14px]">
                       (Insert HEX/RGB/CMYK values)
                     </p>
                   </div>
                 </div>
-                <p className="text-[rgba(255,255,255,0.5)] text-[14px] font-telegraf italic">
+                <p className="text-[rgba(255,255,255,0.5)] text-[14px] italic">
                   Download available: Color palette file (HEX, RGB, CMYK, ASE/ACO)
                 </p>
               </div>
@@ -227,28 +227,28 @@ export default function BrandPage() {
               }`}
             >
               <div className="flex items-start gap-2.5 text-white mb-8">
-                <span className="text-[16px] font-telegraf">(5)</span>
-                <h2 className="text-[40px] font-telegraf font-extrabold uppercase leading-[42px] flex items-center">
+                <span className="text-[16px]">(5)</span>
+                <h2 className="text-[40px] font-extrabold uppercase leading-[42px] flex items-center">
                   <span className="mr-4">✍️</span>
                   Typography.
                 </h2>
               </div>
               <div className="bg-gradient-to-b from-[#171717] to-[#0d0d0d] rounded-[3px] p-8">
-                <p className="text-white text-[16px] font-telegraf mb-6">
+                <p className="text-white text-[16px] mb-6">
                   Typography reinforces our brand voice and should be consistent across all materials.
                 </p>
                 <div className="space-y-3 mb-6">
-                  <p className="text-white text-[16px] font-telegraf">
+                  <p className="text-white text-[16px]">
                     <span className="font-bold">Primary Font:</span> PP Telegraf (Current brand font)
                   </p>
-                  <p className="text-white text-[16px] font-telegraf">
+                  <p className="text-white text-[16px]">
                     <span className="font-bold">Secondary Font:</span> Inter (Supporting text)
                   </p>
-                  <p className="text-white text-[16px] font-telegraf">
+                  <p className="text-white text-[16px]">
                     <span className="font-bold">Usage Notes:</span> Headings, body text, digital vs print
                   </p>
                 </div>
-                <p className="text-[rgba(255,255,255,0.5)] text-[14px] font-telegraf italic">
+                <p className="text-[rgba(255,255,255,0.5)] text-[14px] italic">
                   Download available: Font files + usage guide
                 </p>
               </div>
@@ -262,8 +262,8 @@ export default function BrandPage() {
               }`}
             >
               <div className="flex items-start gap-2.5 text-white mb-8">
-                <span className="text-[16px] font-telegraf">(6)</span>
-                <h2 className="text-[40px] font-telegraf font-extrabold uppercase leading-[42px] flex items-center">
+                <span className="text-[16px]">(6)</span>
+                <h2 className="text-[40px] font-extrabold uppercase leading-[42px] flex items-center">
                   <span className="mr-4">📄</span>
                   Templates.
                 </h2>
@@ -271,25 +271,25 @@ export default function BrandPage() {
               <div className="bg-gradient-to-b from-[#171717] to-[#0d0d0d] rounded-[3px] p-8">
                 <div className="grid md:grid-cols-3 gap-6 mb-6">
                   <div className="text-center">
-                    <h4 className="text-white text-[18px] font-telegraf font-bold mb-2">Presentation Decks</h4>
-                    <p className="text-[rgba(255,255,255,0.7)] text-[14px] font-telegraf">
+                    <h4 className="text-white text-[18px] font-bold mb-2">Presentation Decks</h4>
+                    <p className="text-[rgba(255,255,255,0.7)] text-[14px]">
                       Sales presentations and pitch decks
                     </p>
                   </div>
                   <div className="text-center">
-                    <h4 className="text-white text-[18px] font-telegraf font-bold mb-2">Social Media Templates</h4>
-                    <p className="text-[rgba(255,255,255,0.7)] text-[14px] font-telegraf">
+                    <h4 className="text-white text-[18px] font-bold mb-2">Social Media Templates</h4>
+                    <p className="text-[rgba(255,255,255,0.7)] text-[14px]">
                       Instagram, LinkedIn, and other platforms
                     </p>
                   </div>
                   <div className="text-center">
-                    <h4 className="text-white text-[18px] font-telegraf font-bold mb-2">Internal Docs</h4>
-                    <p className="text-[rgba(255,255,255,0.7)] text-[14px] font-telegraf">
+                    <h4 className="text-white text-[18px] font-bold mb-2">Internal Docs</h4>
+                    <p className="text-[rgba(255,255,255,0.7)] text-[14px]">
                       Reports, memos, and documentation
                     </p>
                   </div>
                 </div>
-                <p className="text-[rgba(255,255,255,0.5)] text-[14px] font-telegraf italic">
+                <p className="text-[rgba(255,255,255,0.5)] text-[14px] italic">
                   Download available: Template folder
                 </p>
               </div>
@@ -303,30 +303,30 @@ export default function BrandPage() {
               }`}
             >
               <div className="flex items-start gap-2.5 text-white mb-8">
-                <span className="text-[16px] font-telegraf">(7)</span>
-                <h2 className="text-[40px] font-telegraf font-extrabold uppercase leading-[42px] flex items-center">
+                <span className="text-[16px]">(7)</span>
+                <h2 className="text-[40px] font-extrabold uppercase leading-[42px] flex items-center">
                   <span className="mr-4">📂</span>
                   Quick Links.
                 </h2>
               </div>
               <div className="bg-gradient-to-b from-[#171717] to-[#0d0d0d] rounded-[3px] p-8">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <a href="#" className="text-white text-[16px] font-telegraf hover:text-[rgba(255,255,255,0.7)] transition-colors">
+                  <a href="#" className="text-white text-[16px] hover:text-[rgba(255,255,255,0.7)] transition-colors">
                     → Brand Guidelines PDF
                   </a>
-                  <a href="#" className="text-white text-[16px] font-telegraf hover:text-[rgba(255,255,255,0.7)] transition-colors">
+                  <a href="#" className="text-white text-[16px] hover:text-[rgba(255,255,255,0.7)] transition-colors">
                     → Logo Pack
                   </a>
-                  <a href="#" className="text-white text-[16px] font-telegraf hover:text-[rgba(255,255,255,0.7)] transition-colors">
+                  <a href="#" className="text-white text-[16px] hover:text-[rgba(255,255,255,0.7)] transition-colors">
                     → Color Palette
                   </a>
-                  <a href="#" className="text-white text-[16px] font-telegraf hover:text-[rgba(255,255,255,0.7)] transition-colors">
+                  <a href="#" className="text-white text-[16px] hover:text-[rgba(255,255,255,0.7)] transition-colors">
                     → Fonts & Typography Guide
                   </a>
-                  <a href="#" className="text-white text-[16px] font-telegraf hover:text-[rgba(255,255,255,0.7)] transition-colors">
+                  <a href="#" className="text-white text-[16px] hover:text-[rgba(255,255,255,0.7)] transition-colors">
                     → Posters & Templates
                   </a>
-                  <a href="#" className="text-white text-[16px] font-telegraf hover:text-[rgba(255,255,255,0.7)] transition-colors">
+                  <a href="#" className="text-white text-[16px] hover:text-[rgba(255,255,255,0.7)] transition-colors">
                     → Social Media Assets
                   </a>
                 </div>

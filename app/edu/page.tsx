@@ -51,13 +51,13 @@ export default function EduPage() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#0859D1] to-[#44A4F9] border border-white/10 rounded-full px-6 py-2 mb-8">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-white/80 font-telegraf text-sm font-semibold">COMING SOON</span>
+                <span className="text-white/80 text-sm font-semibold">COMING SOON</span>
               </div>
 
               {/* Title */}
               <div className="flex items-start justify-center gap-3 mb-8">
-                <span className="text-white/60 text-[16px] font-telegraf mt-4">(E)</span>
-                <h1 className="text-[60px] sm:text-[80px] md:text-[120px] font-telegraf font-extrabold uppercase leading-[0.8] text-white">
+                <span className="text-white/60 text-[16px] mt-4">(E)</span>
+                <h1 className="text-[60px] sm:text-[80px] md:text-[120px] font-extrabold uppercase leading-[0.8] text-white">
                   Education<br />
                   <span className="text-transparent bg-gradient-to-r from-[#9EC5FE] via-[#0859D1] to-[#44A4F9] bg-clip-text">
                     Center.
@@ -66,12 +66,12 @@ export default function EduPage() {
               </div>
 
               {/* Subtitle */}
-              <p className="text-[20px] sm:text-[24px] md:text-[32px] font-telegraf text-white/80 mb-6 leading-relaxed">
+              <p className="text-[20px] sm:text-[24px] md:text-[32px] text-white/80 mb-6 leading-relaxed">
                 Master the art of solar sales with our comprehensive training platform
               </p>
 
               {/* Description */}
-              <p className="text-[16px] sm:text-[18px] font-telegraf text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-[16px] sm:text-[18px] text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
                 Get ready for interactive courses, expert-led workshops, certification programs, 
                 and real-world case studies designed to elevate your solar sales expertise.
               </p>
@@ -84,8 +84,8 @@ export default function EduPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-telegraf font-bold text-white mb-2">Interactive Courses</h3>
-                  <p className="text-white/60 font-telegraf text-sm">Hands-on learning modules with real-world scenarios</p>
+                  <h3 className="text-lg font-bold text-white mb-2">Interactive Courses</h3>
+                  <p className="text-white/60 text-sm">Hands-on learning modules with real-world scenarios</p>
                 </div>
 
                 <div className="bg-gradient-to-b from-[#171717] to-[#0d0d0d] border border-white/10 rounded-[3px] p-6 hover:border-white/20 transition-all duration-300">
@@ -94,8 +94,8 @@ export default function EduPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-telegraf font-bold text-white mb-2">Certifications</h3>
-                  <p className="text-white/60 font-telegraf text-sm">Earn recognized credentials to boost your career</p>
+                  <h3 className="text-lg font-bold text-white mb-2">Certifications</h3>
+                  <p className="text-white/60 text-sm">Earn recognized credentials to boost your career</p>
                 </div>
 
                 <div className="bg-gradient-to-b from-[#171717] to-[#0d0d0d] border border-white/10 rounded-[3px] p-6 hover:border-white/20 transition-all duration-300">
@@ -104,8 +104,8 @@ export default function EduPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-telegraf font-bold text-white mb-2">Expert Workshops</h3>
-                  <p className="text-white/60 font-telegraf text-sm">Learn from top performers and industry leaders</p>
+                  <h3 className="text-lg font-bold text-white mb-2">Expert Workshops</h3>
+                  <p className="text-white/60 text-sm">Learn from top performers and industry leaders</p>
                 </div>
               </div>
 
@@ -118,13 +118,13 @@ export default function EduPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email for updates"
-                      className="flex-1 px-6 py-4 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white placeholder-white/60 font-telegraf focus:outline-none focus:border-white/40 transition-colors"
+                      className="flex-1 px-6 py-4 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white placeholder-white/60 focus:outline-none focus:border-white/40 transition-colors"
                       required
                     />
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="px-8 py-4 bg-white text-black hover:bg-white/90 disabled:bg-white/50 rounded-[3px] font-telegraf font-semibold transition-colors whitespace-nowrap"
+                      className="px-8 py-4 bg-white text-black hover:bg-white/90 disabled:bg-white/50 rounded-[3px] font-semibold transition-colors whitespace-nowrap"
                     >
                       {isLoading ? (
                         <div className="flex items-center gap-2">
@@ -142,24 +142,24 @@ export default function EduPage() {
                       <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-green-400 font-telegraf font-semibold">You're on the list!</span>
+                      <span className="text-green-400 font-semibold">You're on the list!</span>
                     </div>
-                    <p className="text-white/80 font-telegraf text-sm">We'll notify you as soon as the Education Center launches.</p>
+                    <p className="text-white/80 text-sm">We'll notify you as soon as the Education Center launches.</p>
                   </div>
                 )}
               </div>
 
               {/* Timeline */}
               <div className="mt-16 pt-12 border-t border-white/10">
-                <h3 className="text-2xl font-telegraf font-bold text-white mb-8">What's Coming</h3>
+                <h3 className="text-2xl font-bold text-white mb-8">What's Coming</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-3xl mx-auto">
                   <div className="flex gap-4">
                     <div className="flex-shrink-0 w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center mt-1">
                       <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
                     </div>
                     <div>
-                      <h4 className="text-white font-telegraf font-semibold mb-2">Phase 1: Foundation Courses</h4>
-                      <p className="text-white/60 font-telegraf text-sm">Solar basics, customer psychology, and objection handling</p>
+                      <h4 className="text-white font-semibold mb-2">Phase 1: Foundation Courses</h4>
+                      <p className="text-white/60 text-sm">Solar basics, customer psychology, and objection handling</p>
                     </div>
                   </div>
                   <div className="flex gap-4">
@@ -167,8 +167,8 @@ export default function EduPage() {
                       <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                     </div>
                     <div>
-                      <h4 className="text-white font-telegraf font-semibold mb-2">Phase 2: Advanced Strategies</h4>
-                      <p className="text-white/60 font-telegraf text-sm">Complex sales scenarios and territory management</p>
+                      <h4 className="text-white font-semibold mb-2">Phase 2: Advanced Strategies</h4>
+                      <p className="text-white/60 text-sm">Complex sales scenarios and territory management</p>
                     </div>
                   </div>
                   <div className="flex gap-4">
@@ -176,8 +176,8 @@ export default function EduPage() {
                       <div className="w-3 h-3 bg-purple-400 rounded-full"></div>
                     </div>
                     <div>
-                      <h4 className="text-white font-telegraf font-semibold mb-2">Phase 3: Leadership Track</h4>
-                      <p className="text-white/60 font-telegraf text-sm">Team building and management skills</p>
+                      <h4 className="text-white font-semibold mb-2">Phase 3: Leadership Track</h4>
+                      <p className="text-white/60 text-sm">Team building and management skills</p>
                     </div>
                   </div>
                   <div className="flex gap-4">
@@ -185,8 +185,8 @@ export default function EduPage() {
                       <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
                     </div>
                     <div>
-                      <h4 className="text-white font-telegraf font-semibold mb-2">Phase 4: Certification</h4>
-                      <p className="text-white/60 font-telegraf text-sm">Industry-recognized credentials and assessments</p>
+                      <h4 className="text-white font-semibold mb-2">Phase 4: Certification</h4>
+                      <p className="text-white/60 text-sm">Industry-recognized credentials and assessments</p>
                     </div>
                   </div>
                 </div>

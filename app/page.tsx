@@ -2,224 +2,411 @@
 
 import React, { useState, useEffect } from 'react'
 import Button from '@/components/Button'
-import LetsTalkCard from '@/components/LetsTalkCard'
 import Navbar from '@/components/Navbar'
-import StatsSection from '@/components/StatsSection'
-import IncentivesSection from '@/components/IncentivesSection'
-import SalesSection from '@/components/SalesSection'
-import OnTheInsideSection from '@/components/OnTheInsideSection'
-import BuildCareers from '@/components/BuildCareers'
-import RotatingLogoBanner from '@/components/RotatingLogoBanner'
-import VideoCallToActionSection from '@/components/VideoCallToActionSection'
-import VideoMaskSection from '@/components/VideoMaskSection'
 import PageLoader from '@/components/PageLoader'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import JoinAveyoModal from '@/components/JoinAveyoModal'
-
-// Image constants from Figma
-const imgAMan = "http://localhost:3845/assets/c75767911e539a98cf3080c76af0df77e6a62117.png"
-const imgFrame157 = "http://localhost:3845/assets/9e76bd435a037801fde2cb5914636ad4afe51b19.png"
-const imgUnion = "http://localhost:3845/assets/2f982368dcdf0c844c261719034ae8aa1f62e998.svg"
-const imgUnion1 = "http://localhost:3845/assets/7dce532d62b76cfb27ce43354d83030e92ea9b74.svg"
-const imgVector116 = "http://localhost:3845/assets/5fe2a32dc067120eb3a1b0499801e0069a379f4e.svg"
-const imgVector117 = "http://localhost:3845/assets/b74939b67987caa88b59e0e1a8a00f872135632d.svg"
+import Link from 'next/link'
 
 export default function Home() {
   const [showLoader, setShowLoader] = useState(true)
   const [pageReady, setPageReady] = useState(false)
   const [joinOpen, setJoinOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const [activeFilter, setActiveFilter] = useState('ALL')
 
   const handleLoaderComplete = () => {
     setShowLoader(false)
-    // Small delay to ensure loader is fully gone before starting page animations
     setTimeout(() => {
       setPageReady(true)
     }, 100)
   }
 
-  const welcomeAnimation = useScrollAnimation<HTMLParagraphElement>({ delay: 200, disabled: !pageReady })
-  const headingAnimation = useScrollAnimation<HTMLHeadingElement>({ delay: 400, disabled: !pageReady })
-  const subheadingAnimation = useScrollAnimation<HTMLHeadingElement>({ delay: 600, disabled: !pageReady })
-  const buttonsAnimation = useScrollAnimation<HTMLDivElement>({ delay: 800, disabled: !pageReady })
-  const descriptionAnimation = useScrollAnimation<HTMLDivElement>({ delay: 1000, disabled: !pageReady })
-  const copyrightAnimation = useScrollAnimation<HTMLDivElement>({ delay: 1100, disabled: !pageReady })
-  const cardAnimation = useScrollAnimation<HTMLDivElement>({ delay: 1200, disabled: !pageReady })
-
-  // Load AI chatbot script
-  // useEffect(() => {
-  //   const script = document.createElement('script')
-  //   script.src = 'https://ava-ai-chatbot.vercel.app/embed.js'
-  //   script.async = true
-  //   document.body.appendChild(script)
-
-    //return () => {
-      // Cleanup script on unmount
-      //if (document.body.contains(script)) {
-      //  document.body.removeChild(script)
-      //}
-    //}
-  //}, [])
-
-  // Track viewport to expose `isMobile`
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768)
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  const welcomeAnimation = useScrollAnimation<HTMLDivElement>({ delay: 200, disabled: !pageReady })
+  const heroAnimation = useScrollAnimation<HTMLDivElement>({ delay: 400, disabled: !pageReady })
+  const section1Animation = useScrollAnimation<HTMLElement>({ delay: 200 })
+  const section2Animation = useScrollAnimation<HTMLElement>({ delay: 200 })
+  const section3Animation = useScrollAnimation<HTMLElement>({ delay: 200 })
+  const section4Animation = useScrollAnimation<HTMLElement>({ delay: 200 })
+  const section5Animation = useScrollAnimation<HTMLElement>({ delay: 200 })
 
   return (
     <>
       {showLoader && (
         <PageLoader onComplete={handleLoaderComplete} />
       )}
+      
       <div className="bg-[#0d0d0d] min-h-screen flex flex-col">
-        {/* Hero Section with Video Background */}
-      <div className="min-h-screen relative overflow-hidden">
-        {/* Video Background */}
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-          className="absolute inset-0 w-full h-full"
-          style={{ 
-            objectFit: 'cover',
-            objectPosition: 'center center',
-            minWidth: '100%',
-            minHeight: '100%'
-          }}
-          // poster="https://images.unsplash.com/photo-1551524164-687a55dd1126?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80"
-        >
-          {/* <source src="/videos/aveyoWEB1.mov" type="video/quicktime" /> */}
-          {/* Fallback for better browser compatibility */}
-          <source src="/videos/aveyoWEB1a.mp4" type="video/mp4" />
-        </video>
-        
-        {/* Video Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
-        <div className="absolute inset-0 bg-black/20" />
         {/* Navigation */}
         <Navbar />
 
-        {/* Hero Content */}
-        <div className="flex flex-col justify-between px-6 sm:px-10 md:px-16 lg:px-24 py-12 sm:py-14 md:py-16 min-h-[calc(100vh-120px)] relative z-10">
-          {/* Main Hero Text */}
-          <div className="flex-1 flex flex-col justify-end pb-12">
-            <div className="max-w-4xl">
-              <p 
-                ref={welcomeAnimation.ref}
-                className={`text-white text-[11px] tracking-[4.4px] uppercase mb-8 opacity-80 font-telegraf transition-all duration-700 ${
-                  welcomeAnimation.isVisible ? 'opacity-80 translate-y-0' : 'opacity-0 translate-y-5'
-                }`}
-              >
-                WELCOME
-              </p>
-              
-              <h2 
-                ref={headingAnimation.ref}
-                className={`text-white text-[40px] sm:text-[56px] md:text-[72px] lg:text-[100px] font-black uppercase leading-[40px] sm:leading-[56px] md:leading-[66px] lg:leading-[84px] mb-5 font-telegraf transition-all duration-700 ${
-                  headingAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-                }`}
-              >
-                EPICENTER OF EVERYTHING AWESOME
-              </h2>
-              <h1 
-                ref={subheadingAnimation.ref}
-                className={`text-white text-[20px] sm:text-[28px] md:text-[36px] lg:text-[40px] font-extrabold uppercase leading-[26px] sm:leading-[30px] md:leading-[34px] lg:leading-[30px] mb-8 md:mb-12 font-telegraf transition-all duration-700 ${
-                  subheadingAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-                }`}
-              >
-                EARNING. LIVING. GROWING.
-              </h1>
-              {/* CTA Buttons */}
-              <div 
-                ref={buttonsAnimation.ref}
-                className={`flex flex-col sm:flex-row gap-4 sm:gap-8 w-full sm:w-auto transition-all duration-700 ${
-                  buttonsAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-                }`}
-              >
-                <Button variant="primary" onClick={() => setJoinOpen(true)}>
-                  JOIN AVEYO
-                </Button>
-                {/* <Button variant="secondary">
-                  LOGIN
-                </Button> */}
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Section */}
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
-            {/* Left - Description */}
-            <div 
-              ref={descriptionAnimation.ref}
-              className={`max-w-[406px] transition-all duration-700 ${
-                descriptionAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-              }`}
-            >
-              <p className="text-white text-xl leading-normal font-telegraf">
-              Earn Better. Experience More. Live Brighter. A more fulfilling future is waiting for you.
-              </p>
-            </div>
-
-            {/* Center - Copyright */}
-            <div 
-              ref={copyrightAnimation.ref}
-              className={`text-center transition-all duration-700 ${
-                copyrightAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-              }`}
-            >
-              <p className="text-[rgba(255,255,255,0.4)] text-[15px] uppercase font-telegraf">
-                2025 MYAVEYO
-              </p>
-            </div>
-
-            {/* Right - AI Chatbot */}
-            {/* <div 
-              ref={cardAnimation.ref}
-              className={`transition-all duration-700 ${
-                cardAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-              }`}
-            >
-              <div id="ava-chatbot-container" className="w-full h-full min-h-[200px]">
-                AI Chatbot will be embedded here
-              </div>
-            </div> */}
+        {/* Hero Section */}
+        <div className="min-h-screen relative overflow-hidden flex items-center justify-center">
+          {/* Video Background */}
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/videos/aveyoWEB1a.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
+          
+          {/* Hero Content */}
+          <div 
+            ref={heroAnimation.ref}
+            className={`relative z-10 text-center px-6 sm:px-10 md:px-16 lg:px-24 max-w-6xl transition-all duration-1000 ${
+              heroAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
+            <p className="text-white text-xs tracking-[6px] uppercase mb-8 opacity-60">
+              WELCOME TO CLBR
+            </p>
+            
+            <h1 className="text-white text-[48px] sm:text-[64px] md:text-[80px] lg:text-[100px] xl:text-[120px] font-black uppercase leading-[1.1] mb-8">
+              A BETTER SALES<br />EXPERIENCE
+            </h1>
+            
+            <h2 className="text-white text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-black uppercase leading-[1.2] mb-4">
+              IN EVERY SINGLE WAY
+            </h2>
+            
+            <h3 className="text-white text-[24px] sm:text-[32px] md:text-[36px] font-bold uppercase leading-[1.3] mb-12 opacity-90">
+              EARN BIGGER. GROW MORE.<br />EXPAND FOREVER.
+            </h3>
+            
+            <Button variant="primary" onClick={() => setJoinOpen(true)}>
+              JOIN CLBR →
+            </Button>
+            
+            <p className="text-white/80 text-lg sm:text-xl md:text-2xl mt-12 max-w-3xl mx-auto leading-relaxed">
+              We've wrapped real opportunity, genuine growth, and<br className="hidden md:block" />
+              exponential earning together for one amazing experience.
+            </p>
           </div>
         </div>
+
+        {/* Divider */}
+        <div className="w-full h-px bg-white/20" />
+
+        {/* Section Header: 05 REASONS */}
+        <section className="py-20 px-6 sm:px-10 md:px-16 lg:px-24">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-white text-[40px] sm:text-[56px] md:text-[72px] font-black uppercase leading-tight mb-2">
+              05 REASONS
+            </h2>
+            <p className="text-white text-xl md:text-2xl opacity-80">
+              TO SELL WITH CLBR
+            </p>
+          </div>
+        </section>
+
+        <div className="w-full h-px bg-white/20" />
+
+        {/* 01 SALES STATS */}
+        <section 
+          ref={section1Animation.ref}
+          className={`py-20 px-6 sm:px-10 md:px-16 lg:px-24 transition-all duration-1000 ${
+            section1Animation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-start gap-8 mb-12">
+              <span className="text-white text-[80px] md:text-[120px] font-black leading-none opacity-30">01</span>
+              <div>
+                <h3 className="text-white text-[32px] sm:text-[40px] md:text-[48px] font-black uppercase mb-4">
+                  SALES STATS
+                </h3>
+                <p className="text-white/80 text-xl md:text-2xl max-w-2xl">
+                  A real look into real metrics of our<br />
+                  sales reps. This could be you soon:
+                </p>
+              </div>
+            </div>
+            
+            {/* Stats Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-white/5 border border-white/10 rounded-sm p-8">
+                <div className="text-white text-5xl font-black mb-2">4.8</div>
+                <div className="text-white/60 text-sm uppercase tracking-wider">REVIEWS</div>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-sm p-8">
+                <div className="text-white text-5xl font-black mb-2">$850</div>
+                <div className="text-white/60 text-sm uppercase tracking-wider">$/CLOSE</div>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-sm p-8">
+                <div className="text-white text-5xl font-black mb-2">$12K</div>
+                <div className="text-white/60 text-sm uppercase tracking-wider">AVERAGE MONTHLY</div>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-sm p-8">
+                <div className="text-white text-5xl font-black mb-2">21</div>
+                <div className="text-white/60 text-sm uppercase tracking-wider">DAYS TO INSTALL</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="w-full h-px bg-white/20" />
+
+        {/* 02 INSANE INCENTIVES */}
+        <section 
+          ref={section2Animation.ref}
+          className={`py-20 px-6 sm:px-10 md:px-16 lg:px-24 transition-all duration-1000 ${
+            section2Animation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-start gap-8 mb-8">
+              <span className="text-white text-[80px] md:text-[120px] font-black leading-none opacity-30">02</span>
+              <div>
+                <h3 className="text-white text-[32px] sm:text-[40px] md:text-[48px] font-black uppercase mb-4">
+                  INSANE INCENTIVES
+                </h3>
+                <p className="text-white/80 text-xl md:text-2xl max-w-2xl mb-6">
+                  Our sales leaders imagine up incentive prizes and trips<br />
+                  to ensure that your commissions are just a cherry on top.
+                </p>
+                <p className="text-white/60 text-lg italic">
+                  Take a look at what we have going on:
+                </p>
+              </div>
+            </div>
+            
+            {/* Filter Tabs */}
+            <div className="flex flex-wrap gap-4 mb-8">
+              {['ALL', 'MONTHLY', 'YEARLY', 'SUMMER', 'PAST'].map((filter) => (
+                <button
+                  key={filter}
+                  onClick={() => setActiveFilter(filter)}
+                  className={`px-6 py-3 rounded-sm font-bold uppercase text-sm transition-all ${
+                    activeFilter === filter
+                      ? 'bg-white text-black'
+                      : 'bg-white/10 text-white hover:bg-white/20'
+                  }`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+            
+            {/* Incentives Preview - Link to full page */}
+            <Link 
+              href="/incentives"
+              className="block bg-white/5 border border-white/10 rounded-sm p-12 hover:bg-white/10 transition-all group"
+            >
+              <p className="text-white/60 text-lg mb-4">View all active incentives →</p>
+              <p className="text-white text-2xl group-hover:translate-x-2 transition-transform">
+                Explore trips, bonuses, and rewards
+              </p>
+            </Link>
+          </div>
+        </section>
+
+        <div className="w-full h-px bg-white/20" />
+
+        {/* VIDEO SECTION */}
+        <section className="py-20 px-6 sm:px-10 md:px-16 lg:px-24">
+          <div className="max-w-7xl mx-auto">
+            <h3 className="text-white text-[28px] sm:text-[36px] md:text-[44px] font-black uppercase mb-8 text-center">
+              WHAT SELLING WITH CLBR<br />LOOKS/FEELS/IS LIKE
+            </h3>
+            
+            <div className="aspect-video bg-black/40 border border-white/20 rounded-sm flex items-center justify-center">
+              <p className="text-white/40 text-lg">[VIDEO PLACEHOLDER]</p>
+            </div>
+          </div>
+        </section>
+
+        <div className="w-full h-px bg-white/20" />
+
+        {/* 03 CLBR CULTURE */}
+        <section 
+          ref={section3Animation.ref}
+          className={`py-20 px-6 sm:px-10 md:px-16 lg:px-24 transition-all duration-1000 ${
+            section3Animation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-start gap-8 mb-12">
+              <span className="text-white text-[80px] md:text-[120px] font-black leading-none opacity-30">03</span>
+              <div>
+                <h3 className="text-white text-[32px] sm:text-[40px] md:text-[48px] font-black uppercase mb-8">
+                  CLBR CULTURE
+                </h3>
+                <h4 className="text-white text-[24px] sm:text-[32px] md:text-[36px] font-black uppercase leading-tight mb-6">
+                  WE MAKE SURE THINGS ARE A LITTLE DIFFERENT HERE.<br />
+                  WE REPLACE HYPE WITH REAL OPPORTUNITY. GRIND<br />
+                  MINDSET WITH PROVEN METHODS. AND SHADY TACTICS<br />
+                  WITH A TRANSPARENT APPROACH.
+                </h4>
+                <h5 className="text-white text-xl md:text-2xl font-bold mb-8 opacity-80">
+                  WORLD CLASS LEADERS // WORLD CLASS SYSTEMS //<br />
+                  WORLD CLASS RESULTS
+                </h5>
+                <p className="text-white/70 text-lg md:text-xl leading-relaxed max-w-4xl">
+                  Our teams are comprised of the best players in the industry. We match that<br />
+                  talent with systems that educate and streamline to give every single one<br />
+                  of our reps (including you) the best possible outcome.
+                </p>
+              </div>
+            </div>
+            
+            {/* Facts & Figures Placeholder */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+              <div className="text-center">
+                <div className="text-white text-4xl md:text-5xl font-black mb-2">500+</div>
+                <div className="text-white/60 text-sm uppercase tracking-wider">Active Reps</div>
+              </div>
+              <div className="text-center">
+                <div className="text-white text-4xl md:text-5xl font-black mb-2">12</div>
+                <div className="text-white/60 text-sm uppercase tracking-wider">States</div>
+              </div>
+              <div className="text-center">
+                <div className="text-white text-4xl md:text-5xl font-black mb-2">98%</div>
+                <div className="text-white/60 text-sm uppercase tracking-wider">Satisfaction</div>
+              </div>
+              <div className="text-center">
+                <div className="text-white text-4xl md:text-5xl font-black mb-2">$50M+</div>
+                <div className="text-white/60 text-sm uppercase tracking-wider">Annual Revenue</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="w-full h-px bg-white/20" />
+
+        {/* 04 OUR REPS LOVE IT HERE */}
+        <section 
+          ref={section4Animation.ref}
+          className={`py-20 px-6 sm:px-10 md:px-16 lg:px-24 transition-all duration-1000 ${
+            section4Animation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-start gap-8 mb-12">
+              <span className="text-white text-[80px] md:text-[120px] font-black leading-none opacity-30">04</span>
+              <div>
+                <h3 className="text-white text-[32px] sm:text-[40px] md:text-[48px] font-black uppercase mb-4">
+                  OUR REPS LOVE IT HERE
+                </h3>
+                <p className="text-white/80 text-xl md:text-2xl max-w-2xl">
+                  What's it really like working at CLBR? We'll have our<br />
+                  reps tell you.
+                </p>
+              </div>
+            </div>
+            
+            {/* Reviews Link */}
+            <Link 
+              href="/reviews"
+              className="block aspect-video bg-black/40 border border-white/20 rounded-sm flex items-center justify-center hover:border-white/40 transition-all group"
+            >
+              <div className="text-center">
+                <div className="text-white text-6xl mb-4 group-hover:scale-110 transition-transform">▶</div>
+                <p className="text-white text-xl">Watch Rep Testimonials</p>
+              </div>
+            </Link>
+          </div>
+        </section>
+
+        <div className="w-full h-px bg-white/20" />
+
+        {/* 05 INDUSTRY-BEST PRODUCTS */}
+        <section 
+          ref={section5Animation.ref}
+          className={`py-20 px-6 sm:px-10 md:px-16 lg:px-24 transition-all duration-1000 ${
+            section5Animation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-start gap-8 mb-12">
+              <span className="text-white text-[80px] md:text-[120px] font-black leading-none opacity-30">05</span>
+              <div>
+                <h3 className="text-white text-[32px] sm:text-[40px] md:text-[48px] font-black uppercase mb-6">
+                  INDUSTRY-BEST PRODUCTS
+                </h3>
+                <p className="text-white/80 text-xl md:text-2xl max-w-3xl leading-relaxed">
+                  Tired of selling pest, security, or solar? We've got a better opportunity for you.<br />
+                  We're the nation's leading D2C provider of both <strong className="text-white">DISH</strong> and <strong className="text-white">STARLINK.</strong> We'll<br />
+                  send you to white-hot markets that haven't seen any reps selling our products.
+                </p>
+              </div>
+            </div>
+            
+            {/* Growth Metrics */}
+            <div className="bg-white/5 border border-white/10 rounded-sm p-12">
+              <p className="text-white/60 text-sm uppercase tracking-wider mb-6">Growth Metrics</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                  <div className="text-white text-5xl font-black mb-2">45%</div>
+                  <div className="text-white/70 text-base">Year-over-year growth</div>
+                </div>
+                <div>
+                  <div className="text-white text-5xl font-black mb-2">250+</div>
+                  <div className="text-white/70 text-base">New markets this year</div>
+                </div>
+                <div>
+                  <div className="text-white text-5xl font-black mb-2">#1</div>
+                  <div className="text-white/70 text-base">D2C DISH/Starlink provider</div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-12 text-center">
+              <Button variant="primary" onClick={() => setJoinOpen(true)}>
+                JOIN NOW →
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        <div className="w-full h-px bg-white/20" />
+
+        {/* THE BEST SYSTEMS */}
+        <section className="py-20 px-6 sm:px-10 md:px-16 lg:px-24">
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-white text-[40px] sm:text-[56px] md:text-[72px] font-black uppercase leading-tight mb-4">
+              THE BEST SYSTEMS
+            </h2>
+            <p className="text-white text-[28px] sm:text-[36px] md:text-[44px] font-black uppercase mb-16">
+              FOR THE BEST REPS
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              <div className="bg-white/5 border border-white/10 rounded-sm p-10 hover:bg-white/10 transition-all">
+                <div className="text-white text-2xl font-black mb-4">001</div>
+                <h4 className="text-white text-xl font-bold uppercase">YOUR TRAJECTORY</h4>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-sm p-10 hover:bg-white/10 transition-all">
+                <div className="text-white text-2xl font-black mb-4">002</div>
+                <h4 className="text-white text-xl font-bold uppercase">YOUR GROWTH OPPORTUNITY</h4>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-sm p-10 hover:bg-white/10 transition-all">
+                <div className="text-white text-2xl font-black mb-4">003</div>
+                <h4 className="text-white text-xl font-bold uppercase">THE COMMISSION STRUCTURE</h4>
+              </div>
+            </div>
+            
+            <Button variant="primary" onClick={() => setJoinOpen(true)}>
+              JOIN NOW →
+            </Button>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-12 px-6 sm:px-10 md:px-16 lg:px-24 border-t border-white/20">
+          <div className="max-w-7xl mx-auto text-center">
+            <p className="text-white/40 text-sm uppercase tracking-wider">
+              © 2025 CLBR. ALL RIGHTS RESERVED.
+            </p>
+          </div>
+        </footer>
       </div>
 
-      {/* Stats Section */}
-      <StatsSection pageReady={pageReady} />
-
-      {/* Rotating Logo Banner */}
-      <RotatingLogoBanner pageReady={pageReady} />
-
-      {/* Incentives Section */}
-      <IncentivesSection pageReady={pageReady} />
-
-      {/* Video Mask Section */}
-      {isMobile ? null : <VideoMaskSection pageReady={pageReady} />}
-
-      {/* Sales Section */}
-      <SalesSection pageReady={pageReady} onJoinClick={() => setJoinOpen(true)} />
-
-
-      {/* On The Inside Section */}
-      <OnTheInsideSection pageReady={pageReady} onJoinClick={() => setJoinOpen(true)} />
-
-      {/* Video Call to Action Section */}
-      <VideoCallToActionSection 
-        buttonText="JOIN THE TEAM"
-        onButtonClick={() => setJoinOpen(true)}
-        pageReady={pageReady}
-      />
-
-      </div>
-
-      {/* Join Aveyo Modal */}
+      {/* Join Modal */}
       <JoinAveyoModal open={joinOpen} onClose={() => setJoinOpen(false)} />
     </>
   )

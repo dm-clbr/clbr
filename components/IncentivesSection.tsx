@@ -78,14 +78,14 @@ export default function IncentivesSection({ className = '', pageReady = true, ca
               headerAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
             }`}
           >
-            <span className="text-[14px] sm:text-[16px] font-telegraf">(2)</span>
-            <h2 className="text-[28px] sm:text-[36px] md:text-[48px] lg:text-[60px] font-telegraf font-extrabold uppercase leading-[32px] sm:leading-[42px] md:leading-[52px] lg:leading-[63px]">
+            <span className="text-[14px] sm:text-[16px]">(2)</span>
+            <h2 className="text-[28px] sm:text-[36px] md:text-[48px] lg:text-[60px] font-extrabold uppercase leading-[32px] sm:leading-[42px] md:leading-[52px] lg:leading-[63px]">
               Incentives.
             </h2>
           </div>
           <div 
             ref={descriptionAnimation.ref}
-            className={`text-white text-[14px] sm:text-[16px] font-telegraf max-w-[364px] transition-all duration-700 ${
+            className={`text-white text-[14px] sm:text-[16px] max-w-[364px] transition-all duration-700 ${
               descriptionAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
             }`}
           >
@@ -107,7 +107,7 @@ export default function IncentivesSection({ className = '', pageReady = true, ca
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-[12px] sm:px-[15px] py-[6px] sm:py-[7px] rounded-[60px] text-[12px] sm:text-[14px] font-inter font-semibold transition-colors ${
+                className={`px-[12px] sm:px-[15px] py-[6px] sm:py-[7px] rounded-[60px] text-[12px] sm:text-[14px] font-semibold transition-colors ${
                   activeFilter === filter
                     ? 'bg-white text-black'
                     : 'bg-gradient-to-b from-[#232323] to-[#171717]'

@@ -226,7 +226,7 @@ export default function AdminCourseLessonsPage() {
           {/* Back Button */}
           <Link
             href="/admin/edu"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-white font-telegraf text-sm mb-6 transition-colors"
+            className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm mb-6 transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -237,10 +237,10 @@ export default function AdminCourseLessonsPage() {
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h1 className="text-3xl font-telegraf font-bold text-white mb-2">
+              <h1 className="text-3xl font-bold text-white mb-2">
                 {course?.title} - Lessons
               </h1>
-              <p className="text-white/60 font-telegraf text-sm">
+              <p className="text-white/60 text-sm">
                 Manage lessons for this course
               </p>
             </div>
@@ -249,7 +249,7 @@ export default function AdminCourseLessonsPage() {
                 setFormData({ ...formData, region: selectedRegion })
                 setShowCreateModal(true)
               }}
-              className="px-6 py-3 bg-white text-black hover:bg-white/90 rounded-[3px] font-telegraf font-semibold transition-colors"
+              className="px-6 py-3 bg-white text-black hover:bg-white/90 rounded-[3px] font-semibold transition-colors"
             >
               + Add Lesson
             </button>
@@ -263,7 +263,7 @@ export default function AdminCourseLessonsPage() {
                   key={region.id}
                   onClick={() => setSelectedRegion(region.slug)}
                   className={`
-                    px-6 py-3 rounded-[3px] font-telegraf font-semibold transition-all whitespace-nowrap
+                    px-6 py-3 rounded-[3px] font-semibold transition-all whitespace-nowrap
                     ${selectedRegion === region.slug
                       ? 'bg-gradient-to-r from-[#0859D1] to-[#44A4F9] text-white'
                       : 'bg-white/10 text-white/80 hover:bg-white/20'
@@ -278,9 +278,9 @@ export default function AdminCourseLessonsPage() {
 
           {/* Lessons List */}
           {isLoading ? (
-            <div className="text-white/60 font-telegraf text-center py-12">Loading...</div>
+            <div className="text-white/60 text-center py-12">Loading...</div>
           ) : lessons.length === 0 ? (
-            <div className="text-white/60 font-telegraf text-center py-12">
+            <div className="text-white/60 text-center py-12">
               No lessons yet. Add your first lesson!
             </div>
           ) : (
@@ -293,23 +293,23 @@ export default function AdminCourseLessonsPage() {
                   <div className="flex items-start gap-4">
                     {/* Lesson Number */}
                     <div className="flex-shrink-0 w-10 h-10 bg-blue-500/20 border border-blue-500/40 rounded-full flex items-center justify-center">
-                      <span className="text-blue-400 font-telegraf font-bold">{index + 1}</span>
+                      <span className="text-blue-400 font-bold">{index + 1}</span>
                     </div>
 
                     {/* Lesson Info */}
                     <div className="flex-grow">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-telegraf font-bold text-white">{lesson.title}</h3>
+                        <h3 className="text-xl font-bold text-white">{lesson.title}</h3>
                         {!lesson.is_published && (
-                          <span className="px-3 py-1 bg-yellow-500/20 border border-yellow-500/40 rounded-[3px] text-yellow-400 text-xs font-telegraf">
+                          <span className="px-3 py-1 bg-yellow-500/20 border border-yellow-500/40 rounded-[3px] text-yellow-400 text-xs">
                             Unpublished
                           </span>
                         )}
                       </div>
                       {lesson.description && (
-                        <p className="text-white/60 font-telegraf text-sm mb-3">{lesson.description}</p>
+                        <p className="text-white/60 text-sm mb-3">{lesson.description}</p>
                       )}
-                      <div className="flex items-center gap-4 text-white/40 text-xs font-telegraf">
+                      <div className="flex items-center gap-4 text-white/40 text-xs">
                         <span className="px-2 py-1 bg-blue-500/20 border border-blue-500/40 rounded text-blue-400">
                           {regions.find(r => r.slug === lesson.region)?.name || lesson.region}
                         </span>
@@ -326,13 +326,13 @@ export default function AdminCourseLessonsPage() {
                     <div className="flex gap-2 flex-shrink-0">
                       <button
                         onClick={() => startEdit(lesson)}
-                        className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-[3px] font-telegraf text-sm transition-colors"
+                        className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-[3px] text-sm transition-colors"
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => handleDelete(lesson.id)}
-                        className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 border border-red-500/40 text-red-400 rounded-[3px] font-telegraf text-sm transition-colors"
+                        className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 border border-red-500/40 text-red-400 rounded-[3px] text-sm transition-colors"
                       >
                         Delete
                       </button>
@@ -347,31 +347,31 @@ export default function AdminCourseLessonsPage() {
           {(showCreateModal || editingLesson) && (
             <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
               <div className="bg-[#0d0d0d] border border-white/20 rounded-[3px] p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                <h2 className="text-2xl font-telegraf font-bold text-white mb-6">
+                <h2 className="text-2xl font-bold text-white mb-6">
                   {editingLesson ? 'Edit Lesson' : 'Add New Lesson'}
                 </h2>
                 <form onSubmit={editingLesson ? handleUpdate : handleCreate} className="space-y-4">
                   <div>
-                    <label className="block text-white/80 font-telegraf text-sm mb-2">Title *</label>
+                    <label className="block text-white/80 text-sm mb-2">Title *</label>
                     <input
                       type="text"
                       value={formData.title}
                       onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                      className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white font-telegraf focus:outline-none focus:border-white/40"
+                      className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white focus:outline-none focus:border-white/40"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-white/80 font-telegraf text-sm mb-2">Description</label>
+                    <label className="block text-white/80 text-sm mb-2">Description</label>
                     <textarea
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                      className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white font-telegraf focus:outline-none focus:border-white/40 resize-none"
+                      className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white focus:outline-none focus:border-white/40 resize-none"
                       rows={3}
                     />
                   </div>
                   <div>
-                    <label className="block text-white/80 font-telegraf text-sm mb-2">
+                    <label className="block text-white/80 text-sm mb-2">
                       Google Drive Video URL *
                       <span className="block text-white/40 text-xs mt-1">
                         Paste the full Google Drive link (e.g., https://drive.google.com/file/d/FILE_ID/view)
@@ -381,26 +381,26 @@ export default function AdminCourseLessonsPage() {
                       type="text"
                       value={formData.video_url}
                       onChange={(e) => setFormData({ ...formData, video_url: e.target.value })}
-                      className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white font-telegraf focus:outline-none focus:border-white/40"
+                      className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white focus:outline-none focus:border-white/40"
                       placeholder="https://drive.google.com/file/d/..."
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-white/80 font-telegraf text-sm mb-2">Duration (minutes)</label>
+                    <label className="block text-white/80 text-sm mb-2">Duration (minutes)</label>
                     <input
                       type="number"
                       value={formData.duration_minutes}
                       onChange={(e) => setFormData({ ...formData, duration_minutes: parseInt(e.target.value) || 0 })}
-                      className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white font-telegraf focus:outline-none focus:border-white/40"
+                      className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white focus:outline-none focus:border-white/40"
                     />
                   </div>
                   <div>
-                    <label className="block text-white/80 font-telegraf text-sm mb-2">Region *</label>
+                    <label className="block text-white/80 text-sm mb-2">Region *</label>
                     <select
                       value={formData.region}
                       onChange={(e) => setFormData({ ...formData, region: e.target.value })}
-                      className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white font-telegraf focus:outline-none focus:border-white/40"
+                      className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white focus:outline-none focus:border-white/40"
                       required
                     >
                       {regions.map((region) => (
@@ -411,12 +411,12 @@ export default function AdminCourseLessonsPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-white/80 font-telegraf text-sm mb-2">Sort Order</label>
+                    <label className="block text-white/80 text-sm mb-2">Sort Order</label>
                     <input
                       type="number"
                       value={formData.sort_order}
                       onChange={(e) => setFormData({ ...formData, sort_order: parseInt(e.target.value) || 0 })}
-                      className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white font-telegraf focus:outline-none focus:border-white/40"
+                      className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white focus:outline-none focus:border-white/40"
                     />
                   </div>
                   <div className="flex items-center gap-3">
@@ -427,13 +427,13 @@ export default function AdminCourseLessonsPage() {
                       onChange={(e) => setFormData({ ...formData, is_published: e.target.checked })}
                       className="w-5 h-5"
                     />
-                    <label htmlFor="is_published" className="text-white/80 font-telegraf text-sm">Published</label>
+                    <label htmlFor="is_published" className="text-white/80 text-sm">Published</label>
                   </div>
                   <div className="flex gap-3 pt-4">
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="px-8 py-3 bg-white text-black hover:bg-white/90 disabled:bg-white/30 rounded-[3px] font-telegraf font-semibold transition-colors"
+                      className="px-8 py-3 bg-white text-black hover:bg-white/90 disabled:bg-white/30 rounded-[3px] font-semibold transition-colors"
                     >
                       {isSubmitting ? 'Saving...' : editingLesson ? 'Update Lesson' : 'Add Lesson'}
                     </button>
@@ -443,7 +443,7 @@ export default function AdminCourseLessonsPage() {
                         setShowCreateModal(false)
                         cancelEdit()
                       }}
-                      className="px-8 py-3 bg-white/10 text-white hover:bg-white/20 rounded-[3px] font-telegraf transition-colors"
+                      className="px-8 py-3 bg-white/10 text-white hover:bg-white/20 rounded-[3px] transition-colors"
                     >
                       Cancel
                     </button>

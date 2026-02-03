@@ -37,7 +37,7 @@ export default function StatCard2({
         <div className="flex flex-col gap-[30px] items-center justify-center text-white w-full">
           {/* Value with prefix/suffix */}
           {prefix || suffix ? (
-            <div className="flex gap-[7px] items-start justify-center font-telegraf font-black">
+            <div className="flex gap-[7px] items-start justify-center font-black">
               {prefix && (
                 <span className="text-[#888d95] text-[25px]">{prefix}</span>
               )}

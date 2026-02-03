@@ -63,7 +63,7 @@ export default function StatsAdmin() {
     return (
       <div className="bg-[#1a1a1a] border border-[#333] rounded-lg p-6">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-telegraf font-bold">Header Section</h3>
+          <h3 className="text-xl font-bold">Header Section</h3>
           <button
             onClick={() => setEditingSection(editingSection === 'header' ? null : 'header')}
             className="px-4 py-2 bg-[#333] hover:bg-[#444] rounded-lg transition-colors text-sm"
@@ -105,7 +105,7 @@ export default function StatsAdmin() {
     return (
       <div className="bg-[#1a1a1a] border border-[#333] rounded-lg p-6">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-telegraf font-bold">Comparison Section</h3>
+          <h3 className="text-xl font-bold">Comparison Section</h3>
           <button
             onClick={() => setEditingSection(editingSection === 'comparison' ? null : 'comparison')}
             className="px-4 py-2 bg-[#333] hover:bg-[#444] rounded-lg transition-colors text-sm"
@@ -159,7 +159,7 @@ export default function StatsAdmin() {
     return (
       <div className="bg-[#1a1a1a] border border-[#333] rounded-lg p-6">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-telegraf font-bold">Growth Path Section</h3>
+          <h3 className="text-xl font-bold">Growth Path Section</h3>
           <button
             onClick={() => setEditingSection(editingSection === 'growth_path' ? null : 'growth_path')}
             className="px-4 py-2 bg-[#333] hover:bg-[#444] rounded-lg transition-colors text-sm"
@@ -209,7 +209,7 @@ export default function StatsAdmin() {
     return (
       <div className="bg-[#1a1a1a] border border-[#333] rounded-lg p-6">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-telegraf font-bold">Sale Impact Section</h3>
+          <h3 className="text-xl font-bold">Sale Impact Section</h3>
           <button
             onClick={() => setEditingSection(editingSection === 'sale_impact' ? null : 'sale_impact')}
             className="px-4 py-2 bg-[#333] hover:bg-[#444] rounded-lg transition-colors text-sm"
@@ -272,7 +272,7 @@ export default function StatsAdmin() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-telegraf font-bold">Stats Page CMS</h1>
+              <h1 className="text-2xl font-bold">Stats Page CMS</h1>
               <p className="text-gray-400 text-sm">Edit earnings comparison and growth path content</p>
             </div>
             <div className="flex gap-4">

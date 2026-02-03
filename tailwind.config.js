@@ -17,8 +17,7 @@ module.exports = {
         'DEFAULT': '3px',
       },
       fontFamily: {
-        'telegraf': ['PP Telegraf', 'sans-serif'],
-        'inter': ['Inter', 'sans-serif'],
+        'sans': ['Manrope', 'system-ui', '-apple-system', 'sans-serif'],
       },
       animation: {
         'marquee': 'marquee 30s linear infinite',

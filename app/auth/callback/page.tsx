@@ -74,7 +74,7 @@ export default function AuthCallbackPage() {
         {showLoginCta && (
           <a
             href="/login"
-            className="inline-block px-4 py-2 bg-white text-black rounded-[3px] font-telegraf font-semibold"
+            className="inline-block px-4 py-2 bg-white text-black rounded-[3px] font-semibold"
           >
             Go to login
           </a>

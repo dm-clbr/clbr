@@ -103,7 +103,7 @@ export default function LessonNotes({ lessonId, initialNotes, onNotesChange }: L
 
   return (
     <div className="space-y-4">
-      <h3 className="text-xl font-telegraf font-bold text-white">Notes</h3>
+      <h3 className="text-xl font-bold text-white">Notes</h3>
 
       {/* Create New Note */}
       <div className="space-y-2">
@@ -111,13 +111,13 @@ export default function LessonNotes({ lessonId, initialNotes, onNotesChange }: L
           value={newNote}
           onChange={(e) => setNewNote(e.target.value)}
           placeholder="Take notes on this lesson..."
-          className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white placeholder-white/40 font-telegraf focus:outline-none focus:border-white/40 transition-colors resize-none"
+          className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition-colors resize-none"
           rows={4}
         />
         <button
           onClick={handleCreateNote}
           disabled={!newNote.trim() || isSubmitting}
-          className="px-6 py-2 bg-white text-black hover:bg-white/90 disabled:bg-white/30 disabled:cursor-not-allowed rounded-[3px] font-telegraf font-semibold transition-colors"
+          className="px-6 py-2 bg-white text-black hover:bg-white/90 disabled:bg-white/30 disabled:cursor-not-allowed rounded-[3px] font-semibold transition-colors"
         >
           {isSubmitting ? 'Saving...' : 'Add Note'}
         </button>
@@ -135,20 +135,20 @@ export default function LessonNotes({ lessonId, initialNotes, onNotesChange }: L
                 <textarea
                   value={editContent}
                   onChange={(e) => setEditContent(e.target.value)}
-                  className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white font-telegraf focus:outline-none focus:border-white/40 transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] border border-white/20 rounded-[3px] text-white focus:outline-none focus:border-white/40 transition-colors resize-none"
                   rows={4}
                 />
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleUpdateNote(note.id)}
                     disabled={isSubmitting}
-                    className="px-4 py-1.5 bg-white text-black hover:bg-white/90 disabled:bg-white/30 rounded-[3px] font-telegraf text-sm font-semibold transition-colors"
+                    className="px-4 py-1.5 bg-white text-black hover:bg-white/90 disabled:bg-white/30 rounded-[3px] text-sm font-semibold transition-colors"
                   >
                     Save
                   </button>
                   <button
                     onClick={cancelEdit}
-                    className="px-4 py-1.5 bg-white/10 text-white hover:bg-white/20 rounded-[3px] font-telegraf text-sm transition-colors"
+                    className="px-4 py-1.5 bg-white/10 text-white hover:bg-white/20 rounded-[3px] text-sm transition-colors"
                   >
                     Cancel
                   </button>
@@ -156,23 +156,23 @@ export default function LessonNotes({ lessonId, initialNotes, onNotesChange }: L
               </div>
             ) : (
               <>
-                <p className="text-white/80 font-telegraf text-sm whitespace-pre-wrap mb-3">
+                <p className="text-white/80 text-sm whitespace-pre-wrap mb-3">
                   {note.content}
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-white/40 text-xs font-telegraf">
+                  <span className="text-white/40 text-xs">
                     {new Date(note.created_at).toLocaleDateString()} at {new Date(note.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                   <div className="flex gap-2">
                     <button
                       onClick={() => startEdit(note)}
-                      className="text-blue-400 hover:text-blue-300 text-xs font-telegraf transition-colors"
+                      className="text-blue-400 hover:text-blue-300 text-xs transition-colors"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDeleteNote(note.id)}
-                      className="text-red-400 hover:text-red-300 text-xs font-telegraf transition-colors"
+                      className="text-red-400 hover:text-red-300 text-xs transition-colors"
                     >
                       Delete
                     </button>
@@ -185,7 +185,7 @@ export default function LessonNotes({ lessonId, initialNotes, onNotesChange }: L
       </div>
 
       {notes.length === 0 && (
-        <p className="text-white/40 font-telegraf text-sm text-center py-8">
+        <p className="text-white/40 text-sm text-center py-8">
           No notes yet. Start taking notes above!
         </p>
       )}

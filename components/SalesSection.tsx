@@ -151,8 +151,8 @@ export default function SalesSection({ className = '', pageReady = true, onJoinC
               headerAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
             }`}
           >
-            <span className="text-[14px] sm:text-[16px] font-telegraf">{content.grid.section_title.prefix}</span>
-            <h2 className="text-[28px] sm:text-[36px] md:text-[48px] lg:text-[60px] font-telegraf font-extrabold uppercase leading-[32px] sm:leading-[42px] md:leading-[52px] lg:leading-[63px] max-w-[900px]">
+            <span className="text-[14px] sm:text-[16px]">{content.grid.section_title.prefix}</span>
+            <h2 className="text-[28px] sm:text-[36px] md:text-[48px] lg:text-[60px] font-extrabold uppercase leading-[32px] sm:leading-[42px] md:leading-[52px] lg:leading-[63px] max-w-[900px]">
               {content.grid.section_title.title}
             </h2>
           </div>

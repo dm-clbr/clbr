@@ -189,7 +189,7 @@ export default function DashboardPage() {
     <AdminLayout pageKey="dashboard">
       <div className="min-h-screen bg-[#0b0b0b] px-6 md:px-8 py-8">
         <div className="max-w-[1480px] mx-auto">
-          <h1 className="text-6xl font-telegraf font-bold mb-4">
+          <h1 className="text-6xl font-bold mb-4">
             Welcome{firstName ? `, ${firstName}` : ', Bro'}
           </h1>
           {/* <p className="text-gray-400 text-lg">

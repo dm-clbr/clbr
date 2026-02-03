@@ -62,13 +62,13 @@ const VideoCard = ({
         
         {/* Featured Badge */}
         {featured && (
-          <div className="absolute top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-telegraf font-bold">
+          <div className="absolute top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-bold">
             ⭐ Featured
           </div>
         )}
         
         {/* Type Badge */}
-        <div className={`absolute top-2 left-2 px-2 py-1 rounded-full text-xs font-telegraf font-bold ${
+        <div className={`absolute top-2 left-2 px-2 py-1 rounded-full text-xs font-bold ${
           type === 'customer' 
             ? 'bg-green-500 text-white' 
             : 'bg-blue-500 text-white'
@@ -88,14 +88,14 @@ const VideoCard = ({
 
       {/* Content */}
       <div className="p-6">
-        <h3 className="text-white font-telegraf font-bold text-[18px] mb-3 line-clamp-2">
+        <h3 className="text-white font-bold text-[18px] mb-3 line-clamp-2">
           {title}
         </h3>
-        <p className="text-[rgba(255,255,255,0.7)] text-[14px] font-telegraf mb-4 line-clamp-2">
+        <p className="text-[rgba(255,255,255,0.7)] text-[14px] mb-4 line-clamp-2">
           {description}
         </p>
         
-        <div className="space-y-2 text-[12px] text-[rgba(255,255,255,0.5)] font-telegraf">
+        <div className="space-y-2 text-[12px] text-[rgba(255,255,255,0.5)]">
           {customerName && (
             <p>👤 {customerName}</p>
           )}

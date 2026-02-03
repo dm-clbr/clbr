@@ -29,7 +29,7 @@ export default function CMSgridCardPills({ pills, className = '', style, onClick
         {pills.map((label, idx) => (
           <span
             key={`${label}-${idx}`}
-            className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-inter font-semibold ${
+            className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-semibold ${
               idx === 0 ? 'bg-white text-black' : 'bg-gradient-to-b from-[#232323] to-[#171717] text-white'
             }`}
           >

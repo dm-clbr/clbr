@@ -28,10 +28,10 @@ export default function ProgressTracker({
   return (
     <div className="space-y-2">
       <div className="flex justify-between items-center">
-        <span className={`${textSizeClasses[size]} font-telegraf text-white/60`}>
+        <span className={`${textSizeClasses[size]} text-white/60`}>
           Overall Progress
         </span>
-        <span className={`${textSizeClasses[size]} font-telegraf font-semibold text-white/80`}>
+        <span className={`${textSizeClasses[size]} font-semibold text-white/80`}>
           {completed}/{total} lessons
         </span>
       </div>
@@ -42,7 +42,7 @@ export default function ProgressTracker({
         />
       </div>
       <div className="text-right">
-        <span className={`${textSizeClasses[size]} font-telegraf font-bold text-blue-400`}>
+        <span className={`${textSizeClasses[size]} font-bold text-blue-400`}>
           {Math.round(progress)}% Complete
         </span>
       </div>

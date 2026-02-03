@@ -57,7 +57,7 @@ const Card = ({
         />
       ) : (
         <div className="absolute inset-0 bg-gradient-to-b from-[#171717] to-[#0d0d0d] flex items-center justify-center">
-          <span className="text-[rgba(255,255,255,0.6)] text-sm font-telegraf">No Media</span>
+          <span className="text-[rgba(255,255,255,0.6)] text-sm">No Media</span>
         </div>
       )}
       
@@ -75,7 +75,7 @@ const Card = ({
                 statusBadgeColor === 'live' ? 'bg-red-500' : 
                 statusBadgeColor === 'coming_up' ? 'bg-white' : 'bg-[#535353]'
               }`}></div>
-              <span className="text-[14px] font-telegraf font-semibold text-white">
+              <span className="text-[14px] font-semibold text-white">
                 {statusBadgeText}
               </span>
             </div>
@@ -83,7 +83,7 @@ const Card = ({
           
           {/* Days Text */}
           {daysText && (
-            <span className="text-white font-telegraf font-normal text-[14px]">{daysText}</span>
+            <span className="text-white font-normal text-[14px]">{daysText}</span>
           )}
           
           {/* Category Badge */}
@@ -92,7 +92,7 @@ const Card = ({
               className="flex items-center gap-2.5 px-[15px] py-[7px] rounded-[60px] shadow-lg"
               style={{ backgroundColor: categoryBadgeColor }}
             >
-              <span className="text-[14px] font-telegraf font-semibold text-black">
+              <span className="text-[14px] font-semibold text-black">
                 {categoryBadgeText}
               </span>
             </div>

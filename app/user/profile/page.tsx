@@ -45,7 +45,7 @@ export default function UserProfilePage() {
     <AdminLayout pageKey="dashboard" topBarTitle="Profile">
       <div className="min-h-screen w-full bg-[#0d0d0d] text-white">
         <div className="mx-auto w-full px-6 md:px-10 pt-10 md:pt-[60px] max-w-[1480px]">
-          <h1 className="text-3xl md:text-5xl font-telegraf font-bold mb-6">My Profile</h1>
+          <h1 className="text-3xl md:text-5xl font-bold mb-6">My Profile</h1>
 
           {loading ? (
             <div className="text-white/70">Loading...</div>

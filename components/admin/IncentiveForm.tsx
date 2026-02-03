@@ -335,7 +335,7 @@ export default function IncentiveForm({ incentive, onSubmit, onCancel, isLoading
 
   return (
     <div className="bg-[#1a1a1a] rounded-lg p-8 max-w-2xl mx-auto">
-      <h2 className="text-white text-2xl font-telegraf font-bold mb-6">
+      <h2 className="text-white text-2xl font-bold mb-6">
         {incentive ? 'Edit Incentive' : 'Create New Incentive'}
       </h2>
       

@@ -96,7 +96,7 @@ export default function TopBar({
                 className="size-full"
               />
             </button>
-            <div className="font-black leading-[0] not-italic relative shrink-0 text-[40px] text-nowrap text-white font-inter hidden sm:block">
+            <div className="font-black leading-[0] not-italic relative shrink-0 text-[40px] text-nowrap text-white hidden sm:block">
               {title}
             </div>
           </div>
@@ -172,7 +172,7 @@ export default function TopBar({
                   </svg>
                 </Link>
               )}
-              <div className="flex-1 truncate font-telegraf text-[16px] text-white">
+              <div className="flex-1 truncate text-[16px] text-white">
                 {currentCrumb?.name || title}
               </div>
               {showMobileOverflow && hasBreadcrumbs && (
@@ -240,7 +240,7 @@ export default function TopBar({
           <div className="absolute inset-0 bg-black/60" onClick={() => setMobileTrailOpen(false)} aria-hidden />
           <div className="absolute bottom-0 left-0 right-0 bg-[#0d0d0d] border-t border-[#1f1f1f] rounded-t-lg p-4">
             <div className="flex items-center justify-between mb-3">
-              <div className="text-white font-telegraf text-lg">Path</div>
+              <div className="text-white text-lg">Path</div>
               <button className="p-2 rounded-md hover:bg-white/10" onClick={() => setMobileTrailOpen(false)} aria-label="Close">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
                   <path fillRule="evenodd" d="M6.225 4.811a.75.75 0 011.06 0L12 9.525l4.715-4.714a.75.75 0 111.06 1.06L13.06 10.586l4.715 4.714a.75.75 0 11-1.06 1.06L12 11.646l-4.715 4.714a.75.75 0 11-1.06-1.06l4.714-4.715-4.714-4.714a.75.75 0 010-1.06z" clipRule="evenodd" />

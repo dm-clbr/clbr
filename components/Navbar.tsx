@@ -96,7 +96,7 @@ export default function Navbar({ className = '' }: NavbarProps) {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-white text-xs font-bold uppercase tracking-wide hover:opacity-80 transition-opacity font-telegraf"
+                className="text-white text-xs font-bold uppercase tracking-wide hover:opacity-80 transition-opacity"
               >
                 {item.name}
               </a>
@@ -160,7 +160,7 @@ export default function Navbar({ className = '' }: NavbarProps) {
                   <a
                     href={isLoggedIn ? '/user' : '/login'}
                     onClick={() => setOpen(false)}
-                    className="px-4 py-3 text-white text-sm font-bold uppercase tracking-wide hover:bg-white/10 transition-colors font-telegraf flex items-center gap-3"
+                    className="px-4 py-3 text-white text-sm font-bold uppercase tracking-wide hover:bg-white/10 transition-colors flex items-center gap-3"
                   >
                     <span className="inline-block size-6 rounded-full overflow-hidden border border-white/20">
                       <img
@@ -176,7 +176,7 @@ export default function Navbar({ className = '' }: NavbarProps) {
                       key={item.name}
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="px-4 py-3 text-white text-sm font-bold uppercase tracking-wide hover:bg-white/10 transition-colors font-telegraf"
+                      className="px-4 py-3 text-white text-sm font-bold uppercase tracking-wide hover:bg-white/10 transition-colors"
                     >
                       {item.name}
                     </a>

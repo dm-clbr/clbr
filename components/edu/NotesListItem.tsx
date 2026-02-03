@@ -28,18 +28,18 @@ export default function NotesListItem({ note, onEdit, onDelete }: NotesListItemP
         <div>
           <Link 
             href={`/user/edu/${note.lesson.course.slug}/${note.lesson.id}`}
-            className="text-blue-400 hover:text-blue-300 font-telegraf text-sm transition-colors"
+            className="text-blue-400 hover:text-blue-300 text-sm transition-colors"
           >
             {note.lesson.course.title} → {note.lesson.title}
           </Link>
         </div>
-        <span className="text-white/40 text-xs font-telegraf flex-shrink-0">
+        <span className="text-white/40 text-xs flex-shrink-0">
           {new Date(note.created_at).toLocaleDateString()}
         </span>
       </div>
 
       {/* Note Content */}
-      <p className="text-white/80 font-telegraf text-sm whitespace-pre-wrap mb-3 line-clamp-4">
+      <p className="text-white/80 text-sm whitespace-pre-wrap mb-3 line-clamp-4">
         {note.content}
       </p>
 
@@ -47,14 +47,14 @@ export default function NotesListItem({ note, onEdit, onDelete }: NotesListItemP
       <div className="flex gap-3 pt-2 border-t border-white/5">
         <Link
           href={`/user/edu/${note.lesson.course.slug}/${note.lesson.id}`}
-          className="text-blue-400 hover:text-blue-300 text-xs font-telegraf transition-colors"
+          className="text-blue-400 hover:text-blue-300 text-xs transition-colors"
         >
           View Lesson
         </Link>
         {onEdit && (
           <button
             onClick={() => onEdit(note.id, note.content)}
-            className="text-white/60 hover:text-white text-xs font-telegraf transition-colors"
+            className="text-white/60 hover:text-white text-xs transition-colors"
           >
             Edit
           </button>
@@ -62,7 +62,7 @@ export default function NotesListItem({ note, onEdit, onDelete }: NotesListItemP
         {onDelete && (
           <button
             onClick={() => onDelete(note.id)}
-            className="text-red-400 hover:text-red-300 text-xs font-telegraf transition-colors"
+            className="text-red-400 hover:text-red-300 text-xs transition-colors"
           >
             Delete
           </button>

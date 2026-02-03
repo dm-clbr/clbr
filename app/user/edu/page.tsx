@@ -91,7 +91,7 @@ export default function EduDashboard() {
     return (
       <AdminLayout pageKey="edu">
         <div className="bg-[#0d0d0d] min-h-screen flex items-center justify-center">
-          <div className="text-white font-telegraf">Loading...</div>
+          <div className="text-white">Loading...</div>
         </div>
       </AdminLayout>
     )
@@ -107,21 +107,21 @@ export default function EduDashboard() {
             <div className="flex flex-col sm:flex-row items-start sm:justify-between gap-4 mb-6">
               <div className="flex-grow">
                 <div className="flex items-start gap-3 mb-4">
-                  <span className="text-white/60 text-[14px] font-telegraf mt-3">(E)</span>
-                  <h1 className="text-[40px] sm:text-[64px] font-telegraf font-extrabold uppercase leading-[0.9] text-white">
+                  <span className="text-white/60 text-[14px] mt-3">(E)</span>
+                  <h1 className="text-[40px] sm:text-[64px] font-extrabold uppercase leading-[0.9] text-white">
                     Education<br />
                     <span className="text-transparent bg-gradient-to-r from-[#9EC5FE] via-[#0859D1] to-[#44A4F9] bg-clip-text">
                       Center.
                     </span>
                   </h1>
                 </div>
-                <p className="text-white/70 font-telegraf text-base sm:text-lg max-w-2xl">
+                <p className="text-white/70 text-base sm:text-lg max-w-2xl">
                   Master solar sales through comprehensive video training. Watch lessons, track your progress, and take notes as you learn.
                 </p>
               </div>
               <Link
                 href="/user/edu/notes"
-                className="w-full sm:w-auto text-center px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 text-white rounded-[3px] font-telegraf font-semibold transition-all whitespace-nowrap"
+                className="w-full sm:w-auto text-center px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 text-white rounded-[3px] font-semibold transition-all whitespace-nowrap"
               >
                 View All Notes
               </Link>
@@ -151,18 +151,18 @@ export default function EduDashboard() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-sm font-telegraf font-semibold text-green-400 mb-1">Recently Completed</h3>
-                      <p className="text-white font-telegraf text-lg font-semibold mb-1">
+                      <h3 className="text-sm font-semibold text-green-400 mb-1">Recently Completed</h3>
+                      <p className="text-white text-lg font-semibold mb-1">
                         {progress.recentCompleted.lesson.title}
                       </p>
-                      <p className="text-white/60 font-telegraf text-sm">
+                      <p className="text-white/60 text-sm">
                         {progress.recentCompleted.lesson.course.title}
                       </p>
                     </div>
                   </div>
                   <Link
                     href={`/user/edu/${progress.recentCompleted.lesson.course.slug}/${progress.recentCompleted.lesson.id}`}
-                    className="text-green-400 hover:text-green-300 font-telegraf text-sm transition-colors"
+                    className="text-green-400 hover:text-green-300 text-sm transition-colors"
                   >
                     Review Lesson →
                   </Link>
@@ -179,18 +179,18 @@ export default function EduDashboard() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-sm font-telegraf font-semibold text-blue-400 mb-1">Up Next</h3>
-                      <p className="text-white font-telegraf text-lg font-semibold mb-1">
+                      <h3 className="text-sm font-semibold text-blue-400 mb-1">Up Next</h3>
+                      <p className="text-white text-lg font-semibold mb-1">
                         {progress.nextLesson.title}
                       </p>
-                      <p className="text-white/60 font-telegraf text-sm">
+                      <p className="text-white/60 text-sm">
                         {progress.nextLesson.course.title}
                       </p>
                     </div>
                   </div>
                   <Link
                     href={`/user/edu/${progress.nextLesson.course.slug}/${progress.nextLesson.id}`}
-                    className="inline-block px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-[3px] font-telegraf font-semibold transition-colors"
+                    className="inline-block px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-[3px] font-semibold transition-colors"
                   >
                     Continue Learning →
                   </Link>
@@ -201,7 +201,7 @@ export default function EduDashboard() {
 
           {/* Courses Grid */}
           <div className="mb-8">
-            <h2 className="text-xl sm:text-2xl font-telegraf font-bold text-white mb-6">Courses</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-6">Courses</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               {coursesWithProgress.map(course => (
                 <CourseCard
@@ -214,7 +214,7 @@ export default function EduDashboard() {
 
           {coursesWithProgress.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-white/60 font-telegraf">No courses available yet.</p>
+              <p className="text-white/60">No courses available yet.</p>
             </div>
           )}
         </div>

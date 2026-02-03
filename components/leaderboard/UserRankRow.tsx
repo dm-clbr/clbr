@@ -22,21 +22,21 @@ export default function UserRankRow({ rank, name, tsi, tss, withLabels = false }
       style={{ gridTemplateColumns: '80px 1fr 1fr 1fr' }}
     >
       <div className="flex items-center">
-        <span className="text-white text-[18px] font-telegraf font-bold">{getRankIconFromRank(rank)}</span>
+        <span className="text-white text-[18px] font-bold">{getRankIconFromRank(rank)}</span>
       </div>
       <div className="flex flex-col">
-        <span className="text-white text-[16px] font-telegraf font-semibold">{name}</span>
+        <span className="text-white text-[16px] font-semibold">{name}</span>
       </div>
       <div className="flex items-center justify-center">
-        <span className="text-white text-[18px] font-telegraf font-bold">{tsi}</span>
+        <span className="text-white text-[18px] font-bold">{tsi}</span>
         {withLabels && (
-          <span className="ml-2 text-[rgba(255,255,255,0.7)] text-[16px] font-telegraf font-light">TSI</span>
+          <span className="ml-2 text-[rgba(255,255,255,0.7)] text-[16px] font-light">TSI</span>
         )}
       </div>
       <div className="flex items-center justify-center">
-        <span className="text-[18px] font-telegraf font-light text-[rgba(255,255,255,0.5)]">{tss}</span>
+        <span className="text-[18px] font-light text-[rgba(255,255,255,0.5)]">{tss}</span>
         {withLabels && (
-          <span className="ml-2 text-[rgba(255,255,255,0.7)] text-[16px] font-telegraf font-light">TSS</span>
+          <span className="ml-2 text-[rgba(255,255,255,0.7)] text-[16px] font-light">TSS</span>
         )}
       </div>
     </div>

@@ -47,14 +47,14 @@ export default function BuildCareers() {
                             headerAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
                         }`}
                     >
-                        <p className="text-[#666666] text-[11px] tracking-[4.4px] uppercase mb-6 font-telegraf">(5)</p>
-                        <h2 className="text-white text-[64px] font-black uppercase leading-[58px] mb-8 font-telegraf">
+                        <p className="text-[#666666] text-[11px] tracking-[4.4px] uppercase mb-6">(5)</p>
+                        <h2 className="text-white text-[64px] font-black uppercase leading-[58px] mb-8">
                             HOW WE BUILD CAREERS
                         </h2>
                     </div>
                     <p 
                         ref={descriptionAnimation.ref}
-                        className={`text-[#999999] text-[20px] w-full leading-relaxed font-telegraf pl-[50px] transition-all duration-700 ${
+                        className={`text-[#999999] text-[20px] w-full leading-relaxed pl-[50px] transition-all duration-700 ${
                             descriptionAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
                         }`}
                     >
@@ -88,10 +88,10 @@ export default function BuildCareers() {
 
                                 {/* Card Content */}
                                 <div className="text-left w-full">
-                                    <div className="text-[#888888] text-[14px] mb-2 font-telegraf">
+                                    <div className="text-[#888888] text-[14px] mb-2">
                                         {card.number} -
                                     </div>
-                                    <h3 className="text-white text-[16px] font-bold leading-tight font-telegraf group-hover:text-[#00ff88] transition-colors duration-300">
+                                    <h3 className="text-white text-[16px] font-bold leading-tight group-hover:text-[#00ff88] transition-colors duration-300">
                                         {card.title}
                                     </h3>
                                 </div>

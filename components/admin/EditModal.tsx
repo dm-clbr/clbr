@@ -49,7 +49,7 @@ export default function EditModal({
       <div className="bg-[#0d0d0d] border border-[#333] rounded-lg w-full max-w-2xl max-h-[90vh] overflow-hidden">
         {/* Modal Header */}
         <div className="flex items-center justify-between p-6 border-b border-[#333]">
-          <h2 className="text-xl font-telegraf font-bold text-white">
+          <h2 className="text-xl font-bold text-white">
             {title}
           </h2>
           <button

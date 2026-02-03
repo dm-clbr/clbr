@@ -55,7 +55,7 @@ export default function PageLoader({ onComplete }: PageLoaderProps) {
           >
             {/* Logo or brand name */}
             <motion.h1
-              className="text-white text-[48px] font-telegraf font-black mb-4"
+              className="text-white text-[48px] font-black mb-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}

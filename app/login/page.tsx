@@ -55,7 +55,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex flex-col justify-center items-center bg-[#0d0d0d] text-white">
       <Navbar />
       <div className="max-w-md mx-auto px-6 py-16">
-        <h1 className="text-3xl font-telegraf font-bold mb-6">Log in</h1>
+        <h1 className="text-3xl font-bold mb-6">Log in</h1>
         {confirmed && (
           <div className="mb-4 text-sm text-green-400">Email confirmed. Please sign in.</div>
         )}
@@ -78,7 +78,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-4 py-3 bg-white text-black rounded-[3px] font-telegraf font-semibold disabled:opacity-60"
+            className="w-full px-4 py-3 bg-white text-black rounded-[3px] font-semibold disabled:opacity-60"
           >
             {loading ? 'Signing in...' : 'Sign in'}
           </button>
@@ -90,10 +90,10 @@ export default function LoginPage() {
           <div className="border-t border-white/10 flex-1" />
         </div>
 
-        {/* <button onClick={sendMagicLink} disabled={loading || !email} className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] text-white rounded-[3px] font-telegraf font-semibold disabled:opacity-60 mb-3">
+        {/* <button onClick={sendMagicLink} disabled={loading || !email} className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] text-white rounded-[3px] font-semibold disabled:opacity-60 mb-3">
           Send magic link
         </button>
-        <button onClick={signInWithGoogle} disabled={loading} className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] text-white rounded-[3px] font-telegraf font-semibold disabled:opacity-60">
+        <button onClick={signInWithGoogle} disabled={loading} className="w-full px-4 py-3 bg-gradient-to-b from-[#232323] to-[#171717] text-white rounded-[3px] font-semibold disabled:opacity-60">
           Continue with Google
         </button> */}
 

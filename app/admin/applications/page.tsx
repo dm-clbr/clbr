@@ -80,7 +80,7 @@ export default function AdminApplicationsPage() {
       <div className="min-h-screen bg-[#0d0d0d] px-8 py-12">
         <div className="max-w-7xl mx-auto text-white">
           <div className="flex items-center justify-between mb-6">
-            <h1 className="text-3xl font-telegraf font-bold">Applications</h1>
+            <h1 className="text-3xl font-bold">Applications</h1>
             <div className="text-white/60">{rows.length} total</div>
           </div>
 

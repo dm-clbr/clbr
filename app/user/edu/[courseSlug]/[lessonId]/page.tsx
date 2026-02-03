@@ -102,7 +102,7 @@ export default function LessonPage() {
     return (
       <AdminLayout pageKey="edu">
         <div className="bg-[#0d0d0d] min-h-screen flex items-center justify-center">
-          <div className="text-white font-telegraf">Loading...</div>
+          <div className="text-white">Loading...</div>
         </div>
       </AdminLayout>
     )
@@ -120,7 +120,7 @@ export default function LessonPage() {
           {/* Back Button */}
           <Link
             href={`/user/edu/${courseSlug}`}
-            className="inline-flex items-center gap-2 text-white/60 hover:text-white font-telegraf text-sm mb-6 transition-colors"
+            className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm mb-6 transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -131,7 +131,7 @@ export default function LessonPage() {
           {/* Lesson Header */}
           <div className="mb-6">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-2">
-              <h1 className="text-[28px] sm:text-[44px] font-telegraf font-extrabold text-white leading-[1.1]">
+              <h1 className="text-[28px] sm:text-[44px] font-extrabold text-white leading-[1.1]">
                 {lesson.title}
               </h1>
               {lesson.completed && (
@@ -139,11 +139,11 @@ export default function LessonPage() {
                   <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-green-400 font-telegraf text-sm font-semibold">Completed</span>
+                  <span className="text-green-400 text-sm font-semibold">Completed</span>
                 </div>
               )}
             </div>
-            <div className="flex items-center gap-2 sm:gap-4 text-white/50 text-xs sm:text-sm font-telegraf flex-wrap">
+            <div className="flex items-center gap-2 sm:gap-4 text-white/50 text-xs sm:text-sm flex-wrap">
               <span>{lesson.course.title}</span>
               {lesson.duration_minutes && (
                 <>
@@ -162,7 +162,7 @@ export default function LessonPage() {
           {/* Description and Mark Complete */}
           <div className="mb-8 bg-gradient-to-b from-[#171717] to-[#0d0d0d] border border-white/10 rounded-[3px] p-6">
             {lesson.description && (
-              <p className="text-white/80 font-telegraf text-base mb-6">
+              <p className="text-white/80 text-base mb-6">
                 {lesson.description}
               </p>
             )}
@@ -170,7 +170,7 @@ export default function LessonPage() {
               <button
                 onClick={handleMarkComplete}
                 disabled={isMarkingComplete}
-                className="px-8 py-3 bg-gradient-to-r from-[#0859D1] to-[#44A4F9] hover:from-[#0749B1] hover:to-[#3494E9] text-white rounded-[3px] font-telegraf font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-8 py-3 bg-gradient-to-r from-[#0859D1] to-[#44A4F9] hover:from-[#0749B1] hover:to-[#3494E9] text-white rounded-[3px] font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isMarkingComplete ? (
                   <span className="flex items-center gap-2">
@@ -183,7 +183,7 @@ export default function LessonPage() {
               </button>
             )}
             {lesson.completed && lesson.completed_at && (
-              <p className="text-green-400 font-telegraf text-sm">
+              <p className="text-green-400 text-sm">
                 Completed on {new Date(lesson.completed_at).toLocaleDateString()} at {new Date(lesson.completed_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
               </p>
             )}
@@ -203,7 +203,7 @@ export default function LessonPage() {
             {navigation.previous ? (
               <Link
                 href={`/user/edu/${courseSlug}/${navigation.previous.id}`}
-                className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 text-white rounded-[3px] font-telegraf text-sm sm:text-base transition-all"
+                className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 text-white rounded-[3px] text-sm sm:text-base transition-all"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -218,7 +218,7 @@ export default function LessonPage() {
             {navigation.next && (
               <Link
                 href={`/user/edu/${courseSlug}/${navigation.next.id}`}
-                className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-gradient-to-r from-[#0859D1] to-[#44A4F9] hover:from-[#0749B1] hover:to-[#3494E9] text-white rounded-[3px] font-telegraf text-sm sm:text-base font-semibold transition-all sm:ml-auto order-first sm:order-last"
+                className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-gradient-to-r from-[#0859D1] to-[#44A4F9] hover:from-[#0749B1] hover:to-[#3494E9] text-white rounded-[3px] text-sm sm:text-base font-semibold transition-all sm:ml-auto order-first sm:order-last"
               >
                 <span className="hidden sm:inline">Next:</span>
                 <span className="truncate max-w-[200px] sm:max-w-none">{navigation.next.title}</span>

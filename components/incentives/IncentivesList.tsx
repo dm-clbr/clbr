@@ -28,12 +28,12 @@ export default function IncentivesList({
       {/* Header (from CMS) */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-8 sm:pb-10 mb-10 sm:mb-16 lg:mb-20">
         <div className="flex items-start gap-2.5 text-white opacity-100 translate-y-0">
-          <span className="text-[14px] sm:text-[16px] font-telegraf">{incentivesCopy.section_number}</span>
-          <h1 className="text-[32px] sm:text-[40px] md:text-[52px] lg:text-[60px] font-telegraf font-extrabold uppercase leading-[36px] sm:leading-[44px] md:leading-[56px] lg:leading-[63px]">
+          <span className="text-[14px] sm:text-[16px]">{incentivesCopy.section_number}</span>
+          <h1 className="text-[32px] sm:text-[40px] md:text-[52px] lg:text-[60px] font-extrabold uppercase leading-[36px] sm:leading-[44px] md:leading-[56px] lg:leading-[63px]">
             {incentivesCopy.section_title}
           </h1>
         </div>
-        <div className="text-white text-[14px] sm:text-[16px] font-telegraf max-w-[400px] opacity-100 translate-y-0">
+        <div className="text-white text-[14px] sm:text-[16px] max-w-[400px] opacity-100 translate-y-0">
           <p>{incentivesCopy.description}</p>
         </div>
       </div>
@@ -45,7 +45,7 @@ export default function IncentivesList({
             <button
               key={filterOption}
               onClick={() => onFilterChange(filterOption)}
-              className={`px-[12px] sm:px-[15px] py-[6px] sm:py-[7px] rounded-[60px] text-[12px] sm:text-[14px] font-inter font-semibold transition-colors capitalize ${
+              className={`px-[12px] sm:px-[15px] py-[6px] sm:py-[7px] rounded-[60px] text-[12px] sm:text-[14px] font-semibold transition-colors capitalize ${
                 filter === filterOption ? 'bg-white text-black' : 'bg-transparent text-white hover:bg-white/10'
               }`}
             >
@@ -91,7 +91,7 @@ export default function IncentivesList({
       {/* Empty State */}
       {filteredIncentives.length === 0 && !loading && (
         <div className="text-center py-12">
-          <p className="text-[rgba(255,255,255,0.6)] font-telegraf text-lg">No incentives found for the selected filter.</p>
+          <p className="text-[rgba(255,255,255,0.6)] text-lg">No incentives found for the selected filter.</p>
         </div>
       )}
     </div>

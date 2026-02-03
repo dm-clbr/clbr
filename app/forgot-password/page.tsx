@@ -33,7 +33,7 @@ export default function ForgotPasswordPage() {
     <div className="min-h-screen flex flex-col justify-center items-center bg-[#0d0d0d] text-white">
       <Navbar />
       <div className="max-w-md mx-auto px-6 py-16">
-        <h1 className="text-3xl font-telegraf font-bold mb-6">Forgot password</h1>
+        <h1 className="text-3xl font-bold mb-6">Forgot password</h1>
         <form onSubmit={onSubmit} className="space-y-4">
           <input
             type="email"
@@ -46,7 +46,7 @@ export default function ForgotPasswordPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-4 py-3 bg-white text-black rounded-[3px] font-telegraf font-semibold disabled:opacity-60"
+            className="w-full px-4 py-3 bg-white text-black rounded-[3px] font-semibold disabled:opacity-60"
           >
             {loading ? 'Sending...' : 'Send reset email'}
           </button>

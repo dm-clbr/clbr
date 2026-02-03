@@ -24,16 +24,16 @@ export default function CourseCard({
     <Link href={`/user/edu/${slug}`}>
       <div className="bg-gradient-to-b from-[#171717] to-[#0d0d0d] border border-white/10 rounded-[3px] p-6 hover:border-white/20 transition-all duration-300 h-full group cursor-pointer">
         <div className="flex flex-col h-full">
-          <h3 className="text-2xl font-telegraf font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+          <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
             {title}
           </h3>
-          <p className="text-white/70 font-telegraf text-sm mb-6 flex-grow">
+          <p className="text-white/70 text-sm mb-6 flex-grow">
             {description}
           </p>
           
           {/* Progress Bar */}
           <div className="space-y-2">
-            <div className="flex justify-between items-center text-xs font-telegraf">
+            <div className="flex justify-between items-center text-xs">
               <span className="text-white/60">Progress</span>
               <span className="text-white/80">
                 {completedLessons}/{totalLessons} lessons
@@ -46,7 +46,7 @@ export default function CourseCard({
               />
             </div>
             <div className="text-right">
-              <span className="text-sm font-telegraf font-semibold text-blue-400">
+              <span className="text-sm font-semibold text-blue-400">
                 {Math.round(progress)}%
               </span>
             </div>

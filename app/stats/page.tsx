@@ -227,7 +227,7 @@ export default function StatsPage() {
                 return (
                   <div key={`s1-tile-${idx}`} className="basis-0 bg-gradient-to-b box-border content-stretch flex flex-col from-[#171717] grow h-full items-center justify-between min-h-px min-w-px overflow-clip p-[20px] relative rounded-[3px] shrink-0 to-[#0e0e0e]">
                     <div className="basis-0 content-stretch flex flex-col gap-[15px] grow items-center justify-center leading-[0] min-h-px min-w-px not-italic relative shrink-0 w-full">
-                      <div className="content-stretch flex font-telegraf font-black gap-[7px] items-start justify-center relative shrink-0">
+                      <div className="content-stretch flex font-black gap-[7px] items-start justify-center relative shrink-0">
                         <div className={`relative shrink-0 ${colorClass} md:text-[25px] text-[18px] text-nowrap`}>
                           <p className="leading-[normal] whitespace-pre">{s?.prefix || ''}</p>
                         </div>
@@ -325,7 +325,7 @@ export default function StatsPage() {
               ).map((s: any, idx: number) => (
                 <div key={`s2-tile-${idx}`} className="basis-0 bg-gradient-to-b box-border content-stretch flex flex-col from-[#171717] grow h-full items-center justify-between min-h-px min-w-px overflow-clip p-[20px] relative rounded-[3px] shrink-0 to-[#0e0e0e]">
                   <div className="basis-0 content-stretch flex flex-col gap-[15px] grow items-center justify-center leading-[0] min-h-px min-w-px not-italic relative shrink-0 w-full">
-                    <div className="content-stretch flex font-telegraf font-black gap-[7px] items-start justify-center relative shrink-0">
+                    <div className="content-stretch flex font-black gap-[7px] items-start justify-center relative shrink-0">
                       <div className="relative shrink-0 text-[#888d95] md:text-[25px] text-[18px] text-nowrap">
                         <p className="leading-[normal] whitespace-pre">{s?.prefix || ''}</p>
                       </div>
@@ -373,7 +373,7 @@ export default function StatsPage() {
               ).map((s: any, idx: number) => (
                 <div key={`s3-tile-${idx}`} className="basis-0 bg-gradient-to-t box-border content-stretch flex flex-col from-[#121212] grow h-full items-center justify-between min-h-px min-w-px overflow-clip p-[20px] relative rounded-[3px] shrink-0 to-[#37414f]">
                   <div className="basis-0 content-stretch flex flex-col gap-[15px] grow items-center justify-center leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-nowrap text-white w-full">
-                    <div className="content-stretch flex font-telegraf font-black gap-[7px] items-start justify-center relative shrink-0">
+                    <div className="content-stretch flex font-black gap-[7px] items-start justify-center relative shrink-0">
                       {s?.prefix ? (
                         <div className="relative shrink-0 md:text-[25px] text-[18px]">
                           <p className="leading-[normal] text-nowrap whitespace-pre">{s.prefix}</p>

@@ -46,7 +46,7 @@ export default function CMSHomePage() {
       <div className="min-h-screen bg-[#0d0d0d] px-8 py-12">
         <div className="max-w-7xl mx-auto">
           <div className="text-white">
-            <h1 className="text-4xl font-telegraf font-bold mb-4">
+            <h1 className="text-4xl font-bold mb-4">
               Content Management
             </h1>
             <p className="text-gray-400 text-lg">

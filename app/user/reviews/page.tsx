@@ -98,20 +98,20 @@ export default function AdminReviewsPage() {
           <div className="flex flex-col items-center pb-10">
             {/* <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-green-500/20 border border-white/10 rounded-full px-6 py-2 mb-8">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-white/80 font-telegraf text-sm font-semibold">COMING SOON</span>
+              <span className="text-white/80 text-sm font-semibold">COMING SOON</span>
             </div> */}
 
             {/* Title */}
             <div className='flex flex-col items-center justify-center'>
               <div className="flex items-start justify-center gap-3 mb-8">
-                <span className="text-white/60 text-[16px] font-telegraf mt-4">(E)</span>
-                <h1 className="text-[60px] sm:text-[80px] md:text-[120px] font-telegraf font-extrabold uppercase leading-[0.8] text-white text-center">
+                <span className="text-white/60 text-[16px] mt-4">(E)</span>
+                <h1 className="text-[60px] sm:text-[80px] md:text-[120px] font-extrabold uppercase leading-[0.8] text-white text-center">
                   Reviews
                 </h1>
               </div>
 
               {/* Subtitle */}
-              <p className="text-[20px] sm:text-[24px] md:text-[32px] max-w-[700px] font-telegraf text-white/80 mb-6 leading-relaxed text-center">
+              <p className="text-[20px] sm:text-[24px] md:text-[32px] max-w-[700px] text-white/80 mb-6 leading-relaxed text-center">
               Hear from our satisfied customers and successful sales representatives about their experiences with Aveyo.
               </p>
             </div>
@@ -124,7 +124,7 @@ export default function AdminReviewsPage() {
           >
             <button
               onClick={() => setFilter('all')}
-              className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-inter font-semibold transition-colors ${
+              className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-semibold transition-colors ${
                 filter === 'all'
                   ? 'bg-white text-black'
                   : 'bg-gradient-to-b from-[#232323] to-[#171717] text-white'
@@ -134,7 +134,7 @@ export default function AdminReviewsPage() {
             </button>
             <button
               onClick={() => setFilter('customer')}
-              className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-inter font-semibold transition-colors ${
+              className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-semibold transition-colors ${
                 filter === 'customer'
                   ? 'bg-white text-black'
                   : 'bg-gradient-to-b from-[#232323] to-[#171717] text-white'
@@ -144,7 +144,7 @@ export default function AdminReviewsPage() {
             </button>
             <button
               onClick={() => setFilter('rep')}
-              className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-inter font-semibold transition-colors ${
+              className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-semibold transition-colors ${
                 filter === 'rep'
                   ? 'bg-white text-black'
                   : 'bg-gradient-to-b from-[#232323] to-[#171717] text-white'
@@ -154,7 +154,7 @@ export default function AdminReviewsPage() {
             </button>
             <button
               onClick={() => setFeaturedOnly(!featuredOnly)}
-              className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-inter font-semibold transition-colors ${
+              className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-semibold transition-colors ${
                 featuredOnly
                   ? 'bg-white text-black'
                   : 'bg-gradient-to-b from-[#232323] to-[#171717] text-white'
@@ -166,7 +166,7 @@ export default function AdminReviewsPage() {
 
           {/* Results Count */}
           <div className="text-center mb-12">
-            <p className="text-[rgba(255,255,255,0.6)] text-[14px] font-telegraf">
+            <p className="text-[rgba(255,255,255,0.6)] text-[14px]">
               Showing {filteredReviews.length} review{filteredReviews.length !== 1 ? 's' : ''}
             </p>
           </div>
@@ -206,8 +206,8 @@ export default function AdminReviewsPage() {
           {!loading && filteredReviews.length === 0 && (
             <div className="text-center py-20">
               <div className="text-6xl mb-4">🎥</div>
-              <h3 className="text-[24px] font-telegraf font-bold text-white mb-4">No Reviews Found</h3>
-              <p className="text-[rgba(255,255,255,0.6)] text-[16px] font-telegraf">
+              <h3 className="text-[24px] font-bold text-white mb-4">No Reviews Found</h3>
+              <p className="text-[rgba(255,255,255,0.6)] text-[16px]">
                 {filter === 'all' 
                   ? 'No reviews available at the moment.' 
                   : `No ${filter} reviews match your current filters.`}
@@ -224,9 +224,9 @@ export default function AdminReviewsPage() {
             {/* Modal Header */}
             <div className="flex justify-between items-center p-6 border-b border-[rgba(255,255,255,0.1)]">
               <div>
-                <h2 className="text-[24px] font-telegraf font-bold text-white">{selectedVideo.title}</h2>
+                <h2 className="text-[24px] font-bold text-white">{selectedVideo.title}</h2>
                 <div className="flex items-center gap-4 mt-3">
-                  <span className={`px-3 py-1 rounded-full text-[12px] font-telegraf font-bold ${
+                  <span className={`px-3 py-1 rounded-full text-[12px] font-bold ${
                     selectedVideo.type === 'customer' 
                       ? 'bg-green-500 text-white' 
                       : 'bg-blue-500 text-white'
@@ -234,7 +234,7 @@ export default function AdminReviewsPage() {
                     {selectedVideo.type === 'customer' ? 'Customer Review' : 'Rep Review'}
                   </span>
                   {selectedVideo.featured && (
-                    <span className="bg-yellow-500 text-black px-3 py-1 rounded-full text-[12px] font-telegraf font-bold">
+                    <span className="bg-yellow-500 text-black px-3 py-1 rounded-full text-[12px] font-bold">
                       ⭐ Featured
                     </span>
                   )}
@@ -242,7 +242,7 @@ export default function AdminReviewsPage() {
               </div>
               <button
                 onClick={closeVideoModal}
-                className="text-[rgba(255,255,255,0.6)] hover:text-white text-3xl font-telegraf font-bold"
+                className="text-[rgba(255,255,255,0.6)] hover:text-white text-3xl font-bold"
               >
                 ×
               </button>
@@ -263,9 +263,9 @@ export default function AdminReviewsPage() {
 
               {/* Video Details */}
               <div className="space-y-6">
-                <p className="text-[rgba(255,255,255,0.8)] text-[16px] font-telegraf">{selectedVideo.description}</p>
+                <p className="text-[rgba(255,255,255,0.8)] text-[16px]">{selectedVideo.description}</p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[14px] font-telegraf">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[14px]">
                   {selectedVideo.customer_name && (
                     <div className="flex items-center gap-2 text-[rgba(255,255,255,0.6)]">
                       <span>👤</span>

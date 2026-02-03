@@ -65,14 +65,14 @@ export default function JoinAveyoModal({ open, onClose, onSubmitted }: JoinAveyo
       <div className="absolute inset-0 bg-black/70" onClick={onClose} />
       <div className="relative w-full max-w-[620px] mx-4 bg-[#0f0f0f] text-white rounded-lg border border-[#2a2a2a] shadow-xl">
         <div className="p-6 border-b border-[#2a2a2a] flex items-center justify-between">
-          <h2 className="text-xl font-telegraf font-bold">Join Aveyo</h2>
+          <h2 className="text-xl font-bold">Join Aveyo</h2>
           <button onClick={onClose} className="text-white/70 hover:text-white">✕</button>
         </div>
 
         <div className="p-6">
           {success ? (
             <div className="space-y-4 text-center">
-              <div className="text-2xl font-telegraf font-bold">Thanks! 🎉</div>
+              <div className="text-2xl font-bold">Thanks! 🎉</div>
               <p className="text-white/75">We received your info. Our team will reach out shortly.</p>
               <button onClick={onClose} className="mt-2 px-5 py-2 bg-white text-black rounded-md font-semibold">Close</button>
             </div>

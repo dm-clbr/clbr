@@ -373,7 +373,7 @@ export default function AdminReviewsPage() {
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h1 className="text-white text-4xl font-telegraf font-bold">
+              <h1 className="text-white text-4xl font-bold">
                 Reviews Management
               </h1>
               <p className="text-gray-400 mt-2">
@@ -392,7 +392,7 @@ export default function AdminReviewsPage() {
           {/* Reviews Section Copy (mirrors home reviews header layout) */}
           <div className="mb-12">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-white text-2xl font-telegraf font-bold">Reviews Section Copy</h2>
+              <h2 className="text-white text-2xl font-bold">Reviews Section Copy</h2>
             </div>
 
             {/* Preview cards grid (1:1 with reviews header design) */}
@@ -568,7 +568,7 @@ export default function AdminReviewsPage() {
                   <div className="flex-1 min-w-0">
                     {/* Title + Type */}
                     <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-white text-[20px] font-telegraf font-bold truncate">{review.title}</h3>
+                      <h3 className="text-white text-[20px] font-bold truncate">{review.title}</h3>
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
                         review.type === 'customer' ? 'bg-blue-500/20 text-blue-300' : 'bg-green-500/20 text-green-300'
                       }`}>

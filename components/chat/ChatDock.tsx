@@ -40,7 +40,7 @@ export default function ChatDock() {
               className="size-full"
             />
           </div>
-          <div className="font-black not-italic relative text-[40px] text-nowrap text-white font-inter">
+          <div className="font-black not-italic relative text-[40px] text-nowrap text-white">
             Chat
           </div>
         </div>

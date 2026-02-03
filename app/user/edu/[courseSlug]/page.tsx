@@ -86,7 +86,7 @@ export default function CoursePage() {
     return (
       <AdminLayout pageKey="edu">
         <div className="bg-[#0d0d0d] min-h-screen flex items-center justify-center">
-          <div className="text-white font-telegraf">Loading...</div>
+          <div className="text-white">Loading...</div>
         </div>
       </AdminLayout>
     )
@@ -107,7 +107,7 @@ export default function CoursePage() {
           {/* Back Button */}
           <Link
             href="/user/edu"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-white font-telegraf text-sm mb-8 transition-colors"
+            className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm mb-8 transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -117,11 +117,11 @@ export default function CoursePage() {
 
           {/* Course Header */}
           <div className="mb-12">
-            <h1 className="text-[36px] sm:text-[56px] font-telegraf font-extrabold text-white mb-4 leading-[0.9]">
+            <h1 className="text-[36px] sm:text-[56px] font-extrabold text-white mb-4 leading-[0.9]">
               {course.title}
             </h1>
             {course.description && (
-              <p className="text-white/70 font-telegraf text-base sm:text-lg mb-8 max-w-3xl">
+              <p className="text-white/70 text-base sm:text-lg mb-8 max-w-3xl">
                 {course.description}
               </p>
             )}
@@ -134,7 +134,7 @@ export default function CoursePage() {
                     key={region.id}
                     onClick={() => setSelectedRegion(region.slug)}
                     className={`
-                      px-4 sm:px-6 py-2 sm:py-3 rounded-[3px] font-telegraf text-sm sm:text-base font-semibold transition-all whitespace-nowrap
+                      px-4 sm:px-6 py-2 sm:py-3 rounded-[3px] text-sm sm:text-base font-semibold transition-all whitespace-nowrap
                       ${selectedRegion === region.slug
                         ? 'bg-gradient-to-r from-[#0859D1] to-[#44A4F9] text-white'
                         : 'bg-white/10 text-white/80 hover:bg-white/20'
@@ -159,7 +159,7 @@ export default function CoursePage() {
 
           {/* Lessons List */}
           <div className="mb-8">
-            <h2 className="text-xl sm:text-2xl font-telegraf font-bold text-white mb-4 sm:mb-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">
               Lessons ({totalCount})
             </h2>
             <div className="space-y-3 sm:space-y-4">
@@ -175,7 +175,7 @@ export default function CoursePage() {
 
           {lessons.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-white/60 font-telegraf">No lessons available yet.</p>
+              <p className="text-white/60">No lessons available yet.</p>
             </div>
           )}
         </div>

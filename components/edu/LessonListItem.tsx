@@ -38,16 +38,16 @@ export default function LessonListItem({
 
           {/* Lesson Info */}
           <div className="flex-grow">
-            <h4 className="text-lg font-telegraf font-semibold text-white mb-1 group-hover:text-blue-400 transition-colors">
+            <h4 className="text-lg font-semibold text-white mb-1 group-hover:text-blue-400 transition-colors">
               {title}
             </h4>
             {description && (
-              <p className="text-white/60 font-telegraf text-sm mb-2 line-clamp-2">
+              <p className="text-white/60 text-sm mb-2 line-clamp-2">
                 {description}
               </p>
             )}
             {duration_minutes && (
-              <div className="flex items-center gap-2 text-white/50 text-xs font-telegraf">
+              <div className="flex items-center gap-2 text-white/50 text-xs">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>

@@ -21,7 +21,7 @@ export default function BrandVisualPage() {
     >
       <div className="bg-[#0d0d0d] min-h-screen text-white">
         <div className="px-[50px] py-[40px] max-w-[1480px] mx-auto">
-          <h1 className="text-3xl font-telegraf font-bold mb-6">Brand – Visual Elements</h1>
+          <h1 className="text-3xl font-bold mb-6">Brand – Visual Elements</h1>
           <p className="text-white/70">Visual elements content coming soon.</p>
         </div>
       </div>

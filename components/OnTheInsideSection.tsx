@@ -147,9 +147,9 @@ export default function OnTheInsideSection({ className = '', pageReady = true, o
                   headerAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
                 }`}
               >
-                <span className="text-[16px] font-telegraf text-black">(4)</span>
+                <span className="text-[16px] text-black">(4)</span>
                 <div className="flex flex-col gap-5 md:items-end items-start">
-                  <h2 className="md:text-[60px] text-[40px] font-telegraf font-extrabold uppercase leading-[63px] text-black md:text-right text-left">
+                  <h2 className="md:text-[60px] text-[40px] font-extrabold uppercase leading-[63px] text-black md:text-right text-left">
                   PULLING BACK
                   <br />
                   THE CURTAIN
@@ -218,7 +218,7 @@ export default function OnTheInsideSection({ className = '', pageReady = true, o
                         <button
                           key={filter}
                           onClick={() => setActiveFilter(filter)}
-                          className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-inter font-semibold transition-colors ${
+                          className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-semibold transition-colors ${
                             activeFilter === filter
                               ? 'bg-white text-black'
                               : 'border border-white text-white hover:bg-white hover:text-black'

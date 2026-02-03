@@ -187,7 +187,7 @@ export default function AdminSidebar({ className = '', expanded = false }: Admin
                 `}
               />
               {expanded && (
-                <span className={`h-[100%] text-sm font-telegraf ${active ? 'text-white' : 'text-white/80'}`}>
+                <span className={`h-[100%] text-sm ${active ? 'text-white' : 'text-white/80'}`}>
                   {item.label}
                 </span>
               )}
@@ -228,7 +228,7 @@ export default function AdminSidebar({ className = '', expanded = false }: Admin
           `}
         />
         {expanded && (
-          <span className={`text-sm font-telegraf ${isActive(profile) ? 'text-white' : 'text-white/80'}`}>
+          <span className={`text-sm ${isActive(profile) ? 'text-white' : 'text-white/80'}`}>
             Profile
           </span>
         )}

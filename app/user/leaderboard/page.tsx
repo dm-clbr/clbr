@@ -95,7 +95,7 @@ export default function AdminLeaderboardPage() {
                   <button
                     key={r}
                     onClick={() => setRoleFilter(r)}
-                    className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-inter font-semibold transition-colors ${
+                    className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-semibold transition-colors ${
                       roleFilter === r ? "bg-white text-black" : "bg-transparent text-white hover:bg-white/10"
                     }`}
                   >
@@ -110,7 +110,7 @@ export default function AdminLeaderboardPage() {
                   <button
                     key={t}
                     onClick={() => setTimeFilter(t)}
-                    className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-inter font-semibold transition-colors ${
+                    className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-semibold transition-colors ${
                       timeFilter === t ? "bg-white text-black" : "bg-transparent text-white hover:bg-white/10"
                     }`}
                   >
@@ -125,7 +125,7 @@ export default function AdminLeaderboardPage() {
                   <button
                     key={m}
                     onClick={() => setMetricFilter(m)}
-                    className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-inter font-semibold transition-colors ${
+                    className={`px-[15px] py-[7px] rounded-[60px] text-[14px] font-semibold transition-colors ${
                       metricFilter === m ? "bg-white text-black" : "bg-transparent text-white hover:bg-white/10"
                     }`}
                   >
@@ -167,7 +167,7 @@ export default function AdminLeaderboardPage() {
               </div>
             ) : filteredData.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-20 text-center gap-3">
-                <div className="text-white text-xl font-telegraf">No results</div>
+                <div className="text-white text-xl">No results</div>
                 <div className="text-white/60">Try a different name or clear the search</div>
               </div>
             ) : (
@@ -188,17 +188,17 @@ export default function AdminLeaderboardPage() {
                         }`}
                       >
                         <div className="text-2xl">{entry.rank === 1 || entry.rank === 2 || entry.rank === 3 ? getRankIconFromRank(entry.rank ?? 0) : ''}</div>
-                        <div className="text-white text-[14px] font-telegraf font-black">#{entry.rank}</div>
+                        <div className="text-white text-[14px] font-black">#{entry.rank}</div>
                       </div>
                       <div className="flex flex-col items-center justify-center gap-[10px] px-2 grow h-full">
-                        <div className="text-white text-[25px] font-telegraf font-black">{entry.name}</div>
+                        <div className="text-white text-[25px] font-black">{entry.name}</div>
                         <div className="flex items-center gap-[10px]">
-                          <div className="text-white text-[17px] font-telegraf font-black">{getTSIValue(entry)}</div>
-                          <div className="text-[rgba(255,255,255,0.5)] text-[17px] font-telegraf font-light">TSI</div>
+                          <div className="text-white text-[17px] font-black">{getTSIValue(entry)}</div>
+                          <div className="text-[rgba(255,255,255,0.5)] text-[17px] font-light">TSI</div>
                         </div>
                         <div className="flex items-center gap-[10px]">
-                          <div className="text-[rgba(255,255,255,0.5)] text-[17px] font-telegraf font-light">{getTSSValue(entry)}</div>
-                          <div className="text-[rgba(255,255,255,0.5)] text-[17px] font-telegraf font-light">TSS</div>
+                          <div className="text-[rgba(255,255,255,0.5)] text-[17px] font-light">{getTSSValue(entry)}</div>
+                          <div className="text-[rgba(255,255,255,0.5)] text-[17px] font-light">TSS</div>
                         </div>
                       </div>
                     </div>
@@ -208,10 +208,10 @@ export default function AdminLeaderboardPage() {
                 {/* Rest */}
                 <div className="overflow-hidden flex flex-col gap-[5px]">
                   <div className="grid gap-4 p-6 rounded-[3px]" style={{ gridTemplateColumns: "80px 1fr 1fr 1fr" }}>
-                    <div className="text-[18px] font-telegraf font-light text-[rgba(255,255,255,0.5)]">Rank</div>
-                    <div className="text-[18px] font-telegraf font-light text-[rgba(255,255,255,0.5)]">Sales Rep</div>
-                    <div className="text-[18px] font-telegraf font-light text-[rgba(255,255,255,0.5)] flex justify-center">TSI</div>
-                    <div className="text-[18px] font-telegraf font-light text-[rgba(255,255,255,0.5)] flex justify-center">TSS</div>
+                    <div className="text-[18px] font-light text-[rgba(255,255,255,0.5)]">Rank</div>
+                    <div className="text-[18px] font-light text-[rgba(255,255,255,0.5)]">Sales Rep</div>
+                    <div className="text-[18px] font-light text-[rgba(255,255,255,0.5)] flex justify-center">TSI</div>
+                    <div className="text-[18px] font-light text-[rgba(255,255,255,0.5)] flex justify-center">TSS</div>
                   </div>
 
                   {filteredDataSorted.slice(3).map((entry) => (
@@ -221,16 +221,16 @@ export default function AdminLeaderboardPage() {
                       style={{ gridTemplateColumns: "80px 1fr 1fr 1fr" }}
                     >
                       <div className="flex items-center">
-                        <span className="text-white text-[18px] font-telegraf font-bold">{getRankIconFromRank(entry.rank ?? 0)}</span>
+                        <span className="text-white text-[18px] font-bold">{getRankIconFromRank(entry.rank ?? 0)}</span>
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-white text-[16px] font-telegraf font-semibold">{entry.name}</span>
+                        <span className="text-white text-[16px] font-semibold">{entry.name}</span>
                       </div>
                       <div className="flex items-center justify-center">
-                        <span className="text-white text-[18px] font-telegraf font-bold">{getTSIValue(entry)}</span>
+                        <span className="text-white text-[18px] font-bold">{getTSIValue(entry)}</span>
                       </div>
                       <div className="flex items-center justify-center">
-                        <span className="text-[18px] font-telegraf font-light text-[rgba(255,255,255,0.5)]">{getTSSValue(entry)}</span>
+                        <span className="text-[18px] font-light text-[rgba(255,255,255,0.5)]">{getTSSValue(entry)}</span>
                       </div>
                     </div>
                   ))}
@@ -243,42 +243,42 @@ export default function AdminLeaderboardPage() {
               <div className="flex items-end justify-between mb-8">
                 <div className="flex flex-col items-start gap-2.5 text-white">
                   <div className="flex items-start gap-2.5 text-white">
-                    <span className="text-[16px] font-telegraf">(2)</span>
-                    <h2 className="text-[40px] font-telegraf font-extrabold uppercase leading-[42px]">Team Performance.</h2>
+                    <span className="text-[16px]">(2)</span>
+                    <h2 className="text-[40px] font-extrabold uppercase leading-[42px]">Team Performance.</h2>
                   </div>
-                  <div className="text-white text-[16px] font-telegraf md:max-w-[520px]">
+                  <div className="text-white text-[16px] md:max-w-[520px]">
                     <p>
                       Real-time performance metrics from all sales reps.
                       <br />These numbers represent our collective success.
                     </p>
                   </div>
                 </div>
-                <div className="text-[rgba(255,255,255,0.4)] text-[16px] font-telegraf font-extrabold">_{new Date().getFullYear()}</div>
+                <div className="text-[rgba(255,255,255,0.4)] text-[16px] font-extrabold">_{new Date().getFullYear()}</div>
               </div>
 
               <div className="grid md:grid-cols-4 gap-5">
                 <div className="bg-gradient-to-b from-[#171717] to-[#0d0d0d] h-[205px] rounded-[3px] flex items-center justify-center">
                   <div className="text-center">
-                    <div className="text-white text-[70px] font-telegraf font-black leading-none">{totalStats.totalReps}</div>
-                    <p className="text-[#888d95] text-[14px] font-telegraf">Total Reps</p>
+                    <div className="text-white text-[70px] font-black leading-none">{totalStats.totalReps}</div>
+                    <p className="text-[#888d95] text-[14px]">Total Reps</p>
                   </div>
                 </div>
                 <div className="bg-gradient-to-b from-[#171717] to-[#0d0d0d] h-[205px] rounded-[3px] flex items-center justify-center">
                   <div className="text-center">
-                    <div className="text-white text-[70px] font-telegraf font-black leading-none">{totalStats.totalTSS.toLocaleString()}</div>
-                    <p className="text-[#888d95] text-[14px] font-telegraf">Total TSS</p>
+                    <div className="text-white text-[70px] font-black leading-none">{totalStats.totalTSS.toLocaleString()}</div>
+                    <p className="text-[#888d95] text-[14px]">Total TSS</p>
                   </div>
                 </div>
                 <div className="bg-gradient-to-b from-[#171717] to-[#0d0d0d] h-[205px] rounded-[3px] flex items-center justify-center">
                   <div className="text-center">
-                    <div className="text-white text-[70px] font-telegraf font-black leading-none">{totalStats.totalTSI.toLocaleString()}</div>
-                    <p className="text-[#888d95] text-[14px] font-telegraf">Total TSI</p>
+                    <div className="text-white text-[70px] font-black leading-none">{totalStats.totalTSI.toLocaleString()}</div>
+                    <p className="text-[#888d95] text-[14px]">Total TSI</p>
                   </div>
                 </div>
                 <div className="bg-gradient-to-b from-[#171717] to-[#0d0d0d] h-[205px] rounded-[3px] flex items-center justify-center">
                   <div className="text-center">
-                    <div className="text-white text-[70px] font-telegraf font-black leading-none">{totalStats.avgTSS}</div>
-                    <p className="text-[#888d95] text-[14px] font-telegraf">Average TSS</p>
+                    <div className="text-white text-[70px] font-black leading-none">{totalStats.avgTSS}</div>
+                    <p className="text-[#888d95] text-[14px]">Average TSS</p>
                   </div>
                 </div>
               </div>
