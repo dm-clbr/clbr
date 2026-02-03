@@ -154,14 +154,14 @@ export default function OnTheInsideSection({ className = '', pageReady = true, o
                   <br />
                   THE CURTAIN
                   </h2>
-                  <div className="font-telegraf text-[16px] text-right text-black leading-[28px]">
+                  <div className="text-[16px] text-right text-black leading-[28px]">
                     What's working with Aveyo like?
                   </div>
                 </div>
               </div>
               <div 
                 ref={descriptionAnimation.ref}
-                className={`font-telegraf w-[100%] md:pl-[30%] pl-[0] text-black text-[16px] leading-[28px] transition-all duration-700 ${
+                className={`w-[100%] md:pl-[30%] pl-[0] text-black text-[16px] leading-[28px] transition-all duration-700 ${
                   descriptionAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
                 }`}
               >

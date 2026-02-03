@@ -137,7 +137,7 @@ export default function CMSContentArea({ className = '' }: CMSContentAreaProps) 
                   className="size-full"
                 />
               </div>
-              <div className="font-telegraf font-extrabold leading-[0] not-italic relative shrink-0 text-[20px] text-nowrap text-white">
+              <div className="font-extrabold leading-[0] not-italic relative shrink-0 text-[20px] text-nowrap text-white">
                 {currentTab?.name} Management
               </div>
             </div>

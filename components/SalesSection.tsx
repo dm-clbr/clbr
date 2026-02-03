@@ -172,7 +172,7 @@ export default function SalesSection({ className = '', pageReady = true, onJoinC
                 <div className="relative size-[49.586px]">
                   <img alt="" className="block max-w-none size-full" src="/images/world-icon.svg" />
                 </div>
-                <div className="font-telegraf font-extrabold text-white text-[15px] uppercase text-nowrap">
+                <div className="font-extrabold text-white text-[15px] uppercase text-nowrap">
                   {content.grid.copyright.text}
                 </div>
               </div>
@@ -182,11 +182,11 @@ export default function SalesSection({ className = '', pageReady = true, onJoinC
           {/* Right Side - Description */}
           <div 
             ref={descriptionAnimation.ref}
-            className={`font-telegraf font-bold text-white text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] text-left md:text-right uppercase w-full md:w-[642.702px] transition-all duration-700 ${
+            className={`font-bold text-white text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] text-left md:text-right uppercase w-full md:w-[642.702px] transition-all duration-700 ${
               descriptionAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
             }`}
           >
-            <span className="font-telegraf font-black">
+            <span className="font-black">
               {content.grid.h3_text.text}
             </span>
           </div>
@@ -244,7 +244,7 @@ export default function SalesSection({ className = '', pageReady = true, onJoinC
             }`}
           >
             <b className='mb-[20px] sm:mb-[40px]'>{content.grid.text_block.title}</b>
-            <div className="font-telegraf text-white text-[14px] sm:text-[16px] leading-[24px] sm:leading-[28px] w-full">
+            <div className="text-white text-[14px] sm:text-[16px] leading-[24px] sm:leading-[28px] w-full">
               {content.grid.text_block.content}
             </div>
           </div>

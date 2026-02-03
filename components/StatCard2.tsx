@@ -49,18 +49,18 @@ export default function StatCard2({
               )}
             </div>
           ) : (
-            <div className="font-telegraf font-black text-[80px] text-white">
+            <div className="font-black text-[80px] text-white">
               {animatedValue}
             </div>
           )}
           
           {/* Title */}
-          <div className="font-telegraf font-bold text-[16px] text-white text-center">
+          <div className="font-bold text-[16px] text-white text-center">
             {title}
           </div>
           
           {/* Description */}
-          <div className="font-telegraf text-[14px] text-center text-white w-[254.592px]">
+          <div className="text-[14px] text-center text-white w-[254.592px]">
             {description}
           </div>
         </div>

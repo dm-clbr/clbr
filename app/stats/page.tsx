@@ -127,14 +127,14 @@ export default function StatsPage() {
             }`}
           >
             <div className="content-stretch flex gap-2.5 items-start justify-start relative text-white">
-              <div className="font-telegraf relative shrink-0 text-[16px] text-nowrap">
+              <div className="relative shrink-0 text-[16px] text-nowrap">
                 <p className="leading-[normal] whitespace-pre">{grid?.pageHeader?.prefix || '(1)'}</p>
               </div>
-              <h1 className="font-telegraf font-extrabold leading-[0.8] text-[36px] sm:text-[48px] md:text-[64px] lg:text-[80px] uppercase w-full md:w-[70%]">
+              <h1 className="font-extrabold leading-[0.8] text-[36px] sm:text-[48px] md:text-[64px] lg:text-[80px] uppercase w-full md:w-[70%]">
                 {grid?.pageHeader?.text || 'Why Sell Solar With Aveyo?'}
               </h1>
             </div>
-            <div className="font-telegraf font-bold leading-[0] not-italic relative shrink-0 text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] text-left md:text-right text-white uppercase w-full md:w-[555.304px]">
+            <div className="font-bold leading-[0] not-italic relative shrink-0 text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] text-left md:text-right text-white uppercase w-full md:w-[555.304px]">
               <p className="leading-[normal]">
                 <span>{grid?.subHeader?.whiteText || 'Real Numbers. Real earnings. real impact.'} </span>
                 <span className="text-[rgba(255,255,255,0.6)]">
@@ -152,7 +152,7 @@ export default function StatsPage() {
             }`}
           >
             <div className="box-border content-stretch flex gap-2.5 items-center justify-center pb-[30px] pt-0 px-0 relative shrink-0">
-              <div className="font-telegraf font-black leading-[0] not-italic relative shrink-0 text-[30px] text-white uppercase w-[721.026px]">
+              <div className="font-black leading-[0] not-italic relative shrink-0 text-[30px] text-white uppercase w-[721.026px]">
                 <p className="leading-[normal]">{section1?.title || 'The big comparison'}</p>
               </div>
             </div>
@@ -240,7 +240,7 @@ export default function StatsPage() {
                           </div>
                         ) : null}
                       </div>
-                      <div className="font-telegraf relative shrink-0 text-[#888d95] text-[14px] text-nowrap">
+                      <div className="relative shrink-0 text-[#888d95] text-[14px] text-nowrap">
                         <p className="leading-[normal] whitespace-pre">{s?.name || ''}</p>
                       </div>
                     </div>
@@ -258,7 +258,7 @@ export default function StatsPage() {
             }`}
           >
             <div className="box-border content-stretch flex gap-2.5 items-center justify-center pb-[30px] pt-0 px-0 relative shrink-0">
-              <div className="font-telegraf font-black leading-[0] not-italic relative shrink-0 text-[30px] text-white uppercase w-[100%]">
+              <div className="font-black leading-[0] not-italic relative shrink-0 text-[30px] text-white uppercase w-[100%]">
                 <p className="leading-[normal]">{section2?.title || 'Your Growth Path with Aveyo'}</p>
               </div>
             </div>
@@ -338,7 +338,7 @@ export default function StatsPage() {
                         </div>
                       ) : null}
                     </div>
-                    <div className="font-telegraf relative shrink-0 text-[#888d95] text-[14px] text-nowrap">
+                    <div className="relative shrink-0 text-[#888d95] text-[14px] text-nowrap">
                       <p className="leading-[normal] whitespace-pre">{s?.name || ''}</p>
                     </div>
                   </div>
@@ -355,7 +355,7 @@ export default function StatsPage() {
             }`}
           >
             <div className="box-border content-stretch flex gap-2.5 items-center justify-center pb-[30px] pt-0 px-0 relative shrink-0">
-              <div className="font-telegraf font-black leading-[0] not-italic relative shrink-0 text-[30px] text-nowrap text-white uppercase">
+              <div className="font-black leading-[0] not-italic relative shrink-0 text-[30px] text-nowrap text-white uppercase">
                 <p className="leading-[normal] whitespace-pre">{section3?.title || 'What one sale means'}</p>
               </div>
             </div>
@@ -390,7 +390,7 @@ export default function StatsPage() {
                         </div>
                       ) : null}
                     </div>
-                    <div className="font-telegraf relative shrink-0 text-[14px]">
+                    <div className="relative shrink-0 text-[14px]">
                       <p className="leading-[normal] text-nowrap whitespace-pre">{s?.name || ''}</p>
                     </div>
                   </div>

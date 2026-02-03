@@ -110,7 +110,7 @@ export default async function IncentiveDetailPage({ params }: PageProps) {
             
             {/* Title bottom overlay */}
             <div className="absolute left-0 right-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-6">
-              <h1 className="font-telegraf text-3xl md:text-4xl font-extrabold uppercase">{effective.title}</h1>
+              <h1 className="text-3xl md:text-4xl font-extrabold uppercase">{effective.title}</h1>
             </div>
           </div>
 
@@ -122,7 +122,7 @@ export default async function IncentiveDetailPage({ params }: PageProps) {
               <div className="space-y-8">
                 {/* Dates and summary */}
                 <div className="space-y-8">
-                  <h2 className="font-telegraf text-6xl font-bold">{effective.title}</h2>
+                  <h2 className="text-6xl font-bold">{effective.title}</h2>
                   <div className="flex flex-row items-center justify-start gap-[12px]">
                     {/* Overlay badges */}
                     <div className="flex items-start justify-start gap-[12px]">

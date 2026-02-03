@@ -57,7 +57,7 @@ export default function Button({
       aria-label={ariaLabel}
     >
       {!iconOnly && (
-        <span className="font-inter font-extrabold leading-[0] not-italic text-nowrap">
+        <span className="font-extrabold leading-[0] not-italic text-nowrap">
           {children}
         </span>
       )}

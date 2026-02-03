@@ -43,7 +43,7 @@ export default function HomePageManagementCard({
             `}
           />
         </div>
-        <div className="font-telegraf not-italic relative shrink-0 text-[#888d95] text-[12px] text-nowrap uppercase">
+        <div className="not-italic relative shrink-0 text-[#888d95] text-[12px] text-nowrap uppercase">
           {isActive ? 'Active' : 'Coming Soon'}
         </div>
       </div>
@@ -51,14 +51,14 @@ export default function HomePageManagementCard({
       {/* Main Content */}
       <div className="flex flex-col gap-[7px] grow items-start justify-center relative w-full">
         {/* Title */}
-        <div className="font-telegraf font-bold not-italic relative shrink-0 text-[20px] text-nowrap text-white">
+        <div className="font-bold not-italic relative shrink-0 text-[20px] text-nowrap text-white">
           {title}
         </div>
         
         {/* Description with Arrow */}
         {isActive && href ? (
           <Link href={href} className="content-stretch flex gap-[7px] group-hover:gap-[14px] items-center justify-start relative shrink-0 transition-all duration-200">
-            <div className="font-telegraf not-italic relative shrink-0 text-[#888d95] text-[14px] text-nowrap">
+            <div className="not-italic relative shrink-0 text-[#888d95] text-[14px] text-nowrap">
               {description}
             </div>
             <div className="h-0 relative shrink-0 w-[19.795px]">
@@ -75,7 +75,7 @@ export default function HomePageManagementCard({
           </Link>
         ) : (
           <div className="content-stretch flex gap-[7px] group-hover:gap-[14px] items-center justify-start relative shrink-0 transition-all duration-200">
-            <div className="font-telegraf not-italic relative shrink-0 text-[#888d95] text-[14px] text-nowrap">
+            <div className="not-italic relative shrink-0 text-[#888d95] text-[14px] text-nowrap">
               {description}
             </div>
             <div className="h-0 relative shrink-0 w-[19.795px]">

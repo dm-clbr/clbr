@@ -74,10 +74,10 @@ export default function ExpandableBlock({
       <div className="flex flex-col items-center justify-between overflow-clip h-full relative z-10">
         <div className={`flex grow ${isExpanded ? 'items-start pt-[20px]' : 'items-center'} justify-between px-10 w-full h-full`}>
           <div className={`flex items-start justify-start ${isExpanded ? 'flex-col gap-[30px]' : 'gap-2.5'}`}>
-            <div className="font-telegraf font-bold text-white text-[14px] leading-[23px]">
+            <div className="font-bold text-white text-[14px] leading-[23px]">
               {id}
             </div>
-            <div className="font-telegraf font-bold text-white md:text-[60px] text-[30px] md:leading-normal leading-[30px]">
+            <div className="font-bold text-white md:text-[60px] text-[30px] md:leading-normal leading-[30px]">
               {title}
             </div>
             <div 
@@ -88,7 +88,7 @@ export default function ExpandableBlock({
               }`}
             >
               {description && (
-                <div className="font-telegraf font-bold text-white text-[14px] md:leading-[23px] leading-[20px] md:w-[454.375px] w-[100%] mb-[30px]">
+                <div className="font-bold text-white text-[14px] md:leading-[23px] leading-[20px] md:w-[454.375px] w-[100%] mb-[30px]">
                   {description}
                 </div>
               )}

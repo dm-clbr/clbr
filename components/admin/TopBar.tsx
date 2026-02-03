@@ -107,19 +107,19 @@ export default function TopBar({
               {breadcrumbs.map((crumb, index) => (
                 <div key={index} className="content-stretch flex gap-[10px] items-center justify-start relative shrink-0">
                   {index > 0 && (
-                    <div className="font-telegraf not-italic relative shrink-0 text-[16px] text-nowrap text-[#888d95]">
+                    <div className="not-italic relative shrink-0 text-[16px] text-nowrap text-[#888d95]">
                       &gt;
                     </div>
                   )}
                   {crumb.href ? (
                     <Link
                       href={crumb.href}
-                      className="font-telegraf not-italic relative shrink-0 text-[16px] text-nowrap text-white hover:opacity-80 transition-opacity duration-200"
+                      className="not-italic relative shrink-0 text-[16px] text-nowrap text-white hover:opacity-80 transition-opacity duration-200"
                     >
                       {crumb.name}
                     </Link>
                   ) : (
-                    <div className="font-telegraf not-italic relative shrink-0 text-[16px] text-nowrap text-white border-b border-white">
+                    <div className="not-italic relative shrink-0 text-[16px] text-nowrap text-white border-b border-white">
                       {crumb.name}
                     </div>
                   )}
@@ -138,7 +138,7 @@ export default function TopBar({
                     }`}
                   >
                     <div className="box-border content-stretch flex flex-col gap-[20px] items-center justify-start overflow-clip px-0 py-[5px] relative">
-                      <div className="font-telegraf not-italic relative shrink-0 text-[16px] text-nowrap text-white">
+                      <div className="not-italic relative shrink-0 text-[16px] text-nowrap text-white">
                         {tab.name}
                       </div>
                     </div>
@@ -152,7 +152,7 @@ export default function TopBar({
                     }`}
                   >
                     <div className="box-border content-stretch flex flex-col gap-[20px] items-center justify-start overflow-clip px-0 py-[5px] relative">
-                      <div className="font-telegraf not-italic relative shrink-0 text-[16px] text-nowrap text-white">
+                      <div className="not-italic relative shrink-0 text-[16px] text-nowrap text-white">
                         {tab.name}
                       </div>
                     </div>
