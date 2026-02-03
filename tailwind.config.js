@@ -8,9 +8,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'dark': '#0D0D0D',
-        'card-dark': '#121212',
-        'white': '#FFFFFF',
+        // Grayscale palette
+        'cloud': '#EDEFF7',
+        'smoke': '#D3D6E0',
+        'steel': '#BCBFCC',
+        'space': '#9DA2B3',
+        'graphite': '#6E7180',
+        'arsenic': '#40424D',
+        'phantom': '#1E1E24',
+        'black': '#000000',
+        
+        // Base colors
+        'background': '#1A1A1A',
+        'surface': '#414141',
+        'light': '#F2F2F2',
+        
+        // Aliases for convenience
+        'dark': '#1A1A1A',
+        'card-dark': '#414141',
+        'white': '#F2F2F2',
       },
       borderRadius: {
         'sm': '2px',
