@@ -1,8 +1,9 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Button from '@/components/Button'
 import { UseScrollAnimationReturn } from '@/hooks/useScrollAnimation'
+import Hls from 'hls.js'
 
 interface HeroSectionProps {
   heroAnimation: UseScrollAnimationReturn<HTMLDivElement>
@@ -10,18 +11,70 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ heroAnimation, onJoinClick }: HeroSectionProps) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    const videoSrc = process.env.NEXT_PUBLIC_VIDEO_HERO_URL || "/videos/CLBRHeroFINAL.mp4"
+    
+    if (!video) return
+
+    // Check if HLS is needed (for .m3u8 files)
+    if (videoSrc.includes('.m3u8')) {
+      if (Hls.isSupported()) {
+        const hls = new Hls({
+          enableWorker: true,
+          lowLatencyMode: true,
+          startLevel: -1, // Auto select best quality
+          maxMaxBufferLength: 30,
+          autoStartLoad: true,
+          // Force high quality from the start
+          capLevelToPlayerSize: false,
+          capLevelOnFPSDrop: false,
+        })
+        hls.loadSource(videoSrc)
+        hls.attachMedia(video)
+        
+        // Force highest quality level when manifest loads
+        hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
+          // Set to highest quality level (last level is highest)
+          const highestLevel = data.levels.length - 1
+          hls.currentLevel = highestLevel
+          
+          video.play().catch(() => {
+            // Autoplay might be blocked, that's ok
+          })
+        })
+        
+        return () => {
+          hls.destroy()
+        }
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        // Native HLS support (Safari)
+        video.src = videoSrc
+        video.addEventListener('loadedmetadata', () => {
+          video.play().catch(() => {
+            // Autoplay might be blocked, that's ok
+          })
+        })
+      }
+    } else {
+      // Regular MP4
+      video.src = videoSrc
+    }
+  }, [])
+
   return (
     <div className="min-h-screen relative overflow-hidden flex items-end pb-20 justify-center">
       {/* Video Background */}
       <video 
+        ref={videoRef}
         autoPlay 
         muted 
         loop 
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/videos/CLBRHeroFINAL.mp4" type="video/mp4" />
-      </video>
+      />
       
       {/* Decorative Side Text */}
       <div className="absolute right-6 md:right-[-2rem] top-0 bottom-0 flex flex-col justify-between py-20 md:pt-[15rem] md:pb-[10rem] z-20">
