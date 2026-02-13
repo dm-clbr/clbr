@@ -21,6 +21,7 @@ const navItems = [
   { name: 'Incentives', href: '/incentives' }, 
   // { name: 'EDU', href: '/edu' },
   { name: 'Store', href: 'https://aveyo.shop/' },
+  { name: 'Verify', href: '/verify' },
   // { name: 'Brand', href: '/brand' },
   // { name: 'Wiki', href: 'https://aveyo-wiki.bullet.site/' },
   // { name: 'Map', href: '/map' },
@@ -83,11 +84,11 @@ export default function Navbar({ className = '' }: NavbarProps) {
             : 'bg-transparent'
       } ${className}`}
     >
-      <div className="mx-auto max-w-[1480px]">
-        <div className="flex items-center md:justify-center justify-between md:gap-[20px]">
+      <div className="mx-auto max-w-[98vw]">
+        <div className="flex items-center md:justify-between justify-between md:gap-[20px]">
           {/* Left: Logo */}
-          <a href="/" className="relative w-[72px] h-[48px] md:w-[86px] md:h-[58px]">
-            <img alt="Aveyo Logo" className="block max-w-none size-full" src="/aveyoSalesLogo.svg" />
+          <a href="/" className="relative] h-[50px]">
+            <img alt="CLBR Logo" className="block max-w-none size-full" src="/clbr-lockup-white.svg" />
           </a>
 
           {/* Desktop links */}

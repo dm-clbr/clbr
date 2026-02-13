@@ -9,6 +9,11 @@ interface UseScrollAnimationOptions {
   disabled?: boolean
 }
 
+export interface UseScrollAnimationReturn<T extends HTMLElement = HTMLElement> {
+  ref: React.RefObject<T>
+  isVisible: boolean
+}
+
 export function useScrollAnimation<T extends HTMLElement = HTMLElement>({
   threshold = 0.1,
   delay = 0,

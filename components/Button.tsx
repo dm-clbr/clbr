@@ -28,8 +28,8 @@ export default function Button({
   ariaLabel
 }: ButtonProps) {
   const baseStyles = iconOnly
-    ? "inline-flex items-center justify-center rounded-[3px] p-2 size-[45px]"
-    : "box-border content-stretch flex gap-2.5 items-center justify-center min-h-[45px] py-[10px] px-[20px] relative rounded-[3px] font-extrabold text-[14px] transition-colors cursor-pointer"
+    ? "inline-flex items-center justify-center rounded-[0px] p-2 size-[45px]"
+    : "box-border content-stretch flex gap-2.5 items-center justify-center min-h-[45px] py-[10px] px-[20px] relative rounded-[0px] font-extrabold text-[14px] transition-colors cursor-pointer"
   
   const getVariantStyles = () => {
     if (theme === 'dark') {

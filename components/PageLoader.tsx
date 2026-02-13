@@ -61,8 +61,8 @@ export default function PageLoader({ onComplete }: PageLoaderProps) {
               transition={{ duration: 0.8, delay: 0.5 }}
             >
             <motion.img
-              src="/aveyoSalesLogo.svg"
-              alt="Aveyo Sales Logo"
+              src="/clbr-icon-white.svg"
+              alt="CLBR Icon"
               className="w-[100px] h-[100px] object-contain"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

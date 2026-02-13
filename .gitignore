@@ -32,10 +32,14 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Large video files
+# Large video files (>50MB - use Git LFS or external hosting)
 public/videos/*.mov
 public/videos/test.MP4
 public/videos/Aveyo_Compressed.mp4
 public/Aveyo_Compressed_NoAudio.mp4
 public/Intro.mp4
 public/videos/rep-review.mp4
+public/videos/CLBRHeroFINAL.mp4
+public/videos/CLBRhype.mp4
+public/videos/Hero1nograin.mp4
+public/videos/CLBRHero2NOGRAIN.mp4
