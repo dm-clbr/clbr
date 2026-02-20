@@ -77,7 +77,7 @@ export default function HeroSection({ heroAnimation, onJoinClick }: HeroSectionP
       />
       
       {/* Decorative Side Text */}
-      <div className="absolute right-6 md:right-[-2rem] top-0 bottom-0 flex flex-col justify-between py-20 md:pt-[15rem] md:pb-[10rem] z-20">
+      <div className="hidden md:flex absolute right-6 md:right-[-2rem] top-0 bottom-0 flex-col justify-between py-20 md:pt-[15rem] md:pb-[10rem] z-20">
         <span className="text-cloud text-sm md:text-base lg:text-lg font-bold uppercase tracking-[4px] origin-center rotate-90 whitespace-nowrap">
           EARN BIGGER.
         </span>

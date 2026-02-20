@@ -34,7 +34,7 @@ export default function CultureSection({ animation }: CultureSectionProps) {
       <div className="w-full mx-auto text-center relative z-10">
         
         {/* Three Culture Points with Images */}
-        <div className="w-full pt-[160px] pb-[160px] flex flex-row gap-6 mb-16 items-stretch">
+        <div className="w-full pt-[160px] pb-[160px] flex flex-col lg:flex-row gap-6 mb-16 items-stretch">
           {/* Point 1 */}
           
           <div className="group flex flex-col justify-between flex-1">
@@ -62,7 +62,7 @@ export default function CultureSection({ animation }: CultureSectionProps) {
           </div>
 
           {/* Point 2 - Larger middle image */}
-          <div className="group h-full w-[40%]">
+          <div className="group h-full w-full lg:w-[40%]">
             
             <div className="aspect-[3/4] bg-surface/80 border border-arsenic/30 rounded-sm overflow-hidden mb-4">
               <img 
