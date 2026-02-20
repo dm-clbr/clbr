@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react'
 import Navbar from '@/components/Navbar'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
-import Hls from 'hls.js'
 
 interface Review {
   id: string
@@ -33,8 +32,8 @@ export default function ReviewsPage() {
       id: '1',
       title: 'Noah Sorenson',
       description: 'CLBR sales rep Noah Sorenson shares his experience working at CLBR',
-      video_url: 'https://vz-597613.b-cdn.net/20eaaa09-9e22-4c45-96c3-4f3c8c9d7bfc/playlist.m3u8',
-      thumbnail_url: '/images/rep-review-thumbnail.png',
+      video_url: 'https://vz-a709db05-aaf.b-cdn.net/20eaaa09-9e22-4c45-96c3-4f3c8c9d7bfc/play_1080p.mp4',
+      thumbnail_url: 'https://vz-a709db05-aaf.b-cdn.net/20eaaa09-9e22-4c45-96c3-4f3c8c9d7bfc/thumbnail.jpg',
       type: 'rep',
       featured: true,
       rep_name: 'Noah Sorenson',
@@ -46,8 +45,8 @@ export default function ReviewsPage() {
       id: '2',
       title: 'Andrew Rietveld',
       description: 'CLBR sales rep Andrew Rietveld discusses his success and experience',
-      video_url: 'https://vz-597613.b-cdn.net/bde3f6e5-dbcb-4bb0-93ed-8137cdcc1dae/playlist.m3u8',
-      thumbnail_url: '/images/rep-review-thumbnail.png',
+      video_url: 'https://vz-a709db05-aaf.b-cdn.net/bde3f6e5-dbcb-4bb0-93ed-8137cdcc1dae/play_1080p.mp4',
+      thumbnail_url: 'https://vz-a709db05-aaf.b-cdn.net/bde3f6e5-dbcb-4bb0-93ed-8137cdcc1dae/thumbnail.jpg',
       type: 'rep',
       featured: true,
       rep_name: 'Andrew Rietveld',
@@ -59,8 +58,8 @@ export default function ReviewsPage() {
       id: '3',
       title: 'Kaden Blake',
       description: 'CLBR sales rep Kaden Blake shares what makes CLBR different',
-      video_url: 'https://vz-597613.b-cdn.net/de9799cb-cfb6-4859-9df6-1f98be83b43a/playlist.m3u8',
-      thumbnail_url: '/images/rep-review-thumbnail.png',
+      video_url: 'https://vz-a709db05-aaf.b-cdn.net/de9799cb-cfb6-4859-9df6-1f98be83b43a/play_1080p.mp4',
+      thumbnail_url: 'https://vz-a709db05-aaf.b-cdn.net/de9799cb-cfb6-4859-9df6-1f98be83b43a/thumbnail.jpg',
       type: 'rep',
       featured: true,
       rep_name: 'Kaden Blake',
@@ -85,98 +84,26 @@ export default function ReviewsPage() {
     setPageReady(true)
   }, [])
 
-  // Initialize HLS for each video
+  // Initialize videos and enforce single-play behavior
   useEffect(() => {
-    const hlsInstances: Hls[] = []
-
     filteredReviews.forEach((review, index) => {
       const video = videoRefs.current[index]
-      const videoSrc = review.video_url
-      
       if (!video) return
 
-      if (videoSrc.includes('.m3u8')) {
-        if (Hls.isSupported()) {
-          const hls = new Hls({
-            enableWorker: true,
-            lowLatencyMode: false,
-            startLevel: 0, // Start with lowest quality for faster loading
-            maxBufferLength: 20,
-            maxMaxBufferLength: 30,
-            autoStartLoad: true,
-            capLevelToPlayerSize: true, // Let it automatically adjust
-            capLevelOnFPSDrop: true,
-            debug: false,
-          })
-          
-          hls.on(Hls.Events.ERROR, (event, data) => {
-            console.error(`HLS Error for video ${index}:`, data.type, data.details)
-            if (data.fatal) {
-              switch (data.type) {
-                case Hls.ErrorTypes.NETWORK_ERROR:
-                  console.log('Network error, trying to recover...')
-                  setTimeout(() => hls.startLoad(), 1000)
-                  break
-                case Hls.ErrorTypes.MEDIA_ERROR:
-                  console.log('Media error, trying to recover...')
-                  hls.recoverMediaError()
-                  break
-                default:
-                  console.log('Fatal error, destroying HLS instance')
-                  hls.destroy()
-                  break
-              }
-            }
-          })
-          
-          hls.loadSource(videoSrc)
-          hls.attachMedia(video)
-          
-          hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
-            console.log(`HLS manifest parsed for video ${index}, ${data.levels.length} quality levels available`)
-          })
+      video.src = review.video_url
 
-          hls.on(Hls.Events.LEVEL_LOADED, (event, data) => {
-            console.log(`Level loaded for video ${index}: level ${data.level}`)
-          })
-          
-          hlsInstances.push(hls)
-        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-          video.src = videoSrc
-        }
+      const handlePlay = () => {
+        videoRefs.current.forEach((other, otherIndex) => {
+          if (otherIndex !== index && other && !other.paused) {
+            other.pause()
+          }
+        })
       }
-    })
 
-    return () => {
-      hlsInstances.forEach(hls => {
-        try {
-          hls.destroy()
-        } catch (e) {
-          console.error('Error destroying HLS instance:', e)
-        }
-      })
-    }
+      video.addEventListener('play', handlePlay)
+      return () => video.removeEventListener('play', handlePlay)
+    })
   }, [filteredReviews])
-
-  // Handle video click - pause others when one plays
-  const handleVideoClick = (index: number) => {
-    const clickedVideo = videoRefs.current[index]
-    if (!clickedVideo) return
-
-    // Pause all other videos
-    videoRefs.current.forEach((video, i) => {
-      if (video && i !== index && !video.paused) {
-        video.pause()
-      }
-    })
-
-    // Toggle play/pause on clicked video
-    if (clickedVideo.paused) {
-      clickedVideo.play()
-    } else {
-      clickedVideo.pause()
-    }
-  }
 
   return (
     <div className="bg-[#0d0d0d] min-h-screen">
@@ -208,7 +135,7 @@ export default function ReviewsPage() {
           </div>
 
           {/* Filters */}
-          <div 
+          {/* <div 
             ref={filtersAnimation.ref}
             className="flex items-center justify-center gap-2.5 mb-12 opacity-100 translate-y-0"
           >
@@ -252,7 +179,7 @@ export default function ReviewsPage() {
             >
               ⭐ Featured Only
             </button>
-          </div>
+          </div> */}
 
           {/* Results Count */}
           <div className="text-center mb-12">
@@ -270,24 +197,24 @@ export default function ReviewsPage() {
               {filteredReviews.map((review, index) => (
                 <div
                   key={review.id}
-                  onClick={() => handleVideoClick(index)}
-                  className="group relative w-full aspect-[9/16] bg-surface/80 border border-arsenic/30 rounded-sm overflow-hidden hover:border-cloud transition-all cursor-pointer"
+                  className="group relative w-full aspect-[9/16] bg-surface/80 border border-arsenic/30 rounded-sm overflow-hidden hover:border-cloud transition-all"
                 >
-                  {/* Video Element with HLS */}
+                  {/* Video Element */}
                   <video
                     ref={(el) => { videoRefs.current[index] = el }}
                     className="absolute inset-0 w-full h-full object-cover"
                     controls
                     playsInline
                     preload="none"
+                    poster={review.thumbnail_url}
                   />
                   
                   {/* Info Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-phantom via-phantom/80 to-transparent p-6 pointer-events-none">
+                  {/* <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-phantom via-phantom/80 to-transparent p-6 pointer-events-none">
                     <h4 className="text-light text-lg font-black uppercase mb-1">
                       {review.rep_name || review.title}
                     </h4>
-                  </div>
+                  </div> */}
                 </div>
               ))}
             </div>

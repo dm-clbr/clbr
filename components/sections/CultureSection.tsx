@@ -93,6 +93,20 @@ export default function CultureSection({ animation }: CultureSectionProps) {
 
         {/* World Class Section */}
         <div className="mb-12">
+          {/* Background Pattern */}
+          <img
+            src="/SVG/clbr-outline.svg"
+            alt="CLBR Outline"
+            className="absolute opacity-5"
+            draggable={false}
+            style={{
+              bottom: '0vh',
+              left: '0vw',
+              backgroundSize: 'cover',
+              maxWidth: 'none !important',
+              width: '100vw',
+            }}
+          />
           {/* Marquee Banner - Full Width */}
           <div className="relative overflow-hidden py-8 mb-8 bg-surface/30 -mx-6 sm:-mx-10 md:-mx-16 lg:-mx-24 w-screen left-0">
             <div className="flex animate-marquee whitespace-nowrap">

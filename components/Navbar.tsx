@@ -21,7 +21,7 @@ const navItems = [
   { name: 'Incentives', href: '/incentives' }, 
   // { name: 'EDU', href: '/edu' },
   { name: 'Store', href: 'https://clbr.store/' },
-  { name: 'Verify', href: '/verify' },
+  // { name: 'Verify', href: '/verify' },
   // { name: 'Brand', href: '/brand' },
   // { name: 'Wiki', href: 'https://aveyo-wiki.bullet.site/' },
   // { name: 'Map', href: '/map' },
@@ -103,7 +103,7 @@ export default function Navbar({ className = '' }: NavbarProps) {
               </a>
             ))}
             {/* Right: Profile link */}
-          <a
+          {/* <a
             href={isLoggedIn ? '/user' : '/login'}
             className='ml-auto mr-3 hidden md:flex items-center justify-center rounded-full overflow-hidden h-[28px] w-[28px] bg-gradient-to-b from-[#5C5C5C] to-[#1F1F1F]'
             title={isLoggedIn ? 'Profile' : 'Sign in'}
@@ -115,7 +115,7 @@ export default function Navbar({ className = '' }: NavbarProps) {
               height={28}
               className='transition-all duration-200 bg-gradient-to-b from-[#5C5C5C] to-[#1F1F1F] rounded-full overflow-hidden'
             />
-          </a>
+          </a> */}
           </div>
 
           {/* Mobile menu button */}
@@ -158,7 +158,7 @@ export default function Navbar({ className = '' }: NavbarProps) {
               <div className="rounded-md border border-white/10 bg-black/80 backdrop-blur supports-[backdrop-filter]:bg-black/60 shadow-lg">
                 <div className="flex flex-col py-2">
                   {/* Profile link (mobile) */}
-                  <a
+                  {/* <a
                     href={isLoggedIn ? '/user' : '/login'}
                     onClick={() => setOpen(false)}
                     className="px-4 py-3 text-white text-sm font-bold uppercase tracking-wide hover:bg-white/10 transition-colors flex items-center gap-3"
@@ -171,7 +171,7 @@ export default function Navbar({ className = '' }: NavbarProps) {
                       />
                     </span>
                     {isLoggedIn ? 'Profile' : 'Sign in'}
-                  </a>
+                  </a> */}
                   {navItems.map((item) => (
                     <a
                       key={item.name}

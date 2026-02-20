@@ -1,5 +1,8 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import IncentiveCard from '@/components/incentives/IncentiveCard'
+import IncentiveModal from '@/components/incentives/IncentiveModal'
 import type { Incentive } from '@/lib/types/incentive'
 
 export type IncentivesCopy = {
@@ -23,6 +26,8 @@ export default function IncentivesList({
   loading,
   filteredIncentives,
 }: IncentivesListProps) {
+  const [selectedIncentive, setSelectedIncentive] = useState<Incentive | null>(null)
+
   return (
     <div className="max-w-[1480px] mx-auto">
       {/* Header (from CMS) */}
@@ -65,27 +70,33 @@ export default function IncentivesList({
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {filteredIncentives.map((incentive) => (
-            <a
-              key={incentive.id}
-              href={`/user/incentives/${incentive.id}`}
-              className="block rounded-[3px] overflow-hidden focus:outline-none focus:ring-2 focus:ring-white/50"
-            >
-              <IncentiveCard
-                title={incentive.title}
-                backgroundImage={incentive.background_image_url}
-                backgroundVideo={incentive.background_video_url}
-                liveStatus={incentive.live_status}
-                category={incentive.category}
-                categoryColor={incentive.category_color}
-                startDate={incentive.start_date}
-                endDate={incentive.end_date}
-                variant="detailed"
-              />
-            </a>
-          ))}
-        </div>
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {filteredIncentives.map((incentive) => (
+              <div key={incentive.id} className="rounded-[3px] overflow-hidden">
+                <IncentiveCard
+                  title={incentive.title}
+                  backgroundImage={incentive.background_image_url}
+                  backgroundVideo={incentive.background_video_url}
+                  liveStatus={incentive.live_status}
+                  category={incentive.category}
+                  categoryColor={incentive.category_color}
+                  startDate={incentive.start_date}
+                  endDate={incentive.end_date}
+                  variant="detailed"
+                  onViewClick={() => setSelectedIncentive(incentive)}
+                />
+              </div>
+            ))}
+          </div>
+
+          {selectedIncentive && (
+            <IncentiveModal
+              incentive={selectedIncentive}
+              onClose={() => setSelectedIncentive(null)}
+            />
+          )}
+        </>
       )}
 
       {/* Empty State */}

@@ -1,8 +1,10 @@
 'use client'
 
-import React from 'react'
-import Link from 'next/link'
+import React, { useState } from 'react'
 import { UseScrollAnimationReturn } from '@/hooks/useScrollAnimation'
+import { HARDCODED_INCENTIVES, getIncentivePeriod } from '@/lib/data/hardcoded-incentives'
+import IncentiveModal from '@/components/incentives/IncentiveModal'
+import type { Incentive } from '@/lib/types/incentive'
 
 interface IncentivesSectionProps {
   animation: UseScrollAnimationReturn<HTMLElement>
@@ -11,18 +13,13 @@ interface IncentivesSectionProps {
 }
 
 export default function IncentivesSection({ animation, activeFilter, onFilterChange }: IncentivesSectionProps) {
-  // Incentive data from /images/incentives folder
-  const incentives = [
-    { id: 1, title: 'Offsite', category: 'YEARLY', period: '2026', image: '/images/incentives/OFFSITE 26_ FINAL.png' },
-    { id: 2, title: 'Out of Stock', category: 'MONTHLY', period: 'Feb 2026', image: '/images/incentives/26_ OUT OF STOCK 2.png' },
-    { id: 3, title: 'Top Ten Rookies', category: 'YEARLY', period: '2026', image: '/images/incentives/TOP TEN ROOKIES.png' },
-    { id: 4, title: 'Top Ten Vets', category: 'YEARLY', period: '2026', image: '/images/incentives/TOP TEN VETS.png' },
-    { id: 5, title: 'Top Office', category: 'YEARLY', period: '2026', image: '/images/incentives/26_ TOP OFFICE.png' },
-  ]
+  const [selectedIncentive, setSelectedIncentive] = useState<Incentive | null>(null)
 
-  const filteredIncentives = activeFilter === 'ALL' 
-    ? incentives 
-    : incentives.filter(incentive => incentive.category === activeFilter)
+  const filteredIncentives = activeFilter === 'ALL'
+    ? HARDCODED_INCENTIVES
+    : HARDCODED_INCENTIVES.filter(
+        (incentive) => incentive.category.toUpperCase() === activeFilter
+      )
 
   return (
     <section 
@@ -66,47 +63,57 @@ export default function IncentivesSection({ animation, activeFilter, onFilterCha
         
         {/* Incentives Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {filteredIncentives.map((incentive) => (
-            <Link
-              key={incentive.id}
-              href={`/incentives/${incentive.id}`}
-              className="group relative aspect-[3.5/5] bg-surface/80 border border-arsenic/30 rounded-sm overflow-hidden hover:border-cloud transition-all"
-            >
-              {/* Incentive Poster Image */}
-              <img 
-                src={incentive.image}
-                alt={incentive.title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              
-              {/* Dark Gradient for Text Legibility */}
-              <div className="absolute inset-0 bg-gradient-to-t from-phantom/90 via-phantom/40 to-transparent pointer-events-none"></div>
-              
-              {/* Overlay Content */}
-              <div className="absolute inset-0 bg-gradient-to-t from-phantom via-phantom/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="absolute bottom-0 left-0 right-0 p-4">
+          {filteredIncentives.map((incentive) => {
+            const period = getIncentivePeriod(incentive.start_date, incentive.end_date)
+            return (
+              <button
+                key={incentive.id}
+                onClick={() => setSelectedIncentive(incentive as Incentive)}
+                className="group relative aspect-[3.5/5] bg-surface/80 border border-arsenic/30 rounded-sm overflow-hidden hover:border-cloud transition-all text-left w-full"
+              >
+                {/* Incentive Poster Image */}
+                <img
+                  src={incentive.background_image_url}
+                  alt={incentive.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+
+                {/* Dark Gradient for Text Legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-phantom/90 via-phantom/40 to-transparent pointer-events-none"></div>
+
+                {/* Overlay Content */}
+                <div className="absolute inset-0 bg-gradient-to-t from-phantom via-phantom/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <h4 className="text-light text-lg font-black uppercase mb-1">
+                      {incentive.title}
+                    </h4>
+                    <p className="text-cloud text-sm uppercase tracking-wider">
+                      {period}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Always Visible Label */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 group-hover:opacity-0 transition-opacity">
                   <h4 className="text-light text-lg font-black uppercase mb-1">
                     {incentive.title}
                   </h4>
-                  <p className="text-cloud text-sm uppercase tracking-wider">
-                    {incentive.period}
+                  <p className="text-smoke text-sm uppercase tracking-wider">
+                    {period}
                   </p>
                 </div>
-              </div>
-              
-              {/* Always Visible Label */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 group-hover:opacity-0 transition-opacity">
-                <h4 className="text-light text-lg font-black uppercase mb-1">
-                  {incentive.title}
-                </h4>
-                <p className="text-smoke text-sm uppercase tracking-wider">
-                  {incentive.period}
-                </p>
-              </div>
-            </Link>
-          ))}
+              </button>
+            )
+          })}
         </div>
       </div>
+
+      {selectedIncentive && (
+        <IncentiveModal
+          incentive={selectedIncentive}
+          onClose={() => setSelectedIncentive(null)}
+        />
+      )}
     </section>
   )
 }

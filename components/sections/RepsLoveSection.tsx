@@ -2,7 +2,6 @@
 
 import React, { useRef, useState, useEffect } from 'react'
 import { UseScrollAnimationReturn } from '@/hooks/useScrollAnimation'
-import Hls from 'hls.js'
 
 interface RepsLoveSectionProps {
   animation: UseScrollAnimationReturn<HTMLElement>
@@ -20,92 +19,40 @@ export default function RepsLoveSection({ animation }: RepsLoveSectionProps) {
     { 
       id: 1, 
       name: 'Noah Sorenson', 
-      videoId: '20eaaa09-9e22-4c45-96c3-4f3c8c9d7bfc',
-      libraryId: '597613'
+      videoSrc: 'https://vz-a709db05-aaf.b-cdn.net/20eaaa09-9e22-4c45-96c3-4f3c8c9d7bfc/play_1080p.mp4',
+      poster: 'https://vz-a709db05-aaf.b-cdn.net/20eaaa09-9e22-4c45-96c3-4f3c8c9d7bfc/thumbnail.jpg',
     },
     { 
       id: 2, 
       name: 'Andrew Rietveld', 
-      videoId: 'bde3f6e5-dbcb-4bb0-93ed-8137cdcc1dae',
-      libraryId: '597613'
+      videoSrc: 'https://vz-a709db05-aaf.b-cdn.net/bde3f6e5-dbcb-4bb0-93ed-8137cdcc1dae/play_1080p.mp4',
+      poster: 'https://vz-a709db05-aaf.b-cdn.net/bde3f6e5-dbcb-4bb0-93ed-8137cdcc1dae/thumbnail.jpg',
     },
     { 
       id: 3, 
       name: 'Kaden Blake', 
-      videoId: 'de9799cb-cfb6-4859-9df6-1f98be83b43a',
-      libraryId: '597613'
+      videoSrc: 'https://vz-a709db05-aaf.b-cdn.net/de9799cb-cfb6-4859-9df6-1f98be83b43a/play_1080p.mp4',
+      poster: 'https://vz-a709db05-aaf.b-cdn.net/de9799cb-cfb6-4859-9df6-1f98be83b43a/thumbnail.jpg',
     },
   ]
 
   useEffect(() => {
-    // Initialize HLS for each video
-    const hlsInstances: Hls[] = []
-
     testimonials.forEach((testimonial, index) => {
       const video = videoRefs.current[index]
-      const videoSrc = `https://vz-${testimonial.libraryId}.b-cdn.net/${testimonial.videoId}/playlist.m3u8`
-      
       if (!video) return
+      video.src = testimonial.videoSrc
 
-      if (Hls.isSupported()) {
-        const hls = new Hls({
-          enableWorker: true,
-          lowLatencyMode: false,
-          startLevel: 0, // Start with lowest quality for faster loading
-          maxBufferLength: 20,
-          maxMaxBufferLength: 30,
-          autoStartLoad: true,
-          capLevelToPlayerSize: true, // Let it automatically adjust
-          capLevelOnFPSDrop: true,
-          debug: false,
-        })
-        
-        hls.on(Hls.Events.ERROR, (event, data) => {
-          console.error(`HLS Error for testimonial ${index}:`, data.type, data.details)
-          if (data.fatal) {
-            switch (data.type) {
-              case Hls.ErrorTypes.NETWORK_ERROR:
-                console.log('Network error, trying to recover...')
-                setTimeout(() => hls.startLoad(), 1000)
-                break
-              case Hls.ErrorTypes.MEDIA_ERROR:
-                console.log('Media error, trying to recover...')
-                hls.recoverMediaError()
-                break
-              default:
-                console.log('Fatal error, destroying HLS instance')
-                hls.destroy()
-                break
-            }
+      const handlePlay = () => {
+        videoRefs.current.forEach((other, otherIndex) => {
+          if (otherIndex !== index && other && !other.paused) {
+            other.pause()
           }
         })
-        
-        hls.loadSource(videoSrc)
-        hls.attachMedia(video)
-        
-        hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
-          console.log(`HLS manifest parsed for testimonial ${index}, ${data.levels.length} quality levels available`)
-        })
-
-        hls.on(Hls.Events.LEVEL_LOADED, (event, data) => {
-          console.log(`Level loaded for testimonial ${index}: level ${data.level}`)
-        })
-        
-        hlsInstances.push(hls)
-      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = videoSrc
       }
-    })
 
-    return () => {
-      hlsInstances.forEach(hls => {
-        try {
-          hls.destroy()
-        } catch (e) {
-          console.error('Error destroying HLS instance:', e)
-        }
-      })
-    }
+      video.addEventListener('play', handlePlay)
+      return () => video.removeEventListener('play', handlePlay)
+    })
   }, [])
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -203,14 +150,15 @@ export default function RepsLoveSection({ animation }: RepsLoveSectionProps) {
                     controls
                     playsInline
                     preload="none"
+                    poster={testimonial.poster}
                   />
                   
                   {/* Info Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-phantom via-phantom/80 to-transparent p-6 pointer-events-none">
+                  {/* <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-phantom via-phantom/80 to-transparent p-6 pointer-events-none">
                     <h4 className="text-light text-lg font-black uppercase mb-1">
                       {testimonial.name}
                     </h4>
-                  </div>
+                  </div> */}
                 </div>
               ))}
             </div>
