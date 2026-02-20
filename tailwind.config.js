@@ -19,7 +19,7 @@ module.exports = {
         'black': '#000000',
         
         // Base colors
-        'background': '#1A1A1A',
+        'background': '#131313',
         'surface': '#414141',
         'light': '#F2F2F2',
         
