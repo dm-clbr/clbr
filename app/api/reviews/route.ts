@@ -43,58 +43,45 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('Reviews API Error:', error)
     
-    // Return mock data as fallback
+    // Return mock data with actual CLBR review videos
     const mockReviews = [
       {
         id: '1',
-        title: 'Amazing Solar Installation Experience',
-        description: 'Customer shares their positive experience with Aveyo solar installation',
-        video_url: '/videos/customer-review-1.mp4',
-        thumbnail_url: '/images/customer-review-1-thumb.jpg',
-        type: 'customer',
+        title: 'Noah Sorenson - Rep Review',
+        description: 'CLBR sales rep Noah Sorenson shares his experience working at CLBR',
+        video_url: 'https://vz-597613.b-cdn.net/20eaaa09-9e22-4c45-96c3-4f3c8c9d7bfc/playlist.m3u8',
+        thumbnail_url: '/images/rep-review-thumbnail.png',
+        type: 'rep',
         featured: true,
-        customer_name: 'John Smith',
-        location: 'Austin, TX',
-        date_recorded: '2024-12-15',
+        rep_name: 'Noah Sorenson',
+        location: 'CLBR Sales',
+        date_recorded: '2026-02-01',
         status: 'active'
       },
       {
         id: '2',
-        title: 'Top Rep Performance Review',
-        description: 'Sales rep discusses their success strategies',
-        video_url: '/videos/rep-review-1.mp4',
-        thumbnail_url: '/images/rep-review-1-thumb.jpg',
+        title: 'Andrew Rietveld - Rep Review',
+        description: 'CLBR sales rep Andrew Rietveld discusses his success and experience',
+        video_url: 'https://vz-597613.b-cdn.net/bde3f6e5-dbcb-4bb0-93ed-8137cdcc1dae/playlist.m3u8',
+        thumbnail_url: '/images/rep-review-thumbnail.png',
         type: 'rep',
         featured: true,
-        rep_name: 'Austin Townsend',
-        location: 'Dallas, TX',
-        date_recorded: '2024-12-10',
+        rep_name: 'Andrew Rietveld',
+        location: 'CLBR Sales',
+        date_recorded: '2026-02-01',
         status: 'active'
       },
       {
         id: '3',
-        title: 'Family Loves Their Solar System',
-        description: 'Happy family testimonial about their solar savings',
-        video_url: '/videos/customer-review-2.mp4',
-        thumbnail_url: '/images/customer-review-2-thumb.jpg',
-        type: 'customer',
-        featured: false,
-        customer_name: 'Sarah Johnson',
-        location: 'Houston, TX',
-        date_recorded: '2024-12-08',
-        status: 'active'
-      },
-      {
-        id: '4',
-        title: 'Rep Training Success Story',
-        description: 'New rep shares their training experience',
-        video_url: '/videos/rep-review-2.mp4',
-        thumbnail_url: '/images/rep-review-2-thumb.jpg',
+        title: 'Kaden Blake - Rep Review',
+        description: 'CLBR sales rep Kaden Blake shares what makes CLBR different',
+        video_url: 'https://vz-597613.b-cdn.net/de9799cb-cfb6-4859-9df6-1f98be83b43a/playlist.m3u8',
+        thumbnail_url: '/images/rep-review-thumbnail.png',
         type: 'rep',
-        featured: false,
-        rep_name: 'Sawyer Kieffer',
-        location: 'San Antonio, TX',
-        date_recorded: '2024-12-05',
+        featured: true,
+        rep_name: 'Kaden Blake',
+        location: 'CLBR Sales',
+        date_recorded: '2026-02-01',
         status: 'active'
       }
     ]

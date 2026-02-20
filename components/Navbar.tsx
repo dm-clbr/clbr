@@ -16,11 +16,11 @@ const imgUnion1 = "http://localhost:3845/assets/7dce532d62b76cfb27ce43354d83030e
 const navItems = [
   { name: 'About', href: '/#sales-section' },
   { name: 'Reviews', href: '/reviews' },
-  { name: 'Stats', href: '/stats' },
+  // { name: 'Stats', href: '/stats' },
   // { name: 'Leaderboard', href: '/leaderboard' },
   { name: 'Incentives', href: '/incentives' }, 
   // { name: 'EDU', href: '/edu' },
-  { name: 'Store', href: 'https://aveyo.shop/' },
+  { name: 'Store', href: 'https://clbr.store/' },
   { name: 'Verify', href: '/verify' },
   // { name: 'Brand', href: '/brand' },
   // { name: 'Wiki', href: 'https://aveyo-wiki.bullet.site/' },

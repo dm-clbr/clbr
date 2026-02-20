@@ -12,27 +12,42 @@ export default function CultureSection({ animation }: CultureSectionProps) {
     <section 
       id="culture"
       ref={animation.ref}
-      className={`py-[160px] px-6 min-h-[100vh] sm:px-10 md:px-16 lg:px-24 transition-all duration-1000 flex items-center justify-center ${
+      className={`py-[160px] px-6 min-h-[100vh] sm:px-10 md:px-16 lg:px-24 transition-all duration-1000 flex items-center justify-center relative ${
         animation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}
     >
-      <div className="mx-auto text-center">
-        {/* Section Number */}
-        <span className="text-graphite/30 text-[40px] md:text-[40px] font-black leading-none block mb-4">03</span>
-        
-        <div className="mx-auto">
-          <h3 className="text-light text-[36px] sm:text-[44px] md:text-[52px] lg:text-[60px] font-black leading-tight mb-6">
+      {/* Large Background Marquee Text */}
+      <div className="absolute top-0 left-0 w-screen overflow-hidden pointer-events-none">
+        <div className="flex animate-marquee whitespace-nowrap">
+          <span className="text-[20vw] font-black uppercase text-graphite/5 mx-8">
             CLBR CULTURE
-          </h3>
-          <h4 className="text-cloud text-[24px] sm:text-[28px] md:text-[32px] font-black uppercase leading-tight mb-12">
-            WE MAKE SURE THINGS ARE A LITTLE DIFFERENT HERE.
-          </h4>
+          </span>
+          <span className="text-[20vw] font-black uppercase text-graphite/5 mx-8">
+            CLBR CULTURE
+          </span>
+          <span className="text-[20vw] font-black uppercase text-graphite/5 mx-8">
+            CLBR CULTURE
+          </span>
         </div>
+      </div>
 
+      <div className="w-full mx-auto text-center relative z-10">
+        
         {/* Three Culture Points with Images */}
-        <div className="max-w-[70vw] pt-[160px] pb-[160px] mx-auto grid grid-cols-1 md:[grid-template-columns:30%_40%_30%] gap-6 mb-16 items-end">
+        <div className="w-full pt-[160px] pb-[160px] flex flex-row gap-6 mb-16 items-stretch">
           {/* Point 1 */}
-          <div className="group h-full flex flex-col justify-end">
+          
+          <div className="group flex flex-col justify-between flex-1">
+          <div className="w-full">
+            <span className="text-graphite/30 text-left text-[40px] md:text-[40px] font-black leading-none block mb-4">03</span>
+            <h3 className="text-light text-left text-[36px] sm:text-[44px] md:text-[52px] lg:text-[60px] font-black leading-[1.1] mb-6">
+              CLBR CULTURE
+            </h3>
+            <h6 className="text-cloud text-left text-[18px] sm:text-[15px] md:text-[22px] font-black uppercase leading-tight mb-12">
+              WE MAKE SURE THINGS ARE A LITTLE DIFFERENT HERE.
+            </h6>
+          </div>
+          <div>
             <div className="aspect-square bg-surface/80 border border-arsenic/30 rounded-sm overflow-hidden mb-4">
               <img 
                 src="/images/clbr-team.png" 
@@ -43,10 +58,12 @@ export default function CultureSection({ animation }: CultureSectionProps) {
             <h3 className="text-light text-xs font-black uppercase leading-tight text-left">
               WE REPLACE HYPE WITH REAL OPPORTUNITY
             </h3>
+            </div>
           </div>
 
           {/* Point 2 - Larger middle image */}
-          <div className="group ">
+          <div className="group h-full w-[40%]">
+            
             <div className="aspect-[3/4] bg-surface/80 border border-arsenic/30 rounded-sm overflow-hidden mb-4">
               <img 
                 src="/images/rep-shaking-hands.jpeg" 
@@ -60,8 +77,8 @@ export default function CultureSection({ animation }: CultureSectionProps) {
           </div>
 
           {/* Point 3 */}
-          <div className="group h-full">
-            <div className="w-full h-[170px] bg-surface/80 border border-arsenic/30 rounded-sm overflow-hidden mb-4">
+          <div className="group flex flex-col justify-start flex-1">
+            <div className="w-full h-[370px] bg-surface/80 border border-arsenic/30 rounded-sm overflow-hidden mb-4">
               <img 
                 src="/images/cabo-group.png" 
                 alt="Team in Cabo"
@@ -99,7 +116,7 @@ export default function CultureSection({ animation }: CultureSectionProps) {
         </div>
         
         {/* Facts & Figures */}
-        <div className="grid grid-cols-3 md:grid-cols-3 gap-6 mt-12">
+        <div className="grid grid-cols-3 md:grid-cols-3 gap-6 max-w-[1400px] mx-auto mt-auto">
           <div className="text-center">
             <div className="text-light text-4xl md:text-5xl font-black mb-2">350</div>
             <div className="text-space text-sm uppercase tracking-wider">Active Reps</div>

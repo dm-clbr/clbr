@@ -13,11 +13,11 @@ interface IncentivesSectionProps {
 export default function IncentivesSection({ animation, activeFilter, onFilterChange }: IncentivesSectionProps) {
   // Incentive data from /images/incentives folder
   const incentives = [
-    { id: 1, title: 'Out of Stock', category: 'MONTHLY', period: 'Feb 2026', image: '/images/incentives/26_ OUT OF STOCK 2.png' },
-    { id: 2, title: 'Top Office', category: 'MONTHLY', period: 'Feb 2026', image: '/images/incentives/26_ TOP OFFICE.png' },
-    { id: 3, title: 'Offsite', category: 'YEARLY', period: '2026', image: '/images/incentives/OFFSITE 26_ FINAL.png' },
-    { id: 4, title: 'Top Ten Rookies', category: 'MONTHLY', period: 'Feb 2026', image: '/images/incentives/TOP TEN ROOKIES.png' },
-    { id: 5, title: 'Top Ten Vets', category: 'MONTHLY', period: 'Feb 2026', image: '/images/incentives/TOP TEN VETS.png' },
+    { id: 1, title: 'Offsite', category: 'YEARLY', period: '2026', image: '/images/incentives/OFFSITE 26_ FINAL.png' },
+    { id: 2, title: 'Out of Stock', category: 'MONTHLY', period: 'Feb 2026', image: '/images/incentives/26_ OUT OF STOCK 2.png' },
+    { id: 3, title: 'Top Ten Rookies', category: 'YEARLY', period: '2026', image: '/images/incentives/TOP TEN ROOKIES.png' },
+    { id: 4, title: 'Top Ten Vets', category: 'YEARLY', period: '2026', image: '/images/incentives/TOP TEN VETS.png' },
+    { id: 5, title: 'Top Office', category: 'YEARLY', period: '2026', image: '/images/incentives/26_ TOP OFFICE.png' },
   ]
 
   const filteredIncentives = activeFilter === 'ALL' 
@@ -70,7 +70,7 @@ export default function IncentivesSection({ animation, activeFilter, onFilterCha
             <Link
               key={incentive.id}
               href={`/incentives/${incentive.id}`}
-              className="group relative aspect-[3/5] bg-surface/80 border border-arsenic/30 rounded-sm overflow-hidden hover:border-cloud transition-all"
+              className="group relative aspect-[3.5/5] bg-surface/80 border border-arsenic/30 rounded-sm overflow-hidden hover:border-cloud transition-all"
             >
               {/* Incentive Poster Image */}
               <img 
@@ -78,6 +78,9 @@ export default function IncentivesSection({ animation, activeFilter, onFilterCha
                 alt={incentive.title}
                 className="absolute inset-0 w-full h-full object-cover"
               />
+              
+              {/* Dark Gradient for Text Legibility */}
+              <div className="absolute inset-0 bg-gradient-to-t from-phantom/90 via-phantom/40 to-transparent pointer-events-none"></div>
               
               {/* Overlay Content */}
               <div className="absolute inset-0 bg-gradient-to-t from-phantom via-phantom/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">

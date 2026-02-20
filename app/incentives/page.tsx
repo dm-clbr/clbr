@@ -27,9 +27,9 @@ export default function IncentivesPage() {
   const [mounted, setMounted] = useState(false)
   const [copyLoading, setCopyLoading] = useState(true)
   const [incentivesCopy, setIncentivesCopy] = useState<{ section_number: string; section_title: string; description: string }>({
-    section_number: '(2)',
-    section_title: 'Incentives.',
-    description: 'Great commissions are nice, but incredible incentives can be even cooler. Check out what we have cooking.',
+    section_number: '02',
+    section_title: 'INCENTIVES',
+    description: 'Our sales leaders dream up incentive prizes and trips to ensure that your commissions are just a cherry on top. From tropical getaways to cash bonuses, we celebrate your wins in style.',
   })
 
   const fetchIncentives = async () => {
@@ -46,43 +46,67 @@ export default function IncentivesPage() {
       setIncentives(data || [])
     } catch (error) {
       console.error('Error fetching incentives:', error)
-      // Mock data fallback
+      // Fallback with actual CLBR incentive data from posters
       setIncentives([
         {
           id: '1',
-          title: 'Aveyo UNLMTD \'25',
-          description: 'Our biggest yearly incentive program with unlimited earning potential. Hit your targets and unlock exclusive rewards throughout 2025.',
-          category: 'Yearly',
+          title: 'Out of Stock',
+          description: 'Hit your monthly sales targets and earn exclusive CLBR branded merchandise. Rookies need 5 sales, Vets need 20 sales to qualify.',
+          category: 'Monthly',
           category_color: '#3B82F6',
           live_status: 'live',
-          background_image_url: '/images/incentive-bg-1.jpg',
-          start_date: '2025-01-01',
-          end_date: '2025-12-31',
+          background_image_url: '/images/incentives/26_ OUT OF STOCK 2.png',
+          start_date: '2026-02-01',
+          end_date: '2026-02-28',
           sort_order: 1
         },
         {
           id: '2', 
-          title: '0 to 60',
-          description: 'Fast-track your sales performance in this high-energy sprint. Go from zero to sixty deals and earn premium bonuses.',
-          category: 'Sprint',
-          category_color: '#EF4444',
+          title: 'Top Office',
+          description: 'Monthly office-level competition to recognize and reward the highest-performing CLBR sales office.',
+          category: 'Monthly',
+          category_color: '#10B981',
           live_status: 'live',
-          background_image_url: '/images/incentive-bg-2.jpg',
-          start_date: '2025-08-21',
-          end_date: '2025-09-06',
+          background_image_url: '/images/incentives/26_ TOP OFFICE.png',
+          start_date: '2026-02-01',
+          end_date: '2026-02-28',
           sort_order: 2
         },
         {
           id: '3',
-          title: 'Grab Bag',
-          description: 'Monthly surprise rewards and challenges. Complete daily tasks and weekly goals to unlock mystery prizes.',
+          title: 'Top Ten Rookies',
+          description: 'Monthly recognition program for the top 10 rookie sales reps. Compete with other new reps for exclusive rewards and recognition.',
           category: 'Monthly',
-          category_color: '#10B981',
+          category_color: '#F59E0B',
           live_status: 'live',
-          background_image_url: '/images/incentive-bg-3.jpg',
-          start_date: '2025-09-01',
-          end_date: '2025-09-30',
+          background_image_url: '/images/incentives/TOP TEN ROOKIES.png',
+          start_date: '2026-02-01',
+          end_date: '2026-02-28',
           sort_order: 3
+        },
+        {
+          id: '4',
+          title: 'Top Ten Vets',
+          description: 'Year-long cumulative competition for veteran reps. Every close matters, every sale adds up. Top 10 reps by end of year get something insane.',
+          category: 'Yearly',
+          category_color: '#8B5CF6',
+          live_status: 'live',
+          background_image_url: '/images/incentives/TOP TEN VETS.png',
+          start_date: '2026-01-01',
+          end_date: '2026-12-31',
+          sort_order: 4
+        },
+        {
+          id: '5',
+          title: 'Offsite 2026',
+          description: 'Annual all-expenses-paid tropical vacation for top performers. Qualify with points: 450 TSI = 1 DISH install is 3 points, T-Mobile is 1 point.',
+          category: 'Yearly',
+          category_color: '#06B6D4',
+          live_status: 'live',
+          background_image_url: '/images/incentives/OFFSITE 26_ FINAL.png',
+          start_date: '2026-01-01',
+          end_date: '2026-12-31',
+          sort_order: 5
         }
       ])
     } finally {

@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Navbar from '@/components/Navbar'
-import VideoCard from '@/components/VideoCard'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
+import Hls from 'hls.js'
 
 interface Review {
   id: string
@@ -21,13 +21,60 @@ interface Review {
 }
 
 export default function ReviewsPage() {
-  const [reviews, setReviews] = useState<Review[]>([])
-  const [filteredReviews, setFilteredReviews] = useState<Review[]>([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [filter, setFilter] = useState<'all' | 'customer' | 'rep'>('all')
   const [featuredOnly, setFeaturedOnly] = useState(false)
-  const [selectedVideo, setSelectedVideo] = useState<Review | null>(null)
   const [pageReady, setPageReady] = useState(false)
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
+
+  // Hardcoded CLBR rep review videos
+  const reviews: Review[] = [
+    {
+      id: '1',
+      title: 'Noah Sorenson',
+      description: 'CLBR sales rep Noah Sorenson shares his experience working at CLBR',
+      video_url: 'https://vz-597613.b-cdn.net/20eaaa09-9e22-4c45-96c3-4f3c8c9d7bfc/playlist.m3u8',
+      thumbnail_url: '/images/rep-review-thumbnail.png',
+      type: 'rep',
+      featured: true,
+      rep_name: 'Noah Sorenson',
+      location: 'CLBR Sales',
+      date_recorded: '2026-02-01',
+      status: 'active'
+    },
+    {
+      id: '2',
+      title: 'Andrew Rietveld',
+      description: 'CLBR sales rep Andrew Rietveld discusses his success and experience',
+      video_url: 'https://vz-597613.b-cdn.net/bde3f6e5-dbcb-4bb0-93ed-8137cdcc1dae/playlist.m3u8',
+      thumbnail_url: '/images/rep-review-thumbnail.png',
+      type: 'rep',
+      featured: true,
+      rep_name: 'Andrew Rietveld',
+      location: 'CLBR Sales',
+      date_recorded: '2026-02-01',
+      status: 'active'
+    },
+    {
+      id: '3',
+      title: 'Kaden Blake',
+      description: 'CLBR sales rep Kaden Blake shares what makes CLBR different',
+      video_url: 'https://vz-597613.b-cdn.net/de9799cb-cfb6-4859-9df6-1f98be83b43a/playlist.m3u8',
+      thumbnail_url: '/images/rep-review-thumbnail.png',
+      type: 'rep',
+      featured: true,
+      rep_name: 'Kaden Blake',
+      location: 'CLBR Sales',
+      date_recorded: '2026-02-01',
+      status: 'active'
+    }
+  ]
+
+  const filteredReviews = reviews.filter(review => {
+    if (filter !== 'all' && review.type !== filter) return false
+    if (featuredOnly && !review.featured) return false
+    return true
+  })
 
   const headerAnimation = useScrollAnimation<HTMLDivElement>({ delay: 200, disabled: false })
   const descriptionAnimation = useScrollAnimation<HTMLDivElement>({ delay: 400, disabled: false })
@@ -35,59 +82,100 @@ export default function ReviewsPage() {
   const gridAnimation = useScrollAnimation<HTMLDivElement>({ delay: 800, disabled: false })
 
   useEffect(() => {
-    fetchReviews()
     setPageReady(true)
   }, [])
 
+  // Initialize HLS for each video
   useEffect(() => {
-    filterReviews()
-  }, [reviews, filter, featuredOnly])
+    const hlsInstances: Hls[] = []
 
-  const fetchReviews = async () => {
-    try {
-      setLoading(true)
-      const response = await fetch('/api/reviews')
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
-      const data = await response.json()
-      setReviews(data || [])
-    } catch (error) {
-      console.error('Error fetching reviews:', error)
-      setReviews([])
-    } finally {
-      setLoading(false)
-    }
-  }
+    filteredReviews.forEach((review, index) => {
+      const video = videoRefs.current[index]
+      const videoSrc = review.video_url
+      
+      if (!video) return
 
-  const filterReviews = () => {
-    let filtered = reviews
+      if (videoSrc.includes('.m3u8')) {
+        if (Hls.isSupported()) {
+          const hls = new Hls({
+            enableWorker: true,
+            lowLatencyMode: false,
+            startLevel: 0, // Start with lowest quality for faster loading
+            maxBufferLength: 20,
+            maxMaxBufferLength: 30,
+            autoStartLoad: true,
+            capLevelToPlayerSize: true, // Let it automatically adjust
+            capLevelOnFPSDrop: true,
+            debug: false,
+          })
+          
+          hls.on(Hls.Events.ERROR, (event, data) => {
+            console.error(`HLS Error for video ${index}:`, data.type, data.details)
+            if (data.fatal) {
+              switch (data.type) {
+                case Hls.ErrorTypes.NETWORK_ERROR:
+                  console.log('Network error, trying to recover...')
+                  setTimeout(() => hls.startLoad(), 1000)
+                  break
+                case Hls.ErrorTypes.MEDIA_ERROR:
+                  console.log('Media error, trying to recover...')
+                  hls.recoverMediaError()
+                  break
+                default:
+                  console.log('Fatal error, destroying HLS instance')
+                  hls.destroy()
+                  break
+              }
+            }
+          })
+          
+          hls.loadSource(videoSrc)
+          hls.attachMedia(video)
+          
+          hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
+            console.log(`HLS manifest parsed for video ${index}, ${data.levels.length} quality levels available`)
+          })
 
-    if (filter !== 'all') {
-      filtered = filtered.filter(review => review.type === filter)
-    }
-
-    if (featuredOnly) {
-      filtered = filtered.filter(review => review.featured)
-    }
-
-    setFilteredReviews(filtered)
-  }
-
-  const openVideoModal = (review: Review) => {
-    setSelectedVideo(review)
-    document.body.style.overflow = 'hidden'
-  }
-
-  const closeVideoModal = () => {
-    setSelectedVideo(null)
-    document.body.style.overflow = 'unset'
-  }
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+          hls.on(Hls.Events.LEVEL_LOADED, (event, data) => {
+            console.log(`Level loaded for video ${index}: level ${data.level}`)
+          })
+          
+          hlsInstances.push(hls)
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = videoSrc
+        }
+      }
     })
+
+    return () => {
+      hlsInstances.forEach(hls => {
+        try {
+          hls.destroy()
+        } catch (e) {
+          console.error('Error destroying HLS instance:', e)
+        }
+      })
+    }
+  }, [filteredReviews])
+
+  // Handle video click - pause others when one plays
+  const handleVideoClick = (index: number) => {
+    const clickedVideo = videoRefs.current[index]
+    if (!clickedVideo) return
+
+    // Pause all other videos
+    videoRefs.current.forEach((video, i) => {
+      if (video && i !== index && !video.paused) {
+        video.pause()
+      }
+    })
+
+    // Toggle play/pause on clicked video
+    if (clickedVideo.paused) {
+      clickedVideo.play()
+    } else {
+      clickedVideo.pause()
+    }
   }
 
   return (
@@ -114,7 +202,7 @@ export default function ReviewsPage() {
 
               {/* Subtitle */}
               <p className="text-[20px] sm:text-[24px] md:text-[32px] max-w-[700px] text-white/80 mb-6 leading-relaxed text-center">
-              Hear from our satisfied customers and successful sales representatives about their experiences with Aveyo.
+              Hear from our successful sales representatives about their experiences at CLBR.
               </p>
             </div>
           </div>
@@ -173,33 +261,34 @@ export default function ReviewsPage() {
             </p>
           </div>
 
-          {/* Loading State */}
-          {loading && (
-            <div className="flex justify-center items-center py-20">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
-            </div>
-          )}
-
           {/* Video Grid */}
           {!loading && (
             <div 
               ref={gridAnimation.ref}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 opacity-100 translate-y-0"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 opacity-100 translate-y-0"
             >
-              {filteredReviews.map((review) => (
-                <VideoCard
+              {filteredReviews.map((review, index) => (
+                <div
                   key={review.id}
-                  thumbnailUrl={review.thumbnail_url}
-                  title={review.title}
-                  description={review.description}
-                  customerName={review.customer_name}
-                  repName={review.rep_name}
-                  location={review.location}
-                  dateRecorded={review.date_recorded}
-                  type={review.type}
-                  featured={review.featured}
-                  onClick={() => openVideoModal(review)}
-                />
+                  onClick={() => handleVideoClick(index)}
+                  className="group relative w-full aspect-[9/16] bg-surface/80 border border-arsenic/30 rounded-sm overflow-hidden hover:border-cloud transition-all cursor-pointer"
+                >
+                  {/* Video Element with HLS */}
+                  <video
+                    ref={(el) => { videoRefs.current[index] = el }}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    controls
+                    playsInline
+                    preload="none"
+                  />
+                  
+                  {/* Info Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-phantom via-phantom/80 to-transparent p-6 pointer-events-none">
+                    <h4 className="text-light text-lg font-black uppercase mb-1">
+                      {review.rep_name || review.title}
+                    </h4>
+                  </div>
+                </div>
               ))}
             </div>
           )}
@@ -218,82 +307,6 @@ export default function ReviewsPage() {
           )}
         </div>
       </div>
-
-      {/* Video Modal */}
-      {selectedVideo && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
-          <div className="bg-gradient-to-b from-[#171717] to-[#0d0d0d] rounded-[3px] max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            {/* Modal Header */}
-            <div className="flex justify-between items-center p-6 border-b border-[rgba(255,255,255,0.1)]">
-              <div>
-                <h2 className="text-[24px] font-bold text-white">{selectedVideo.title}</h2>
-                <div className="flex items-center gap-4 mt-3">
-                  <span className={`px-3 py-1 rounded-full text-[12px] font-bold ${
-                    selectedVideo.type === 'customer' 
-                      ? 'bg-green-500 text-white' 
-                      : 'bg-blue-500 text-white'
-                  }`}>
-                    {selectedVideo.type === 'customer' ? 'Customer Review' : 'Rep Review'}
-                  </span>
-                  {selectedVideo.featured && (
-                    <span className="bg-yellow-500 text-black px-3 py-1 rounded-full text-[12px] font-bold">
-                      ⭐ Featured
-                    </span>
-                  )}
-                </div>
-              </div>
-              <button
-                onClick={closeVideoModal}
-                className="text-[rgba(255,255,255,0.6)] hover:text-white text-3xl font-bold"
-              >
-                ×
-              </button>
-            </div>
-
-            {/* Video Player */}
-            <div className="p-6">
-              <div className="aspect-video bg-black rounded-[3px] mb-6">
-                <video
-                  controls
-                  autoPlay
-                  className="w-full h-full rounded-[3px]"
-                  src={selectedVideo.video_url}
-                >
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-
-              {/* Video Details */}
-              <div className="space-y-6">
-                <p className="text-[rgba(255,255,255,0.8)] text-[16px]">{selectedVideo.description}</p>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[14px]">
-                  {selectedVideo.customer_name && (
-                    <div className="flex items-center gap-2 text-[rgba(255,255,255,0.6)]">
-                      <span>👤</span>
-                      <span>Customer: {selectedVideo.customer_name}</span>
-                    </div>
-                  )}
-                  {selectedVideo.rep_name && (
-                    <div className="flex items-center gap-2 text-[rgba(255,255,255,0.6)]">
-                      <span>🏆</span>
-                      <span>Rep: {selectedVideo.rep_name}</span>
-                    </div>
-                  )}
-                  <div className="flex items-center gap-2 text-[rgba(255,255,255,0.6)]">
-                    <span>📍</span>
-                    <span>Location: {selectedVideo.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-[rgba(255,255,255,0.6)]">
-                    <span>📅</span>
-                    <span>Recorded: {formatDate(selectedVideo.date_recorded)}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   )
 }
