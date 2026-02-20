@@ -10,7 +10,7 @@ interface SalesStatsSectionProps {
 
 export default function SalesStatsSection({ animation }: SalesStatsSectionProps) {
   const activeReps = useCountUp({ end: 350, duration: 2000, suffix: '+', isVisible: animation.isVisible })
-  const avgIncome = useCountUp({ end: 60, duration: 2000, prefix: '$', suffix: 'K', isVisible: animation.isVisible })
+  const avgIncome = useCountUp({ end: 68, duration: 2000, prefix: '$', suffix: 'K', isVisible: animation.isVisible })
   const totalPaid = useCountUp({ end: 500, duration: 2000, prefix: '$', suffix: 'M+', isVisible: animation.isVisible })
   const activeSales = useCountUp({ end: 200000, duration: 2000, suffix: '+',isVisible: animation.isVisible })
   return (

@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import type { Incentive } from '@/lib/types/incentive'
 import { getStatusBadgeClasses, getCategoryBadgeStyle } from '@/lib/ui/badges'
 
@@ -10,7 +11,14 @@ interface IncentiveModalProps {
 }
 
 export default function IncentiveModal({ incentive, onClose }: IncentiveModalProps) {
-  // Close on Escape key
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    return () => setMounted(false)
+  }, [])
+
+  // Close on Escape key and lock scroll
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -49,7 +57,9 @@ export default function IncentiveModal({ incentive, onClose }: IncentiveModalPro
       ? 'Coming Up'
       : 'Done'
 
-  return (
+  if (!mounted) return null
+
+  return createPortal(
     // Backdrop
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
@@ -119,6 +129,7 @@ export default function IncentiveModal({ incentive, onClose }: IncentiveModalPro
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
