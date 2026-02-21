@@ -66,7 +66,7 @@ export default function JoinAveyoModal({ open, onClose, onSubmitted }: JoinAveyo
       <div className="relative w-full max-w-[620px] sm:mx-4 bg-[#0f0f0f] text-white rounded-t-xl sm:rounded-lg border border-[#2a2a2a] shadow-xl flex flex-col max-h-[80vh]">
         {/* Fixed header */}
         <div className="p-5 border-b border-[#2a2a2a] flex items-center justify-between flex-shrink-0">
-          <h2 className="text-xl font-bold">Join Aveyo</h2>
+          <h2 className="text-xl font-bold">Join CLBR</h2>
           <button onClick={onClose} className="w-8 h-8 flex items-center justify-center rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors">✕</button>
         </div>
 
