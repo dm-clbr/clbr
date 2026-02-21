@@ -100,15 +100,15 @@ export default function HeroSection({ heroAnimation, onJoinClick }: HeroSectionP
           WELCOME TO CLBR
         </p>
         
-        <h1 className="text-left text-light text-[48px] sm:text-[64px] md:text-[80px] lg:text-[100px] xl:text-[150px] font-black uppercase leading-[1.1] xl:leading-[120px] mb-8 xl:tracking-[-7.6px]">
+        <h1 className="text-left text-light text-[36px] sm:text-[64px] md:text-[80px] lg:text-[100px] xl:text-[150px] font-black uppercase leading-[1.1] xl:leading-[120px] mb-8 xl:tracking-[-7.6px]">
           A BETTER SALES<br />EXPERIENCE
         </h1>
         
-        <h2 className="text-light text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-black uppercase leading-[1.2] mb-12">
+        <h2 className="text-light text-[22px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-black uppercase leading-[1.2] mb-8 md:mb-12">
           IN EVERY SINGLE WAY
         </h2>
         
-        <p className="text-smoke text-lg sm:text-xl md:text-2xl mb-12 w-full leading-relaxed">
+        <p className="text-smoke text-base sm:text-xl md:text-2xl mb-10 md:mb-12 w-full leading-relaxed">
           We've wrapped real opportunity, genuine growth, and<br className="hidden md:block" />
           exponential earning together for one amazing experience.
         </p>

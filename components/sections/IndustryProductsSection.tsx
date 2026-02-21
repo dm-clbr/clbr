@@ -19,22 +19,20 @@ export default function IndustryProductsSection({ animation, onJoinClick }: Indu
       }`}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-start gap-8 mb-12">
-          <span className="text-graphite text-[80px] md:text-[120px] font-black leading-none">05</span>
+        <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8 mb-12">
+          <span className="text-graphite text-[52px] md:text-[120px] font-black leading-none">05</span>
           <div>
-            <h3 className="text-light text-[32px] sm:text-[40px] md:text-[48px] font-black uppercase mb-6">
+            <h3 className="text-light text-[28px] sm:text-[40px] md:text-[48px] font-black uppercase mb-6">
               INDUSTRY-BEST PRODUCTS
             </h3>
-            <p className="text-steel text-xl md:text-2xl max-w-3xl leading-relaxed">
-              Tired of selling pest, security, or solar? We've got a better opportunity for you.<br />
-              We're the nation's leading D2C provider of <a href="https://dish.com" target="_blank" rel="noopener noreferrer" className="text-cloud font-bold hover:underline">dish.com</a>. We'll<br />
-              send you to white-hot markets that haven't seen any reps selling our products.
+            <p className="text-steel text-base md:text-2xl max-w-3xl leading-relaxed">
+              Tired of selling pest, security, or solar? We've got a better opportunity for you. We're the nation's leading D2C provider of <a href="https://dish.com" target="_blank" rel="noopener noreferrer" className="text-cloud font-bold hover:underline">dish.com</a>. We'll send you to white-hot markets that haven't seen any reps selling our products.
             </p>
           </div>
         </div>
         
         {/* Growth Metrics */}
-        <div className="bg-surface/80 border border-arsenic/30 rounded-sm p-12">
+        <div className="bg-surface/80 border border-arsenic/30 rounded-sm p-6 md:p-12">
           <p className="text-space text-sm uppercase tracking-wider mb-6">Growth Metrics</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>

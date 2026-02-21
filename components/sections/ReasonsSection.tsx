@@ -71,7 +71,7 @@ export default function ReasonsSection() {
       ref={sectionRef}
       className="relative w-full h-[200vh]"
     >
-      <div className="absolute left-[16vw] bottom-[50vh] flex justify-between gap-[20px] items-start z-20 origin-center rotate-90">
+      <div className="hidden md:flex absolute left-[16vw] bottom-[50vh] justify-between gap-[20px] items-start z-20 origin-center rotate-90">
         <a 
           href="#stats" 
           className="relative text-cloud text-sm md:text-base lg:text-lg font-bold uppercase tracking-[4px] origin-center whitespace-nowrap hover:text-light transition-colors cursor-pointer px-4 py-2 rounded-sm overflow-hidden group"
@@ -165,10 +165,10 @@ export default function ReasonsSection() {
         
         {/* Content */}
         <div className="absolute z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center px-6 sm:px-10 md:px-16 lg:px-24 max-w-4xl w-full">
-          <h2 className="text-light text-[48px] sm:text-[64px] md:text-[80px] lg:text-[100px] font-black uppercase leading-tight mb-4">
+          <h2 className="text-light text-[28px] sm:text-[64px] md:text-[80px] lg:text-[100px] font-black uppercase leading-tight mb-4">
             5 REASONS
           </h2>
-          <p className="text-cloud text-2xl sm:text-3xl md:text-4xl font-bold uppercase">
+          <p className="text-cloud text-lg sm:text-3xl md:text-4xl font-bold uppercase">
             TO SELL WITH CLBR
           </p>
         </div>

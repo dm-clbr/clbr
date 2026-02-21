@@ -104,7 +104,7 @@ export default function RepsLoveSection({ animation }: RepsLoveSectionProps) {
     <section 
       id="reps"
       ref={animation.ref}
-      className={`py-[160px] px-6 sm:px-10 md:px-16 lg:px-24 transition-all duration-1000 ${
+      className={`py-16 lg:py-[160px] px-6 sm:px-10 md:px-16 lg:px-24 transition-all duration-1000 ${
         animation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}
     >

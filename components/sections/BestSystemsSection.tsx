@@ -31,11 +31,11 @@ export default function BestSystemsSection({ onJoinClick }: BestSystemsSectionPr
         </div>
       </div>
 
-      {/* Full Width Image Row */}
-      <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] h-[90vh] flex">
+      {/* Full Width Image Row - stacked on mobile, side-by-side on desktop */}
+      <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] flex flex-col md:flex-row md:h-[90vh]">
         {/* Image 1 - Training */}
         <div 
-          className={`relative overflow-hidden group transition-all duration-500 ease-in-out ${getFlexClass(0)}`}
+          className={`relative overflow-hidden group h-[60vw] md:h-auto transition-all duration-500 ease-in-out ${getFlexClass(0)}`}
           onMouseEnter={() => setHoveredIndex(0)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -45,11 +45,11 @@ export default function BestSystemsSection({ onJoinClick }: BestSystemsSectionPr
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-phantom via-phantom/60 to-transparent"></div>
-          <div className="absolute bottom-0 left-0 right-0 p-12">
-            <h3 className="text-light text-[32px] md:text-[44px] font-black uppercase mb-2">
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
+            <h3 className="text-light text-[24px] md:text-[44px] font-black uppercase mb-2">
               WORLD-CLASS TRAINING
             </h3>
-            <p className="text-smoke text-lg md:text-xl max-w-md">
+            <p className="text-smoke text-base md:text-xl max-w-md">
               Comprehensive onboarding and ongoing development to master your craft
             </p>
           </div>
@@ -57,7 +57,7 @@ export default function BestSystemsSection({ onJoinClick }: BestSystemsSectionPr
 
         {/* Image 2 - Systems */}
         <div 
-          className={`relative overflow-hidden group transition-all duration-500 ease-in-out ${getFlexClass(1)}`}
+          className={`relative overflow-hidden group h-[60vw] md:h-auto transition-all duration-500 ease-in-out ${getFlexClass(1)}`}
           onMouseEnter={() => setHoveredIndex(1)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -67,11 +67,11 @@ export default function BestSystemsSection({ onJoinClick }: BestSystemsSectionPr
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-phantom via-phantom/60 to-transparent"></div>
-          <div className="absolute bottom-0 left-0 right-0 p-12">
-            <h3 className="text-light text-[32px] md:text-[44px] font-black uppercase mb-2">
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
+            <h3 className="text-light text-[24px] md:text-[44px] font-black uppercase mb-2">
               PROVEN SYSTEMS
             </h3>
-            <p className="text-smoke text-lg md:text-xl max-w-md">
+            <p className="text-smoke text-base md:text-xl max-w-md">
               Battle-tested strategies and tools that drive real results
             </p>
           </div>
@@ -79,7 +79,7 @@ export default function BestSystemsSection({ onJoinClick }: BestSystemsSectionPr
 
         {/* Image 3 - Growth */}
         <div 
-          className={`relative overflow-hidden group transition-all duration-500 ease-in-out ${getFlexClass(2)}`}
+          className={`relative overflow-hidden group h-[60vw] md:h-auto transition-all duration-500 ease-in-out ${getFlexClass(2)}`}
           onMouseEnter={() => setHoveredIndex(2)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -89,11 +89,11 @@ export default function BestSystemsSection({ onJoinClick }: BestSystemsSectionPr
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-phantom via-phantom/60 to-transparent"></div>
-          <div className="absolute bottom-0 left-0 right-0 p-12">
-            <h3 className="text-light text-[32px] md:text-[44px] font-black uppercase mb-2">
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
+            <h3 className="text-light text-[24px] md:text-[44px] font-black uppercase mb-2">
               REAL GROWTH
             </h3>
-            <p className="text-smoke text-lg md:text-xl max-w-md">
+            <p className="text-smoke text-base md:text-xl max-w-md">
               Clear pathways to leadership and unlimited earning potential
             </p>
           </div>

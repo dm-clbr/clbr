@@ -12,7 +12,7 @@ export default function CultureSection({ animation }: CultureSectionProps) {
     <section 
       id="culture"
       ref={animation.ref}
-      className={`py-[160px] px-6 min-h-[100vh] sm:px-10 md:px-16 lg:px-24 transition-all duration-1000 flex items-center justify-center relative ${
+      className={`py-16 lg:py-[160px] px-6 min-h-[100vh] sm:px-10 md:px-16 lg:px-24 transition-all duration-1000 flex items-center justify-center relative ${
         animation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}
     >
@@ -34,7 +34,7 @@ export default function CultureSection({ animation }: CultureSectionProps) {
       <div className="w-full mx-auto text-center relative z-10">
         
         {/* Three Culture Points with Images */}
-        <div className="w-full pt-[160px] pb-[160px] flex flex-col lg:flex-row gap-6 mb-16 items-stretch">
+        <div className="w-full pt-16 pb-16 lg:pt-[160px] lg:pb-[160px] flex flex-col lg:flex-row gap-6 mb-16 items-stretch">
           {/* Point 1 */}
           
           <div className="group flex flex-col justify-between flex-1">
@@ -122,9 +122,9 @@ export default function CultureSection({ animation }: CultureSectionProps) {
             </div>
           </div>
           
-          <p className="text-steel text-lg md:text-xl leading-relaxed max-w-4xl mx-auto py-[160px]">
-            Our teams are comprised of the best players in the industry. We match that<br />
-            talent with systems that educate and streamline to give every single one<br />
+          <p className="text-steel text-lg md:text-xl leading-relaxed max-w-4xl mx-auto py-16 lg:py-[160px]">
+            Our teams are comprised of the best players in the industry. We match that
+            talent with systems that educate and streamline to give every single one
             of our reps (including you) the best possible outcome.
           </p>
         </div>

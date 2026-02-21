@@ -62,25 +62,25 @@ export default function IncentiveModal({ incentive, onClose }: IncentiveModalPro
   return createPortal(
     // Backdrop
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center px-[30px] sm:items-center justify-center sm:p-4 bg-black/80 backdrop-blur-sm"
       onClick={onClose}
     >
       {/* Panel */}
       <div
-        className="relative w-full max-w-3xl bg-[#111] rounded-sm overflow-hidden flex flex-col md:flex-row shadow-2xl"
+        className="relative w-full max-w-3xl bg-[#111] rounded-lg sm:rounded-sm shadow-2xl flex flex-col md:flex-row max-h-[90dvh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close button */}
+        {/* Close button — always pinned to top of panel */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 text-white/70 hover:text-white hover:bg-black transition-colors"
+          className="absolute top-4 right-4 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-black/70 text-white/70 hover:text-white hover:bg-black transition-colors"
           aria-label="Close"
         >
           ✕
         </button>
 
-        {/* Poster image */}
-        <div className="w-full md:w-[280px] flex-shrink-0 aspect-[9/16] md:aspect-auto md:h-auto relative bg-[#1a1a1a]">
+        {/* Poster image — fixed height on mobile, full sidebar on desktop */}
+        <div className="w-full h-48 sm:h-64 md:w-[280px] md:h-auto flex-shrink-0 relative bg-[#1a1a1a]">
           {incentive.background_image_url && (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -91,8 +91,8 @@ export default function IncentiveModal({ incentive, onClose }: IncentiveModalPro
           )}
         </div>
 
-        {/* Details */}
-        <div className="flex flex-col justify-between flex-1 p-7 gap-6">
+        {/* Details — scrollable on mobile */}
+        <div className="flex flex-col justify-between flex-1 p-6 md:p-7 gap-5 md:gap-6 overflow-y-auto">
           {/* Badges */}
           <div className="flex flex-wrap items-center gap-2">
             <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-[13px] font-semibold ${statusClasses.container}`}>
@@ -109,7 +109,7 @@ export default function IncentiveModal({ incentive, onClose }: IncentiveModalPro
 
           {/* Title */}
           <div>
-            <h2 className="text-white font-extrabold text-[28px] sm:text-[32px] leading-tight mb-3">
+            <h2 className="text-white font-extrabold text-[24px] sm:text-[32px] leading-tight mb-3">
               {incentive.title}
             </h2>
             {incentive.description && (

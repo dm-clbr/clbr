@@ -17,7 +17,7 @@ export default function SalesStatsSection({ animation }: SalesStatsSectionProps)
     <section 
       id="stats"
       ref={animation.ref}
-      className={`h-[100vh] relative py-20 md:py-32 px-6 sm:px-10 md:px-16 lg:px-24 bg-transparent transition-all duration-1000 flex items-center justify-center ${
+      className={`relative py-20 md:py-32 px-6 sm:px-10 md:px-16 lg:px-24 bg-transparent transition-all duration-1000 ${
         animation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}
     >
@@ -38,7 +38,7 @@ export default function SalesStatsSection({ animation }: SalesStatsSectionProps)
             </p>
             
             {/* Image Placeholder */}
-            <div className="w-full h-[600px] bg-surface/80 overflow-hidden">
+            <div className="w-full h-[250px] md:h-[600px] bg-surface/80 overflow-hidden">
               <div
                 className="w-full h-full bg-gradient-to-br from-graphite via-arsenic to-phantom flex items-center justify-center"
                 style={{
@@ -53,9 +53,9 @@ export default function SalesStatsSection({ animation }: SalesStatsSectionProps)
           </div>
 
           {/* Right Side - Stats */}
-          <div className="space-y-12">
+          <div className="space-y-8 md:space-y-12">
             <div>
-              <div className="text-cloud text-[72px] md:text-[96px] lg:text-[120px] font-black leading-none mb-2">
+              <div className="text-cloud text-[52px] md:text-[96px] lg:text-[120px] font-black leading-none mb-2">
                 {activeReps}
               </div>
               <div className="text-steel text-base md:text-lg uppercase tracking-wider">
@@ -64,7 +64,7 @@ export default function SalesStatsSection({ animation }: SalesStatsSectionProps)
             </div>
             
             <div>
-              <div className="text-cloud text-[72px] md:text-[96px] lg:text-[120px] font-black leading-none mb-2">
+              <div className="text-cloud text-[52px] md:text-[96px] lg:text-[120px] font-black leading-none mb-2">
                 {avgIncome}
               </div>
               <div className="text-steel text-base md:text-lg uppercase tracking-wider">
@@ -73,7 +73,7 @@ export default function SalesStatsSection({ animation }: SalesStatsSectionProps)
             </div>
             
             <div>
-              <div className="text-cloud text-[72px] md:text-[96px] lg:text-[120px] font-black leading-none mb-2">
+              <div className="text-cloud text-[52px] md:text-[96px] lg:text-[120px] font-black leading-none mb-2">
                 {totalPaid}
               </div>
               <div className="text-steel text-base md:text-lg uppercase tracking-wider">
@@ -82,7 +82,7 @@ export default function SalesStatsSection({ animation }: SalesStatsSectionProps)
             </div>
             
             <div>
-              <div className="text-cloud text-[72px] md:text-[96px] lg:text-[120px] font-black leading-none mb-2">
+              <div className="text-cloud text-[52px] md:text-[96px] lg:text-[120px] font-black leading-none mb-2">
                 {activeSales}
               </div>
               <div className="text-steel text-base md:text-lg uppercase tracking-wider">
