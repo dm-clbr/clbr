@@ -61,48 +61,50 @@ export default function JoinAveyoModal({ open, onClose, onSubmitted }: JoinAveyo
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center">
+    <div className="fixed inset-0 z-[1000] flex items-center sm:items-center justify-center">
       <div className="absolute inset-0 bg-black/70" onClick={onClose} />
-      <div className="relative w-full max-w-[620px] mx-4 bg-[#0f0f0f] text-white rounded-lg border border-[#2a2a2a] shadow-xl">
-        <div className="p-6 border-b border-[#2a2a2a] flex items-center justify-between">
+      <div className="relative w-full max-w-[620px] sm:mx-4 bg-[#0f0f0f] text-white rounded-t-xl sm:rounded-lg border border-[#2a2a2a] shadow-xl flex flex-col max-h-[80vh]">
+        {/* Fixed header */}
+        <div className="p-5 border-b border-[#2a2a2a] flex items-center justify-between flex-shrink-0">
           <h2 className="text-xl font-bold">Join Aveyo</h2>
-          <button onClick={onClose} className="text-white/70 hover:text-white">✕</button>
+          <button onClick={onClose} className="w-8 h-8 flex items-center justify-center rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors">✕</button>
         </div>
 
-        <div className="p-6">
+        {/* Scrollable body */}
+        <div className="p-5 overflow-y-auto flex-1">
           {success ? (
-            <div className="space-y-4 text-center">
+            <div className="space-y-4 text-center py-4">
               <div className="text-2xl font-bold">Thanks! 🎉</div>
               <p className="text-white/75">We received your info. Our team will reach out shortly.</p>
               <button onClick={onClose} className="mt-2 px-5 py-2 bg-white text-black rounded-md font-semibold">Close</button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3">
               {error && <div className="p-3 bg-red-900/40 border border-red-600 rounded text-red-200 text-sm">{error}</div>}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-3">
                 <div>
                   <label className="block text-sm text-white/70 mb-1">First name</label>
-                  <input value={form.firstName} onChange={update('firstName')} className="w-full bg-[#121212] border border-[#2a2a2a] rounded px-3 py-2 outline-none focus:ring-2 focus:ring-white/20" />
+                  <input value={form.firstName} onChange={update('firstName')} className="w-full bg-[#121212] border border-[#2a2a2a] rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-white/20" />
                 </div>
                 <div>
                   <label className="block text-sm text-white/70 mb-1">Last name</label>
-                  <input value={form.lastName} onChange={update('lastName')} className="w-full bg-[#121212] border border-[#2a2a2a] rounded px-3 py-2 outline-none focus:ring-2 focus:ring-white/20" />
+                  <input value={form.lastName} onChange={update('lastName')} className="w-full bg-[#121212] border border-[#2a2a2a] rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-white/20" />
                 </div>
                 <div>
                   <label className="block text-sm text-white/70 mb-1">Email</label>
-                  <input type="email" value={form.email} onChange={update('email')} className="w-full bg-[#121212] border border-[#2a2a2a] rounded px-3 py-2 outline-none focus:ring-2 focus:ring-white/20" />
+                  <input type="email" value={form.email} onChange={update('email')} className="w-full bg-[#121212] border border-[#2a2a2a] rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-white/20" />
                 </div>
                 <div>
                   <label className="block text-sm text-white/70 mb-1">Phone</label>
-                  <input value={form.phone} onChange={update('phone')} className="w-full bg-[#121212] border border-[#2a2a2a] rounded px-3 py-2 outline-none focus:ring-2 focus:ring-white/20" />
+                  <input value={form.phone} onChange={update('phone')} className="w-full bg-[#121212] border border-[#2a2a2a] rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-white/20" />
                 </div>
                 <div>
                   <label className="block text-sm text-white/70 mb-1">Location</label>
-                  <input value={form.location} onChange={update('location')} className="w-full bg-[#121212] border border-[#2a2a2a] rounded px-3 py-2 outline-none focus:ring-2 focus:ring-white/20" />
+                  <input value={form.location} onChange={update('location')} className="w-full bg-[#121212] border border-[#2a2a2a] rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-white/20" />
                 </div>
                 <div>
                   <label className="block text-sm text-white/70 mb-1">Experience</label>
-                  <select value={form.experience} onChange={update('experience')} className="w-full bg-[#121212] border border-[#2a2a2a] rounded px-3 py-2 outline-none focus:ring-2 focus:ring-white/20">
+                  <select value={form.experience} onChange={update('experience')} className="w-full bg-[#121212] border border-[#2a2a2a] rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-white/20">
                     <option value="beginner">Beginner</option>
                     <option value="intermediate">Intermediate</option>
                     <option value="expert">Expert</option>
@@ -111,12 +113,12 @@ export default function JoinAveyoModal({ open, onClose, onSubmitted }: JoinAveyo
               </div>
               <div>
                 <label className="block text-sm text-white/70 mb-1">Message</label>
-                <textarea rows={4} value={form.message} onChange={update('message')} className="w-full bg-[#121212] border border-[#2a2a2a] rounded px-3 py-2 outline-none focus:ring-2 focus:ring-white/20" />
+                <textarea rows={3} value={form.message} onChange={update('message')} className="w-full bg-[#121212] border border-[#2a2a2a] rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-white/20" />
               </div>
 
-              <div className="pt-2 flex items-center justify-end gap-3">
-                <button type="button" onClick={onClose} className="px-4 py-2 rounded border border-white/20 text-white/90 hover:bg-white/10">Cancel</button>
-                <button disabled={submitting} className="px-5 py-2 bg-white text-black rounded-md font-semibold disabled:opacity-60">
+              <div className="pt-1 flex items-center justify-end gap-3">
+                <button type="button" onClick={onClose} className="px-4 py-2 rounded border border-white/20 text-white/90 hover:bg-white/10 text-sm">Cancel</button>
+                <button disabled={submitting} className="px-5 py-2 bg-white text-black rounded-md font-semibold text-sm disabled:opacity-60">
                   {submitting ? 'Submitting...' : 'Submit'}
                 </button>
               </div>
