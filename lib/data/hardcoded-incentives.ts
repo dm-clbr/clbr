@@ -35,7 +35,7 @@ const raw = [
     title: 'Top Office',
     description:
       'Monthly office-level competition to recognize and reward the highest-performing CLBR sales office.',
-    category: 'Monthly',
+    category: 'Yearly',
     category_color: '#3B82F6',
     background_image_url: '/images/incentives/26_ TOP OFFICE.png',
     start_date: '2026-02-01',
@@ -48,7 +48,7 @@ const raw = [
     title: 'Top Ten Rookies',
     description:
       'Monthly recognition program for the top 10 rookie sales reps. Compete with other new reps for exclusive rewards and recognition.',
-    category: 'Monthly',
+    category: 'Yearly',
     category_color: '#3B82F6',
     background_image_url: '/images/incentives/TOP TEN ROOKIES.png',
     start_date: '2026-02-01',
