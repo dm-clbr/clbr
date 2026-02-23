@@ -3,7 +3,7 @@
 import React from 'react'
 import { UseScrollAnimationReturn } from '@/hooks/useScrollAnimation'
 import { useCountUp } from '@/hooks/useCountUp'
-
+import RevealBlock from '@/components/animations/RevealBlock'
 interface SalesStatsSectionProps {
   animation: UseScrollAnimationReturn<HTMLElement>
 }
@@ -37,19 +37,17 @@ export default function SalesStatsSection({ animation }: SalesStatsSectionProps)
               This could be you soon, backed by our proven systems and industry-leading products.
             </p>
             
-            {/* Image Placeholder */}
-            <div className="w-full h-[250px] md:h-[600px] bg-surface/80 overflow-hidden">
+            {/* Image */}
+            <RevealBlock className="w-full h-[250px] md:h-[600px]">
               <div
-                className="w-full h-full bg-gradient-to-br from-graphite via-arsenic to-phantom flex items-center justify-center"
+                className="w-full h-full bg-gradient-to-br from-graphite via-arsenic to-phantom"
                 style={{
                   backgroundImage: "url('/images/clbr-back2back.jpg'), linear-gradient(to bottom right, #25282b, #383e42, #181a20)",
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  // backgroundBlendMode: 'multiply'
                 }}
-              >
-              </div>
-            </div>
+              />
+            </RevealBlock>
           </div>
 
           {/* Right Side - Stats */}
@@ -62,7 +60,7 @@ export default function SalesStatsSection({ animation }: SalesStatsSectionProps)
                 Total Active Reps
               </div>
             </div>
-            
+
             <div>
               <div className="text-cloud text-[52px] md:text-[96px] lg:text-[120px] font-black leading-none mb-2">
                 {avgIncome}
@@ -71,7 +69,7 @@ export default function SalesStatsSection({ animation }: SalesStatsSectionProps)
                 Avg Rep Total Income
               </div>
             </div>
-            
+
             <div>
               <div className="text-cloud text-[52px] md:text-[96px] lg:text-[120px] font-black leading-none mb-2">
                 {totalPaid}
@@ -80,7 +78,7 @@ export default function SalesStatsSection({ animation }: SalesStatsSectionProps)
                 Total Lifetime Paid Out Commissions
               </div>
             </div>
-            
+
             <div>
               <div className="text-cloud text-[52px] md:text-[96px] lg:text-[120px] font-black leading-none mb-2">
                 {activeSales}

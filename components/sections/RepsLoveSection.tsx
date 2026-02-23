@@ -34,6 +34,12 @@ export default function RepsLoveSection({ animation }: RepsLoveSectionProps) {
       videoSrc: 'https://vz-a709db05-aaf.b-cdn.net/de9799cb-cfb6-4859-9df6-1f98be83b43a/play_1080p.mp4',
       poster: 'https://vz-a709db05-aaf.b-cdn.net/de9799cb-cfb6-4859-9df6-1f98be83b43a/thumbnail.jpg',
     },
+    { 
+      id: 4, 
+      name: 'Mckiethan Valentine', 
+      videoSrc: 'https://vz-a709db05-aaf.b-cdn.net/3a74b3a0-4d37-46c9-86b3-3338112d35d3/play_1080p.mp4',
+      poster: 'https://vz-a709db05-aaf.b-cdn.net/3a74b3a0-4d37-46c9-86b3-3338112d35d3/thumbnail.jpg',
+    },
   ]
 
   useEffect(() => {

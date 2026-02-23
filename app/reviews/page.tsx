@@ -66,6 +66,19 @@ export default function ReviewsPage() {
       location: 'CLBR Sales',
       date_recorded: '2026-02-01',
       status: 'active'
+    },
+    {
+      id: '4',
+      title: 'Mckiethan Valentine',
+      description: 'CLBR sales rep Mckiethan Valentine shares what makes CLBR different',
+      video_url: 'https://vz-a709db05-aaf.b-cdn.net/3a74b3a0-4d37-46c9-86b3-3338112d35d3/play_1080p.mp4',
+      thumbnail_url: 'https://vz-a709db05-aaf.b-cdn.net/3a74b3a0-4d37-46c9-86b3-3338112d35d3/thumbnail.jpg',
+      type: 'rep',
+      featured: true,
+      rep_name: 'Mckiethan Valentine',
+      location: 'CLBR Sales',
+      date_recorded: '2026-02-01',
+      status: 'active'
     }
   ]
 

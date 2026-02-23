@@ -14,7 +14,7 @@ const imgAMan = "http://localhost:3845/assets/c75767911e539a98cf3080c76af0df77e6
 const imgUnion1 = "http://localhost:3845/assets/7dce532d62b76cfb27ce43354d83030e92ea9b74.svg"
 
 const navItems = [
-  { name: 'About', href: '/#sales-section' },
+  { name: 'About', href: '/#culture' },
   { name: 'Reviews', href: '/reviews' },
   // { name: 'Stats', href: '/stats' },
   // { name: 'Leaderboard', href: '/leaderboard' },

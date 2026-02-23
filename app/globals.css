@@ -30,3 +30,19 @@ body {
   0% { background-position: 100% 0; }
   100% { background-position: 0 0; }
 }
+
+/* RevealBlock: white square expands from top-left, covers element, shrinks back, snaps off */
+@keyframes reveal-overlay {
+  0%   { clip-path: inset(0px calc(100% - 12px) calc(100% - 12px) 0px); opacity: 1; }
+  40%  { clip-path: inset(0px calc(100% - 12px) calc(100% - 12px) 0px); opacity: 1; }
+  60%  { clip-path: inset(0px 0px 0px 0px); opacity: 1; }
+  80%  { clip-path: inset(calc(100% - 12px) 0px 0px calc(100% - 12px)); opacity: 1; }
+  99%  { clip-path: inset(calc(100% - 12px) 0px 0px calc(100% - 12px)); opacity: 1; }
+  100% { clip-path: inset(calc(100% - 12px) 0px 0px calc(100% - 12px)); opacity: 0; }
+}
+
+@keyframes reveal-content {
+  0%, 59% { opacity: 0; }
+  60%     { opacity: 1; }
+  100%    { opacity: 1; }
+}
