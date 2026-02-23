@@ -87,7 +87,7 @@ export default function Navbar({ className = '' }: NavbarProps) {
       <div className="mx-auto max-w-[98vw]">
         <div className="flex items-center md:justify-between justify-between md:gap-[20px]">
           {/* Left: Logo */}
-          <a href="/" className="relative] h-[50px]">
+          <a href="/" className="relative shrink-0 h-[50px]">
             <img alt="CLBR Logo" className="block max-w-none size-full" src="/clbr-lockup-white.svg" />
           </a>
 
