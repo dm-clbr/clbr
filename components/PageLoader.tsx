@@ -9,7 +9,7 @@ interface PageLoaderProps {
 
 const REVEAL_DURATION = 0.9
 const REVEAL_EASE = [0.22, 1, 0.36, 1] as const
-const ICON_SIZE = 50
+const ICON_SIZE = 80
 
 // The CLBR icon SVG is made of exactly two L-shaped paths (viewBox="0 0 588 603")
 const PATH_TOP_RIGHT = 'M139.68 139.68V0H317.23C333.46 0 349.02 6.41 360.55 17.83L559.53 215.11C577.11 232.54 587.01 256.28 587.01 281.04V463.05H447.99V163.75C447.99 150.46 437.21 139.68 423.92 139.68H139.68Z'
@@ -90,21 +90,19 @@ export default function PageLoader({ onComplete }: PageLoaderProps) {
               <motion.img
                 src="/clbr-icon-white.svg"
                 alt="CLBR"
-                className="mx-auto mb-4"
+                className="mx-auto mb-4 mt-[60px]"
                 style={{ width: ICON_SIZE, height: ICON_SIZE, objectFit: 'contain' }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               />
-              <div className="flex justify-center space-x-2">
-                {[0, 1, 2].map((i) => (
-                  <motion.div
-                    key={i}
-                    className="w-2 h-2 bg-white rounded-full"
-                    animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
-                  />
-                ))}
+              <div className="relative overflow-hidden rounded-full mt-[50px]" style={{ width: 150, height: 4, background: 'rgba(255,255,255,0.15)' }}>
+                <motion.div
+                  className="absolute inset-y-0 left-0 rounded-full bg-white"
+                  initial={{ width: '0%' }}
+                  animate={{ width: '100%' }}
+                  transition={{ duration: 1.8, ease: 'easeInOut' }}
+                />
               </div>
             </div>
           </motion.div>
