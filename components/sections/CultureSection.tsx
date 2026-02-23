@@ -49,7 +49,7 @@ export default function CultureSection({ animation }: CultureSectionProps) {
             </h6>
           </div>
           <div>
-            <RevealBlock className="aspect-square bg-surface/80 border border-arsenic/30 rounded-sm mb-4" delay={0}>
+            <RevealBlock className="aspect-square border border-arsenic/30 rounded-sm mb-4" delay={0}>
               <img 
                 src="/images/clbr-team.png" 
                 alt="CLBR Team"
@@ -65,7 +65,7 @@ export default function CultureSection({ animation }: CultureSectionProps) {
           {/* Point 2 - Larger middle image */}
           <div className="group h-full w-full lg:w-[40%]">
             
-            <RevealBlock className="aspect-[3/4] bg-surface/80 border border-arsenic/30 rounded-sm mb-4" delay={350}>
+            <RevealBlock className="aspect-[3/4] border border-arsenic/30 rounded-sm mb-4" delay={350}>
               <img 
                 src="/images/rep-shaking-hands.jpeg" 
                 alt="Rep Shaking Hands"
@@ -79,7 +79,7 @@ export default function CultureSection({ animation }: CultureSectionProps) {
 
           {/* Point 3 */}
           <div className="group flex flex-col justify-start flex-1">
-            <RevealBlock className="w-full h-[370px] bg-surface/80 border border-arsenic/30 rounded-sm mb-4" delay={600}>
+            <RevealBlock className="w-full h-[370px] border border-arsenic/30 rounded-sm mb-4" delay={600}>
               <img 
                 src="/images/cabo-group.png" 
                 alt="Team in Cabo"

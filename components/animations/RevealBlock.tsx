@@ -19,7 +19,7 @@ export default function RevealBlock({
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({ delay })
 
   return (
-    <div ref={ref} className={`relative overflow-hidden ${className ?? ''}`}>
+    <div ref={ref} className={`relative ${className ?? ''}`}>
       {/* White overlay — hidden before trigger, then snaps on as small square and animates */}
       <div
         className="absolute inset-0 z-10 bg-white pointer-events-none"

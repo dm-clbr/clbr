@@ -33,16 +33,17 @@ body {
 
 /* RevealBlock: white square expands from top-left, covers element, shrinks back, snaps off */
 @keyframes reveal-overlay {
-  0%   { clip-path: inset(0px calc(100% - 12px) calc(100% - 12px) 0px); opacity: 1; }
-  20%  { clip-path: inset(0px calc(100% - 12px) calc(100% - 12px) 0px); opacity: 1; }
-  60%  { clip-path: inset(0px 0px 0px 0px); opacity: 1; }
-  80%  { clip-path: inset(calc(100% - 12px) 0px 0px calc(100% - 12px)); opacity: 1; }
-  99%  { clip-path: inset(calc(100% - 12px) 0px 0px calc(100% - 12px)); opacity: 1; }
-  100% { clip-path: inset(calc(100% - 12px) 0px 0px calc(100% - 12px)); opacity: 0; }
+  0%   { inset: -6px calc(100% - 6px) calc(100% - 6px) -6px; opacity: 1; }
+  20%  { inset: -6px calc(100% - 6px) calc(100% - 6px) -6px; opacity: 1; }
+  40%  { inset: -6px -6px -6px -6px; opacity: 1; }
+  60%  { inset: calc(100% - 6px) -6px -6px calc(100% - 6px); opacity: 1; }
+  80%  { inset: calc(100% - 6px) -6px -6px calc(100% - 6px); opacity: 1; }
+  99%  { inset: calc(100% - 6px) -6px -6px calc(100% - 6px); opacity: 1; }
+  100% { inset: calc(100% - 6px) -6px -6px calc(100% - 6px); opacity: 0; }
 }
 
 @keyframes reveal-content {
-  0%, 59% { opacity: 0; }
-  60%     { opacity: 1; }
+  0%, 39% { opacity: 0; }
+  40%     { opacity: 1; }
   100%    { opacity: 1; }
 }
