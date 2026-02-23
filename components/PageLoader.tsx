@@ -7,7 +7,7 @@ interface PageLoaderProps {
   onComplete?: () => void
 }
 
-const REVEAL_DURATION = 0.9
+const REVEAL_DURATION = 1.5
 const REVEAL_EASE = [0.22, 1, 0.36, 1] as const
 const ICON_SIZE = 80
 
