@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { UseScrollAnimationReturn } from '@/hooks/useScrollAnimation'
+import RevealBlock from '@/components/animations/RevealBlock'
 
 interface CultureSectionProps {
   animation: UseScrollAnimationReturn<HTMLElement>
@@ -48,13 +49,13 @@ export default function CultureSection({ animation }: CultureSectionProps) {
             </h6>
           </div>
           <div>
-            <div className="aspect-square bg-surface/80 border border-arsenic/30 rounded-sm overflow-hidden mb-4">
+            <RevealBlock className="aspect-square bg-surface/80 border border-arsenic/30 rounded-sm mb-4" delay={0}>
               <img 
                 src="/images/clbr-team.png" 
                 alt="CLBR Team"
                 className="w-full h-full object-cover"
               />
-            </div>
+            </RevealBlock>
             <h3 className="text-light text-xs font-black uppercase leading-tight text-left">
               WE REPLACE HYPE WITH REAL OPPORTUNITY
             </h3>
@@ -64,13 +65,13 @@ export default function CultureSection({ animation }: CultureSectionProps) {
           {/* Point 2 - Larger middle image */}
           <div className="group h-full w-full lg:w-[40%]">
             
-            <div className="aspect-[3/4] bg-surface/80 border border-arsenic/30 rounded-sm overflow-hidden mb-4">
+            <RevealBlock className="aspect-[3/4] bg-surface/80 border border-arsenic/30 rounded-sm mb-4" delay={350}>
               <img 
                 src="/images/rep-shaking-hands.jpeg" 
                 alt="Rep Shaking Hands"
                 className="w-full h-full object-cover"
               />
-            </div>
+            </RevealBlock>
             <h3 className="text-light text-xs font-black uppercase leading-tight text-left">
               SHADY TACTICS WITH A TRANSPARENT APPROACH
             </h3>
@@ -78,13 +79,13 @@ export default function CultureSection({ animation }: CultureSectionProps) {
 
           {/* Point 3 */}
           <div className="group flex flex-col justify-start flex-1">
-            <div className="w-full h-[370px] bg-surface/80 border border-arsenic/30 rounded-sm overflow-hidden mb-4">
+            <RevealBlock className="w-full h-[370px] bg-surface/80 border border-arsenic/30 rounded-sm mb-4" delay={600}>
               <img 
                 src="/images/cabo-group.png" 
                 alt="Team in Cabo"
                 className="w-full h-full object-cover"
               />
-            </div>
+            </RevealBlock>
             <h3 className="text-light text-xs md:text-xs font-black uppercase leading-tight text-left">
               GRIND MINDSET WITH PROVEN METHODS
             </h3>
