@@ -18,7 +18,7 @@ export default function CultureSection({ animation }: CultureSectionProps) {
       }`}
     >
       {/* Large Background Marquee Text */}
-      <div className="absolute top-0 left-0 w-screen overflow-hidden pointer-events-none">
+      <div className="absolute top-0 left-0 w-full overflow-hidden pointer-events-none">
         <div className="flex animate-marquee whitespace-nowrap">
           <span className="text-[20vw] font-black uppercase text-graphite/5 mx-8">
             CLBR CULTURE
@@ -35,7 +35,7 @@ export default function CultureSection({ animation }: CultureSectionProps) {
       <div className="w-full mx-auto text-center relative z-10">
         
         {/* Three Culture Points with Images */}
-        <div className="w-full pt-16 pb-16 lg:pt-[160px] lg:pb-[160px] flex flex-col lg:flex-row gap-6 mb-16 items-stretch">
+        <div className="w-full pt-16 pb-16 lg:pt-[160px] lg:pb-[160px] flex flex-col lg:flex-row gap-6 mb-16 items-stretch z-50 relative">
           {/* Point 1 */}
           
           <div className="group flex flex-col justify-between flex-1">
@@ -105,11 +105,11 @@ export default function CultureSection({ animation }: CultureSectionProps) {
               left: '0vw',
               backgroundSize: 'cover',
               maxWidth: 'none !important',
-              width: '100vw',
+              width: '100%',
             }}
           />
           {/* Marquee Banner - Full Width */}
-          <div className="relative overflow-hidden py-8 mb-8 bg-surface/30 -mx-6 sm:-mx-10 md:-mx-16 lg:-mx-24 w-screen left-0">
+          <div className="relative overflow-hidden py-8 mb-8 bg-surface/30 -mx-6 sm:-mx-10 md:-mx-16 lg:-mx-24">
             <div className="flex animate-marquee whitespace-nowrap">
               <span className="text-smoke text-2xl md:text-3xl lg:text-4xl font-black uppercase flex items-center gap-6">
                 POSITIVE ATTITUDE <span className="w-2 h-2 bg-cloud"></span> GROWTH FOCUSED <span className="w-2 h-2 bg-cloud"></span> "A" PLAYER MENTALITY <span className="w-2 h-2 bg-cloud"></span> DEPENDABLE ACCOUNTABILITY <span className="w-2 h-2 bg-cloud"></span> WIN TOGETHER <span className="w-2 h-2 bg-cloud"></span>

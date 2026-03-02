@@ -8,6 +8,7 @@ import Image from 'next/image'
 
 interface NavbarProps {
   className?: string
+  theme?: 'dark' | 'light'
 }
 
 const imgAMan = "http://localhost:3845/assets/c75767911e539a98cf3080c76af0df77e6a62117.png"
@@ -21,13 +22,14 @@ const navItems = [
   { name: 'Incentives', href: '/incentives' }, 
   // { name: 'EDU', href: '/edu' },
   { name: 'Store', href: 'https://clbr.store/' },
-  // { name: 'Verify', href: '/verify' },
+  { name: 'Verify', href: '/verify' },
   // { name: 'Brand', href: '/brand' },
   // { name: 'Wiki', href: 'https://aveyo-wiki.bullet.site/' },
   // { name: 'Map', href: '/map' },
 ]
 
-export default function Navbar({ className = '' }: NavbarProps) {
+export default function Navbar({ className = '', theme = 'dark' }: NavbarProps) {
+  const isLight = theme === 'light'
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null)
@@ -76,19 +78,29 @@ export default function Navbar({ className = '' }: NavbarProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 w-[100vw] z-[100] px-4 sm:px-6 md:px-12 py-4 md:py-5 transition-colors isolate ${
-        open
-          ? 'bg-black/80' // solid nav when menu open; keep nav unblurred
-          : scrolled
-            ? 'bg-black/80 backdrop-blur supports-[backdrop-filter]:bg-black/60'
-            : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-[100] px-4 sm:px-6 md:px-12 py-4 md:py-5 transition-colors isolate ${
+        isLight
+          ? open
+            ? 'bg-white shadow-sm'
+            : scrolled
+              ? 'bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-sm'
+              : 'bg-white border-b border-black/8'
+          : open
+            ? 'bg-black/80'
+            : scrolled
+              ? 'bg-black/80 backdrop-blur supports-[backdrop-filter]:bg-black/60'
+              : 'bg-transparent'
       } ${className}`}
     >
       <div className="mx-auto max-w-[98vw]">
         <div className="flex items-center md:justify-between justify-between md:gap-[20px]">
           {/* Left: Logo */}
           <a href="/" className="relative shrink-0 h-[50px]">
-            <img alt="CLBR Logo" className="block max-w-none size-full" src="/clbr-lockup-white.svg" />
+            <img
+              alt="CLBR Logo"
+              className="block max-w-none size-full"
+              src={isLight ? '/clbr-lockup-black.svg' : '/clbr-lockup-white.svg'}
+            />
           </a>
 
           {/* Desktop links */}
@@ -97,25 +109,29 @@ export default function Navbar({ className = '' }: NavbarProps) {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-white text-xs font-bold uppercase tracking-wide hover:opacity-80 transition-opacity"
+                className={`text-xs font-bold uppercase tracking-wide hover:opacity-70 transition-opacity ${
+                  isLight ? 'text-black' : 'text-white'
+                }`}
               >
                 {item.name}
               </a>
             ))}
-            {/* Right: Profile link */}
-          {/* <a
-            href={isLoggedIn ? '/user' : '/login'}
-            className='ml-auto mr-3 hidden md:flex items-center justify-center rounded-full overflow-hidden h-[28px] w-[28px] bg-gradient-to-b from-[#5C5C5C] to-[#1F1F1F]'
-            title={isLoggedIn ? 'Profile' : 'Sign in'}
-          >
-            <Image 
-              src="/images/user-icon.png"
-              alt="Profile"
-              width={28}
-              height={28}
-              className='transition-all duration-200 bg-gradient-to-b from-[#5C5C5C] to-[#1F1F1F] rounded-full overflow-hidden'
-            />
-          </a> */}
+            {/* Right: Account link */}
+            <a
+              href="https://app.knockvia.com/signin"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Sign in to KnockVia"
+              className="flex items-center justify-center rounded-full overflow-hidden h-[28px] w-[28px] bg-gradient-to-b from-[#5C5C5C] to-[#1F1F1F] hover:opacity-80 transition-opacity"
+            >
+              <Image
+                src="/images/user-icon.png"
+                alt="Account"
+                width={28}
+                height={28}
+                className="block size-full object-cover"
+              />
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -123,7 +139,11 @@ export default function Navbar({ className = '' }: NavbarProps) {
             type="button"
             aria-label="Toggle menu"
             aria-expanded={open}
-            className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-white/90 hover:text-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+            className={`md:hidden inline-flex items-center justify-center rounded-md p-2 focus:outline-none focus-visible:ring-2 transition-colors ${
+              isLight
+                ? 'text-black/70 hover:text-black hover:bg-black/5 focus-visible:ring-black/20'
+                : 'text-white/90 hover:text-white hover:bg-white/10 focus-visible:ring-white/50'
+            }`}
             onClick={() => setOpen((v) => !v)}
           >
             <svg
@@ -155,29 +175,41 @@ export default function Navbar({ className = '' }: NavbarProps) {
             <Backdrop onClick={() => setOpen(false)} />
             {/* Menu panel anchored to navbar */}
             <div className="md:hidden absolute left-0 right-0 top-full z-[110] mt-2 px-4 pointer-events-auto">
-              <div className="rounded-md border border-white/10 bg-black/80 backdrop-blur supports-[backdrop-filter]:bg-black/60 shadow-lg">
+              <div className={`rounded-md shadow-lg ${
+                isLight
+                  ? 'border border-black/10 bg-white'
+                  : 'border border-white/10 bg-black/80 backdrop-blur supports-[backdrop-filter]:bg-black/60'
+              }`}>
                 <div className="flex flex-col py-2">
-                  {/* Profile link (mobile) */}
-                  {/* <a
-                    href={isLoggedIn ? '/user' : '/login'}
+                  {/* Account link (mobile) */}
+                  <a
+                    href="https://app.knockvia.com/signin"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
-                    className="px-4 py-3 text-white text-sm font-bold uppercase tracking-wide hover:bg-white/10 transition-colors flex items-center gap-3"
+                    className={`px-4 py-3 text-sm font-bold uppercase tracking-wide transition-colors flex items-center gap-3 ${
+                      isLight ? 'text-black hover:bg-black/5' : 'text-white hover:bg-white/10'
+                    }`}
                   >
-                    <span className="inline-block size-6 rounded-full overflow-hidden border border-white/20">
+                    <span className={`inline-block size-6 rounded-full overflow-hidden border ${
+                      isLight ? 'border-black/20' : 'border-white/20'
+                    }`}>
                       <img
-                        alt="Profile"
-                        src={avatarUrl || '/images/user-icon.png'}
+                        alt="Account"
+                        src="/images/user-icon.png"
                         className="block max-w-none size-full object-cover"
                       />
                     </span>
-                    {isLoggedIn ? 'Profile' : 'Sign in'}
-                  </a> */}
+                    Account
+                  </a>
                   {navItems.map((item) => (
                     <a
                       key={item.name}
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="px-4 py-3 text-white text-sm font-bold uppercase tracking-wide hover:bg-white/10 transition-colors"
+                      className={`px-4 py-3 text-sm font-bold uppercase tracking-wide transition-colors ${
+                        isLight ? 'text-black hover:bg-black/5' : 'text-white hover:bg-white/10'
+                      }`}
                     >
                       {item.name}
                     </a>

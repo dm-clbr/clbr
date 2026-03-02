@@ -121,7 +121,7 @@ export default function ReasonsSection() {
             left: '10vw',
             backgroundSize: 'cover',
             maxWidth: 'none !important',
-            width: '100vw',
+            width: '100%',
           }}
         />
         

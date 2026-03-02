@@ -32,7 +32,7 @@ export default function BestSystemsSection({ onJoinClick }: BestSystemsSectionPr
       </div>
 
       {/* Full Width Image Row - stacked on mobile, side-by-side on desktop */}
-      <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] flex flex-col md:flex-row md:h-[90vh]">
+      <div className="w-full flex flex-col md:flex-row md:h-[90vh]">
         {/* Image 1 - Training */}
         <div 
           className={`relative overflow-hidden group h-[60vw] md:h-auto transition-all duration-500 ease-in-out ${getFlexClass(0)}`}
