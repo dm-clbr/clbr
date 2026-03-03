@@ -21,7 +21,7 @@ const raw = [
     id: '1',
     title: 'Out of Stock',
     description:
-      'Hit your monthly sales targets and earn exclusive CLBR branded merchandise. Rookies need 5 sales, Vets need 20 sales to qualify.',
+      'Hit your monthly sales targets and earn exclusive CLBR branded merchandise. Rookies need 5 sales installed, Vets need 20 sales installed to qualify.',
     category: 'Monthly',
     category_color: '#3B82F6',
     background_image_url: '/images/incentives/26_ OUT OF STOCK 2.png',
