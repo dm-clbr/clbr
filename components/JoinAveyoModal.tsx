@@ -23,6 +23,9 @@ export default function JoinAveyoModal({ open, onClose, onSubmitted }: JoinAveyo
     message: '',
   })
 
+  const [consentSms, setConsentSms] = useState(false)
+  const [consentCalls, setConsentCalls] = useState(false)
+
   const update = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [key]: e.target.value })
   }
@@ -43,7 +46,7 @@ export default function JoinAveyoModal({ open, onClose, onSubmitted }: JoinAveyo
       const res = await fetch('/api/join', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, consentSms, consentCalls }),
       })
       if (!res.ok) {
         const txt = await res.text()
@@ -114,6 +117,31 @@ export default function JoinAveyoModal({ open, onClose, onSubmitted }: JoinAveyo
               <div>
                 <label className="block text-sm text-white/70 mb-1">Message</label>
                 <textarea rows={3} value={form.message} onChange={update('message')} className="w-full bg-[#121212] border border-[#2a2a2a] rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-white/20" />
+              </div>
+
+              <div className="space-y-3 pt-1">
+                <label className="flex items-start gap-3 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    checked={consentSms}
+                    onChange={e => setConsentSms(e.target.checked)}
+                    className="mt-0.5 shrink-0 accent-white w-4 h-4 cursor-pointer"
+                  />
+                  <span className="text-xs text-white/50 leading-relaxed group-hover:text-white/70 transition-colors">
+                    I consent to receive SMS notifications from Caliber (CLBR) related to job opportunities, application updates, and recruiting communications (e.g., interview reminders, application status updates, recruiter follow-ups). Message frequency varies. Msg &amp; data rates may apply. Email <a href="mailto:mktg@clbr.com" className="underline hover:text-white/90">mktg@clbr.com</a> for help. Reply STOP to cancel.
+                  </span>
+                </label>
+                <label className="flex items-start gap-3 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    checked={consentCalls}
+                    onChange={e => setConsentCalls(e.target.checked)}
+                    className="mt-0.5 shrink-0 accent-white w-4 h-4 cursor-pointer"
+                  />
+                  <span className="text-xs text-white/50 leading-relaxed group-hover:text-white/70 transition-colors">
+                    By checking this box I agree to receive calls from CLBR.
+                  </span>
+                </label>
               </div>
 
               <div className="pt-1 flex items-center justify-end gap-3">
