@@ -42,6 +42,7 @@ export default function PrivacyPolicyPage() {
                 ['#further-info', 'Further Information'],
                 ['#gdpr', 'Your Rights (GDPR)'],
                 ['#us-rights', 'Your Rights (US State Laws)'],
+                ['#sms-communications', 'Mobile & SMS Communications'],
                 ['#contact', 'Contact Us'],
               ].map(([href, label]) => (
                 <li key={href} className="text-sm">
@@ -238,10 +239,6 @@ export default function PrivacyPolicyPage() {
 
           {/* 07 — FURTHER INFO */}
           <PolicySection id="further-info" number="07" title="Further Information">
-            <SubHeading>SMS Communication Consent</SubHeading>
-            <p className="text-white/60 leading-relaxed mb-6">
-              By providing your phone number, you consent to receive SMS communications regarding your account, services, and updates. You can opt out of receiving these messages at any time by replying <strong className="text-white">"STOP"</strong> to any message. All messages comply with applicable laws and regulations, and your consent is recorded during account creation or inquiry.
-            </p>
             <SubHeading>Push Notifications</SubHeading>
             <p className="text-white/60 leading-relaxed mb-6">
               Caliber may send push notifications to the User in order to achieve the purposes outlined in this privacy policy. Users may opt out at any time by visiting their device settings and adjusting notification preferences for Caliber. Please be aware that disabling push notifications may negatively affect the utility of Caliber.
@@ -383,9 +380,32 @@ export default function PrivacyPolicyPage() {
             </p>
           </PolicySection>
 
+          {/* 10 — MOBILE & SMS COMMUNICATIONS */}
+          <PolicySection id="sms-communications" number="10" title="Mobile & SMS Communications">
+            <SubHeading>SMS Opt-In Consent</SubHeading>
+            <p className="text-white/60 leading-relaxed mb-6">
+              By providing your phone number and checking the SMS consent box, you agree to receive SMS messages from CLBR about job opportunities, application updates, interview reminders, and recruiting follow-ups. Message frequency varies. Message and data rates may apply. Reply <strong className="text-white">STOP</strong> to opt out and <strong className="text-white">HELP</strong> for help.
+            </p>
+            <SubHeading>Mobile Opt-In Data &amp; Third-Party Sharing</SubHeading>
+            <p className="text-white/60 leading-relaxed mb-6">
+              Mobile opt-in data and consent will not be shared with third parties or affiliates for marketing or promotional purposes.
+            </p>
+            <SubHeading>Opting Out</SubHeading>
+            <p className="text-white/60 leading-relaxed mb-6">
+              You may opt out of SMS communications at any time by replying <strong className="text-white">STOP</strong> to any message you receive from us. After opting out, you will no longer receive SMS messages unless you re-enroll. To re-enroll, contact us at <a href="mailto:mktg@clbr.com" className="text-white underline underline-offset-4 hover:text-white/70 transition-colors">mktg@clbr.com</a>.
+            </p>
+            <SubHeading>Calls Consent</SubHeading>
+            <p className="text-white/60 leading-relaxed mb-6">
+              By checking the calls consent box, you agree to receive phone calls from CLBR related to your application, recruiting, and job opportunities. You may withdraw this consent at any time by contacting us at <a href="mailto:mktg@clbr.com" className="text-white underline underline-offset-4 hover:text-white/70 transition-colors">mktg@clbr.com</a>.
+            </p>
+            <HighlightBox title="Your Communication Preferences">
+              Consent to receive SMS messages or calls is optional and is not required to submit an application or use our services. Withdrawing consent will not affect the processing of any data we have already collected.
+            </HighlightBox>
+          </PolicySection>
+
           {/* ── Contact Box ── */}
           <div id="contact" className="border border-white/10 rounded-sm p-8 md:p-12 mt-4 mb-16">
-            <p className="text-white/30 text-xs uppercase tracking-[0.2em] font-medium mb-3">Section 10</p>
+            <p className="text-white/30 text-xs uppercase tracking-[0.2em] font-medium mb-3">Section 11</p>
             <h2 className="text-white font-black text-[28px] sm:text-[36px] uppercase leading-tight mb-6">Contact Us</h2>
             <p className="text-white/40 text-xs uppercase tracking-widest mb-4">Owner and Data Controller</p>
             <p className="text-white/70 mb-1">Caliber (CLBR)</p>
