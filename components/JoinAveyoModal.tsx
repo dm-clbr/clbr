@@ -128,7 +128,7 @@ export default function JoinAveyoModal({ open, onClose, onSubmitted }: JoinAveyo
                     className="mt-0.5 shrink-0 accent-white w-4 h-4 cursor-pointer"
                   />
                   <span className="text-xs text-white/50 leading-relaxed group-hover:text-white/70 transition-colors">
-                    I consent to receive SMS notifications from Caliber (CLBR) related to job opportunities, application updates, and recruiting communications (e.g., interview reminders, application status updates, recruiter follow-ups). Message frequency varies. Msg &amp; data rates may apply. Email <a href="mailto:mktg@clbr.com" className="underline hover:text-white/90">mktg@clbr.com</a> for help. Reply STOP to cancel.
+                    I agree to receive SMS messages from CLBR about job opportunities, application updates, interview reminders, and recruiting follow-ups. Message frequency varies. Message and data rates may apply. Reply STOP to opt out and HELP for help. View <a href="/terms-and-conditions" target="_blank" className="underline hover:text-white/90">Terms &amp; Conditions</a> and <a href="/privacy-policy" target="_blank" className="underline hover:text-white/90">Privacy Policy</a>.
                   </span>
                 </label>
                 <label className="flex items-start gap-3 cursor-pointer group">
