@@ -73,7 +73,7 @@ export default function CultureSection({ animation }: CultureSectionProps) {
               />
             </RevealBlock>
             <h3 className="text-light text-xs font-black uppercase leading-tight text-left">
-              SHADY TACTICS WITH A TRANSPARENT APPROACH
+              NO GIMMICKS. JUST A TRANSPARENT APPROACH
             </h3>
           </div>
 
