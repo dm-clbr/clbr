@@ -23,6 +23,7 @@ const navItems = [
   // { name: 'EDU', href: '/edu' },
   { name: 'Store', href: 'https://clbr.store/' },
   { name: 'Verify', href: '/verify' },
+  { name: 'Join', href: '/join' },
   // { name: 'Brand', href: '/brand' },
   // { name: 'Wiki', href: 'https://aveyo-wiki.bullet.site/' },
   // { name: 'Map', href: '/map' },

@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '@/components/Navbar'
 import PageLoader from '@/components/PageLoader'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
-import JoinAveyoModal from '@/components/JoinAveyoModal'
 import {
   HeroSection,
   ReasonsSection,
@@ -21,8 +20,9 @@ import {
 export default function Home() {
   const [showLoader, setShowLoader] = useState(true)
   const [pageReady, setPageReady] = useState(false)
-  const [joinOpen, setJoinOpen] = useState(false)
   const [activeFilter, setActiveFilter] = useState('ALL')
+
+  const goToJoin = () => { window.location.href = '/join' }
 
   const handleLoaderComplete = () => {
     setShowLoader(false)
@@ -50,7 +50,7 @@ export default function Home() {
         <Navbar />
 
         {/* Hero Section */}
-        <HeroSection heroAnimation={heroAnimation} onJoinClick={() => setJoinOpen(true)} />
+        <HeroSection heroAnimation={heroAnimation} onJoinClick={goToJoin} />
 
         {/* Section Header: 05 REASONS */}
         <ReasonsSection />
@@ -86,14 +86,12 @@ export default function Home() {
 
 
         {/* THE BEST SYSTEMS */}
-        <BestSystemsSection onJoinClick={() => setJoinOpen(true)} />
+        <BestSystemsSection onJoinClick={goToJoin} />
 
         {/* Footer */}
         <Footer />
       </div>
 
-      {/* Join Modal */}
-      <JoinAveyoModal open={joinOpen} onClose={() => setJoinOpen(false)} />
     </>
   )
 }
