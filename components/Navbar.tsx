@@ -2,17 +2,12 @@
 import React, { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { supabase } from '@/lib/supabase-browser'
-import { style } from 'framer-motion/client'
-import { profile } from 'console'
 import Image from 'next/image'
 
 interface NavbarProps {
   className?: string
   theme?: 'dark' | 'light'
 }
-
-const imgAMan = "http://localhost:3845/assets/c75767911e539a98cf3080c76af0df77e6a62117.png"
-const imgUnion1 = "http://localhost:3845/assets/7dce532d62b76cfb27ce43354d83030e92ea9b74.svg"
 
 const navItems = [
   { name: 'About', href: '/#culture' },
@@ -96,10 +91,10 @@ export default function Navbar({ className = '', theme = 'dark' }: NavbarProps) 
       <div className="mx-auto max-w-[98vw]">
         <div className="flex items-center md:justify-between justify-between md:gap-[20px]">
           {/* Left: Logo */}
-          <a href="/" className="relative shrink-0 h-[50px]">
+          <a href="/" className="shrink-0 flex items-center">
             <img
               alt="CLBR Logo"
-              className="block max-w-none size-full"
+              className="block h-[40px] w-auto max-w-none"
               src={isLight ? '/clbr-lockup-black.svg' : '/clbr-lockup-white.svg'}
             />
           </a>

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Navbar from '@/components/Navbar'
 import PageLoader from '@/components/PageLoader'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
@@ -24,12 +24,10 @@ export default function Home() {
 
   const goToJoin = () => { window.location.href = '/join' }
 
-  const handleLoaderComplete = () => {
+  const handleLoaderComplete = useCallback(() => {
     setShowLoader(false)
-    setTimeout(() => {
-      setPageReady(true)
-    }, 100)
-  }
+    setTimeout(() => setPageReady(true), 100)
+  }, [])
 
   const welcomeAnimation = useScrollAnimation<HTMLDivElement>({ delay: 200, disabled: !pageReady })
   const heroAnimation = useScrollAnimation<HTMLDivElement>({ delay: 400, disabled: !pageReady })

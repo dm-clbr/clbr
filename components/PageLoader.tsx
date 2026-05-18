@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface PageLoaderProps {
@@ -20,22 +20,24 @@ type Phase = 'loading' | 'revealing' | 'done'
 export default function PageLoader({ onComplete }: PageLoaderProps) {
   const [phase, setPhase] = useState<Phase>('loading')
   const [vp, setVp] = useState({ w: 0, h: 0 })
+  const onCompleteRef = useRef(onComplete)
+  useEffect(() => { onCompleteRef.current = onComplete })
 
   useEffect(() => {
     setVp({ w: window.innerWidth, h: window.innerHeight })
   }, [])
 
   useEffect(() => {
-    const loadTimer = setTimeout(() => {
+    const revealTimer = setTimeout(() => {
       setPhase('revealing')
       setTimeout(() => {
         setPhase('done')
-        onComplete?.()
+        onCompleteRef.current?.()
       }, Math.round(REVEAL_DURATION * 1000) + 50)
     }, 2000)
 
-    return () => clearTimeout(loadTimer)
-  }, [onComplete])
+    return () => clearTimeout(revealTimer)
+  }, [])
 
   if (phase === 'done') return null
 
