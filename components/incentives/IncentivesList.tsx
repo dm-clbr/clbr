@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import IncentiveCard from '@/components/incentives/IncentiveCard'
 import IncentiveModal from '@/components/incentives/IncentiveModal'
 import type { Incentive } from '@/lib/types/incentive'
@@ -27,6 +27,20 @@ export default function IncentivesList({
   filteredIncentives,
 }: IncentivesListProps) {
   const [selectedIncentive, setSelectedIncentive] = useState<Incentive | null>(null)
+  const [calendarOpen, setCalendarOpen] = useState(false)
+
+  const closeCalendar = useCallback(() => setCalendarOpen(false), [])
+
+  useEffect(() => {
+    if (!calendarOpen) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeCalendar() }
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [calendarOpen, closeCalendar])
 
   return (
     <div className="max-w-[1480px] mx-auto">
@@ -43,8 +57,8 @@ export default function IncentivesList({
         </div>
       </div>
 
-      {/* Filter Buttons */}
-      <div className="flex justify-center mb-8 sm:mb-12">
+      {/* Filter Buttons + Calendar */}
+      <div className="flex items-center justify-center gap-[50px] mb-8 sm:mb-12">
         <div className="flex flex-wrap justify-center bg-gradient-to-b from-[#232323] to-[#171717] rounded-[60px] p-1 gap-1">
           {(['all', 'live', 'coming_up', 'done'] as const).map((filterOption) => (
             <button
@@ -58,6 +72,17 @@ export default function IncentivesList({
             </button>
           ))}
         </div>
+        <button
+          onClick={() => setCalendarOpen(true)}
+          className="flex items-center gap-2 px-4 py-2 rounded-sm font-bold uppercase text-sm bg-white/10 text-white hover:bg-white/20 transition-all border border-white/10 shrink-0"
+        >
+          <svg className="w-4 h-4 shrink-0" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="1" y="2.5" width="14" height="12.5" rx="1.5" />
+            <path d="M1 6.5h14" />
+            <path d="M5 1v3M11 1v3" />
+          </svg>
+          Calendar
+        </button>
       </div>
 
       {/* Incentives Grid */}
@@ -103,6 +128,29 @@ export default function IncentivesList({
       {filteredIncentives.length === 0 && !loading && (
         <div className="text-center py-12">
           <p className="text-[rgba(255,255,255,0.6)] text-lg">No incentives found for the selected filter.</p>
+        </div>
+      )}
+
+      {/* Calendar Lightbox */}
+      {calendarOpen && (
+        <div
+          className="fixed inset-0 z-[200] bg-black/90 backdrop-blur-sm flex items-start justify-center overflow-y-auto"
+          onClick={closeCalendar}
+        >
+          <button
+            onClick={closeCalendar}
+            className="fixed top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-black/70 text-white/70 hover:text-white hover:bg-black transition-colors text-lg"
+            aria-label="Close calendar"
+          >
+            ✕
+          </button>
+          <div className="py-6 px-4" onClick={(e) => e.stopPropagation()}>
+            <img
+              src="/images/incentives/CLBR-Incentive-Calendar-4K-2160x2700.png"
+              alt="CLBR Incentive Calendar '25–'26"
+              className="w-full max-w-2xl mx-auto rounded-sm shadow-2xl"
+            />
+          </div>
         </div>
       )}
     </div>
