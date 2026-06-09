@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { UseScrollAnimationReturn } from '@/hooks/useScrollAnimation'
 import { HARDCODED_INCENTIVES, getIncentivePeriod } from '@/lib/data/hardcoded-incentives'
 import IncentiveModal from '@/components/incentives/IncentiveModal'
@@ -15,6 +15,20 @@ interface IncentivesSectionProps {
 
 export default function IncentivesSection({ animation, activeFilter, onFilterChange }: IncentivesSectionProps) {
   const [selectedIncentive, setSelectedIncentive] = useState<Incentive | null>(null)
+  const [calendarOpen, setCalendarOpen] = useState(false)
+
+  const closeCalendar = useCallback(() => setCalendarOpen(false), [])
+
+  useEffect(() => {
+    if (!calendarOpen) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeCalendar() }
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [calendarOpen, closeCalendar])
 
   const filteredIncentives = activeFilter === 'ALL'
     ? HARDCODED_INCENTIVES
@@ -45,8 +59,8 @@ export default function IncentivesSection({ animation, activeFilter, onFilterCha
           </p>
         </div>
         
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap gap-4 mb-12">
+        {/* Filter Tabs + Calendar Button */}
+        <div className="flex flex-wrap items-center gap-4 mb-12">
           {['ALL', 'MONTHLY', 'YEARLY', 'SUMMER', 'PAST'].map((filter) => (
             <button
               key={filter}
@@ -60,6 +74,19 @@ export default function IncentivesSection({ animation, activeFilter, onFilterCha
               {filter}
             </button>
           ))}
+
+          <button
+            onClick={() => setCalendarOpen(true)}
+            className="ml-auto flex items-center gap-2 px-5 py-3 rounded-sm font-bold uppercase text-sm bg-surface text-light hover:bg-arsenic transition-all"
+          >
+            {/* Calendar icon */}
+            <svg className="w-4 h-4 shrink-0" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="1" y="2.5" width="14" height="12.5" rx="1.5" />
+              <path d="M1 6.5h14" />
+              <path d="M5 1v3M11 1v3" />
+            </svg>
+            Calendar
+          </button>
         </div>
         
         {/* Incentives Grid */}
@@ -138,6 +165,32 @@ export default function IncentivesSection({ animation, activeFilter, onFilterCha
           incentive={selectedIncentive}
           onClose={() => setSelectedIncentive(null)}
         />
+      )}
+
+      {/* Calendar Lightbox */}
+      {calendarOpen && (
+        <div
+          className="fixed inset-0 z-[200] bg-black/90 backdrop-blur-sm flex items-start justify-center overflow-y-auto"
+          onClick={closeCalendar}
+        >
+          {/* Close button */}
+          <button
+            onClick={closeCalendar}
+            className="fixed top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-black/70 text-white/70 hover:text-white hover:bg-black transition-colors text-lg"
+            aria-label="Close calendar"
+          >
+            ✕
+          </button>
+
+          {/* Image — clicks don't close */}
+          <div className="py-6 px-4" onClick={(e) => e.stopPropagation()}>
+            <img
+              src="/images/incentives/CLBR-Incentive-Calendar-4K-2160x2700.png"
+              alt="CLBR Incentive Calendar '25–'26"
+              className="w-full max-w-2xl mx-auto rounded-sm shadow-2xl"
+            />
+          </div>
+        </div>
       )}
     </section>
   )
