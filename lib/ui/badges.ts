@@ -2,30 +2,35 @@ export type LiveStatus = 'coming_up' | 'live' | 'done'
 
 export interface BadgeClasses {
   container: string
+  iconType: 'dot' | 'check'
   dot?: string
+  ping?: boolean
   text: string
 }
 
-// Centralized classes for status badges (used in IncentiveCard)
+// Centralized classes for status badges (used in IncentiveCard + IncentiveModal)
 export const getStatusBadgeClasses = (status: LiveStatus): BadgeClasses => {
   switch (status) {
     case 'live':
       return {
         container: 'bg-[#222222]',
+        iconType: 'dot',
         dot: 'bg-red-500',
+        ping: true,
         text: 'text-white',
       }
     case 'coming_up':
       return {
-        container: 'bg-blue-600',
+        container: 'bg-[#222222]',
+        iconType: 'dot',
         dot: 'bg-white',
         text: 'text-white',
       }
     case 'done':
     default:
       return {
-        container: 'bg-[#959595]',
-        dot: 'bg-[#535353]',
+        container: 'bg-[#222222]',
+        iconType: 'check',
         text: 'text-white',
       }
   }

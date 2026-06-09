@@ -110,8 +110,19 @@ export default function IncentiveCard({
             const classes = getStatusBadgeClasses(liveStatus)
             return (
               <div className={`flex items-center gap-2.5 px-[15px] py-[7px] rounded-[60px] shadow-lg ${classes.container}`}>
-                <div className={`w-[7px] h-[7px] rounded-full ${classes.dot}`} />
-                <span className={`text-[14px] font-semibold flex flex-row gap-5 ${classes.text}`}>
+                {classes.iconType === 'check' ? (
+                  <svg className="w-3 h-3 text-green-400 shrink-0" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2 6l3 3 5-5" />
+                  </svg>
+                ) : classes.ping ? (
+                  <span className="relative flex h-2.5 w-2.5 shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
+                  </span>
+                ) : (
+                  <div className={`w-2 h-2 rounded-full shrink-0 ${classes.dot}`} />
+                )}
+                <span className={`text-[14px] font-semibold ${classes.text}`}>
                   {liveStatus === 'live' ? 'Live' : liveStatus === 'coming_up' ? 'Coming Up' : 'Done'}
                 </span>
               </div>

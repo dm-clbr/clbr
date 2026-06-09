@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { UseScrollAnimationReturn } from '@/hooks/useScrollAnimation'
 import { HARDCODED_INCENTIVES, getIncentivePeriod } from '@/lib/data/hardcoded-incentives'
 import IncentiveModal from '@/components/incentives/IncentiveModal'
+import { getStatusBadgeClasses } from '@/lib/ui/badges'
 import type { Incentive } from '@/lib/types/incentive'
 
 interface IncentivesSectionProps {
@@ -80,6 +81,30 @@ export default function IncentivesSection({ animation, activeFilter, onFilterCha
 
                 {/* Dark Gradient for Text Legibility */}
                 <div className="absolute inset-0 bg-gradient-to-t from-phantom/90 via-phantom/40 to-transparent pointer-events-none"></div>
+
+                {/* Status Badge */}
+                {(() => {
+                  const classes = getStatusBadgeClasses(incentive.live_status)
+                  return (
+                    <div className={`absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold shadow-md ${classes.container}`}>
+                      {classes.iconType === 'check' ? (
+                        <svg className="w-2.5 h-2.5 text-green-400 shrink-0" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M2 6l3 3 5-5" />
+                        </svg>
+                      ) : classes.ping ? (
+                        <span className="relative flex h-2 w-2 shrink-0">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+                          <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
+                        </span>
+                      ) : (
+                        <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${classes.dot}`} />
+                      )}
+                      <span className={classes.text}>
+                        {incentive.live_status === 'live' ? 'Live' : incentive.live_status === 'coming_up' ? 'Coming Up' : 'Done'}
+                      </span>
+                    </div>
+                  )
+                })()}
 
                 {/* Overlay Content */}
                 <div className="absolute inset-0 bg-gradient-to-t from-phantom via-phantom/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
